@@ -1,0 +1,61 @@
+/* ----------- Fonts Styles ------------ */
+
+/* Luckiest Guy Font */
+@font-face {
+  font-family: "Luckiest Guy";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/LuckiestGuy-Regular.ttf') format('truetype');
+}
+
+/* Averia Libre Font */
+@font-face {
+  font-family: "Averia Libre";
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/AveriaLibre-LightItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: "Averia Libre";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/AveriaLibre-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: "Averia Libre";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/AveriaLibre-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: "Averia Libre";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/AveriaLibre-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: "Averia Libre";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/AveriaLibre-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: "Averia Libre";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/AveriaLibre-BoldItalic.ttf') format('truetype');
+}
+
+/* ----------- / Fonts Styles ------------ */
