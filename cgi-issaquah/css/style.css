@@ -423,7 +423,7 @@
   color: #ff5833;
   background-color: transparent;
   position: relative;
-  z-index: -2;
+  z-index: 2;
 }
 
 .camp-experience-section .experience-text mark::before {
