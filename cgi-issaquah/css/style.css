@@ -423,6 +423,7 @@
   color: #ff5833;
   background-color: transparent;
   position: relative;
+  z-index: -2;
 }
 
 .camp-experience-section .experience-text mark::before {
@@ -790,6 +791,7 @@ html body.cco_body .gi-wrapper .fun-card p {
   margin-top: -3px;
   font-size: 16px;
   font-weight: 300;
+  font-family: "Averia Libre", system-ui;
 }
 
 /* Green – Ages */
