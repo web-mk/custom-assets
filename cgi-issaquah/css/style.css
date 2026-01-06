@@ -43,6 +43,7 @@
    Buttons
 ============================= */
 .btn {
+  text-decoration: none;
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -104,18 +105,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 40px;
   height: 40px;
-
   background-color: #fff;
   border-radius: 100px;
-
   transition: transform 0.3s ease;
 }
 
 .btn:hover .arrow-circle {
   transform: rotate(-45deg);
+}
+
+.btn:hover {
+  text-decoration: none;
 }
 
 /* =============================
@@ -773,8 +775,14 @@
 }
 
 .fun-card p {
+  color: #fff;
   font-size: 35px;
   line-height: 1.1;
+  font-family: "Luckiest Guy", cursive;
+}
+
+html body.cco_body .gi-wrapper .fun-card p {
+  color: #fff;
   font-family: "Luckiest Guy", cursive;
 }
 
@@ -868,6 +876,7 @@
 }
 
 .register-cta-layout .cta-card p {
+  color: #fff;
   font-size: 60px;
   line-height: 1.1;
   font-style: italic;
