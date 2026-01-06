@@ -337,6 +337,7 @@
 .hero-section .hero-content h1 .title-location {
   color: #498aca;
   position: relative;
+  z-index:2
 }
 
 .hero-section .hero-content h1 .title-location::before {
