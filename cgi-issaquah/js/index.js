@@ -55,3 +55,24 @@ $('.photos-slider').slick({
     }
   ]
 });
+
+// menu Toggle JS
+document.addEventListener("DOMContentLoaded", () => {
+  const wrapper = document.querySelector(".gi-wrapper");
+  if (!wrapper) return;
+
+  const toggleBtn = wrapper.querySelector(".menu-toggle-btn");
+  const headerNav = wrapper.querySelector(".header-nav");
+
+  if (!toggleBtn || !headerNav) return;
+
+  toggleBtn.addEventListener("click", () => {
+    toggleBtn.classList.toggle("opened");
+    headerNav.classList.toggle("opened");
+
+    const isOpen = toggleBtn.classList.contains("opened");
+    toggleBtn.setAttribute("aria-expanded", isOpen);
+  });
+});
+
+

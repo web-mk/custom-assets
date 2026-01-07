@@ -134,17 +134,42 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 .site-header .header-logo {
   display: inline-block;
   height: 100%;
-  z-index: 9999;
+  z-index: 99;
 }
 
 .site-header .header-logo img {
   width: auto;
   height: 40px;
+}
+
+.site-header .header-nav .chabad_navigator_bar,
+.site-header .header-nav .chabad_menu_content,
+.site-header .header-nav ul.navi {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+.site-header .header-nav ul.navi {
+  list-style: none;
+}
+
+.site-header .header-nav ul.navi li {
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+}
+
+.site-header .header-nav ul.navi li>a {
+  font-size: 18px;
 }
 
 .site-header .header-nav {
@@ -156,15 +181,15 @@
 .site-header .header-nav a {
   position: relative;
   display: block;
-
   color: #44022f;
   font-size: 18px;
 }
 
-.site-header .header-nav a.is-active,
+.site-header .header-nav a.selected,
 .site-header .header-nav a:hover {
   color: #ff5833;
   transition: ease 0.5s;
+  text-decoration: none;
 }
 
 .site-header .header-nav a::before {
@@ -174,7 +199,7 @@
   bottom: -6px;
   width: 16px;
   height: 8px;
-  background-image: url(../images/nav-menu-highlight.svg);
+  background-image: url(https://web-mk.github.io/custom-assets/cgi-issaquah/images/nav-menu-highlight.svg);
   background-size: contain;
   background-repeat: no-repeat;
   opacity: 0;
@@ -183,7 +208,7 @@
   transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
 }
 
-.site-header .header-nav a.is-active::before {
+.site-header .header-nav a.selected::before {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
@@ -208,6 +233,10 @@
   font-family: "Luckiest Guy", cursive;
 }
 
+.gi-wrapper .site-header .header-cta span {
+  font-family: "Luckiest Guy", cursive;
+}
+
 /* Mobile menu toggle */
 .menu-toggle-btn {
   display: none;
@@ -216,24 +245,28 @@
   margin-inline-start: auto;
 }
 
-.menu-toggle-btn .line {
+.menu-toggle-btn .nav-close-icon {
+  display: none;
+}
+
+.menu-toggle-btn.opened .nav-open-icon {
+  display: none;
+}
+
+.menu-toggle-btn.opened .nav-close-icon {
   display: block;
-  width: 28px;
-  height: 2px;
-  background-color: #1a443d;
-  transition: cubic-bezier(0.19, 1, 0.22, 1) 0.5s;
 }
 
-.menu-toggle-btn.is-active .line:nth-child(1) {
-  transform: rotate(45deg) translate(7px, 4px);
-}
+@media screen and (max-width: 1199px) {
+  .site-header .header-nav .chabad_navigator_bar,
+  .site-header .header-nav .chabad_menu_content,
+  .site-header .header-nav ul.navi {
+    gap: 25px;
+  }
 
-.menu-toggle-btn.is-active .line:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle-btn.is-active .line:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -4px);
+  .site-header .header-cta span {
+    font-size: 22px;
+  }
 }
 
 @media screen and (max-width: 991px) {
@@ -242,18 +275,16 @@
     margin-inline-start: 20px;
   }
 
-  .site-header .header-layout {
-    justify-content: normal;
-  }
-
   .site-header .header-nav {
-    position: absolute;
-    top: 80px;
-    left: 0;
     width: 100%;
-    padding: 4rem 2rem;
+    position: absolute;
+    border-radius: 30px;
+    top: calc(100% + 10px);
+    left: 0;
+    padding: 20px 30px;
     display: flex;
     flex-direction: column;
+    align-items: start;
     background-color: #fff;
     visibility: hidden;
     opacity: 0;
@@ -261,18 +292,18 @@
     z-index: 999;
   }
 
-  .site-header .header-nav.is-active {
+  .site-header .header-nav.opened {
     visibility: visible;
     opacity: 1;
   }
-
-  .site-header .header-button {
-    margin-left: auto;
-  }
-
-  .site-header .header-nav a {
+  
+  .site-header .header-nav ul.navi li>a {
     font-size: 20px;
   }
+
+    .site-header .header-cta {
+      display: none;
+    }
 }
 
 /* =============================
@@ -298,8 +329,9 @@
   align-items: center;
 }
 
-.hero-section .hero-content h1 span {
+.gi-wrapper .hero-section .hero-content h1 span {
   display: inline-block;
+  font-family: "Luckiest Guy", cursive;
 }
 
 .hero-section .hero-content h1 .title-top {
@@ -316,6 +348,7 @@
   height: 63px;
   background-image: url(../images/title-top-decor.svg);
   background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .hero-section .hero-content h1 .title-main {
@@ -332,12 +365,13 @@
   height: 52px;
   background-image: url(../images/title-main-decor.svg);
   background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .hero-section .hero-content h1 .title-location {
   color: #498aca;
   position: relative;
-  z-index:2
+  z-index: 2;
 }
 
 .hero-section .hero-content h1 .title-location::before {
@@ -350,6 +384,7 @@
   height: 55px;
   background-image: url(../images/title-location-decor.svg);
   background-repeat: no-repeat;
+  background-size: contain;
   z-index: -1;
 }
 
@@ -358,6 +393,32 @@
   color: #44022f;
   font-size: 30px;
   text-align: center;
+}
+
+@media screen and (max-width:991px) {
+  .hero-section {
+    padding-block: 100px 70px;
+  }
+
+  .hero-section .hero-content h1 {
+    font-size: 80px;
+  }
+
+  .hero-section .hero-content p {
+    font-size: 25px;
+  }
+
+  .hero-section .hero-content h1 .title-top::before {
+    max-width: 60px;
+  }
+
+  .hero-section .hero-content h1 .title-main::before {
+    max-width: 50px;
+  }
+
+  .hero-section .hero-content h1 .title-location::before {
+    max-width: 400px;
+  }
 }
 
 /* =============================
@@ -374,7 +435,6 @@
 
 .latest-photos .photos-slider .slide {
   cursor: grab;
-  opacity: 0.8;
   transition: 0.5s;
   padding-inline: 15px;
 }
@@ -384,12 +444,17 @@
 }
 
 .latest-photos .photos-slider .slick-center {
-  opacity: 1;
   transform: scale(1.08);
 }
 
 .latest-photos .photos-slider .slide img {
   border-radius: 20px;
+}
+
+@media screen and (max-width:991px) {
+  .latest-photos {
+    padding-bottom: 100px;
+  }
 }
 
 /* =============================
@@ -409,6 +474,8 @@
   text-align: center;
   max-width: 950px;
   margin-inline: auto;
+  z-index: 99;
+  position: relative;
 }
 
 .camp-experience-section .experience-text em {
@@ -448,13 +515,13 @@
 }
 
 .camp-experience-section .experience-avatars img {
+  width: 100%;
   position: absolute;
   max-width: 118px;
   border-radius: 100px;
   animation-name: float;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
-
 }
 
 .camp-experience-section .experience-avatars img:nth-child(1) {
@@ -524,16 +591,39 @@
   animation-delay: 0.5s;
 }
 
-
 @keyframes float {
   0% {
     transform: translateY(0) translateX(0);
   }
+
   50% {
     transform: translateY(-12px) translateX(6px);
   }
+
   100% {
     transform: translateY(0) translateX(0);
+  }
+}
+
+@media screen and (max-width:1199px) {
+  .camp-experience-section .experience-text {
+    font-size: 45px;
+  }
+
+  .camp-experience-section .experience-avatars img:nth-child(3) {
+    top: 20%;
+    left: -2%;
+  }
+
+  .camp-experience-section .experience-avatars img:nth-child(6) {
+    bottom: 20%;
+    right: 5%;
+  }
+}
+
+@media screen and (max-width:991px) {
+  .camp-experience-section .experience-avatars img {
+    max-width: 80px;
   }
 }
 
@@ -553,7 +643,7 @@
 
 .about-camp-grid .camp-intro {
   grid-column: 1 / span 6;
-  background: #FFCA24;
+  background: #ffca24;
   border-radius: 30px;
   padding: 20px 30px;
   position: relative;
@@ -575,7 +665,7 @@
   line-height: 1.1;
   font-weight: bold;
   font-style: italic;
-  color: #44022F;
+  color: #44022f;
 }
 
 /* Feature cards */
@@ -600,7 +690,7 @@
   line-height: 1.1;
   font-weight: bold;
   font-style: italic;
-  color: #44022F;
+  color: #44022f;
 }
 
 /* Inclusive card */
@@ -673,6 +763,48 @@
   transform: rotate(-45deg);
 }
 
+@media screen and (max-width: 1199px) {
+  .about-camp-grid .camp-intro {
+    grid-column: 1 / span 12;
+  }
+
+  .about-camp-grid .camp-feature {
+    grid-column: span 4;
+  }
+
+  .about-camp-grid .camp-image {
+    grid-column: span 9;
+  }
+
+  .about-camp-grid .camp-cta {
+    grid-column: span 3;
+  }
+
+  .about-camp-grid .camp-intro::before {
+    left: -40px;
+    top: -41px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .about-camp-grid .camp-feature {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .about-camp-grid .camp-feature p {
+    font-size: 18px;
+  }
+
+  .about-camp-grid .camp-image {
+     grid-column: span 8;
+  }
+
+  .about-camp-grid .camp-cta {
+        grid-column: span 4;
+    }
+}
+
 /* =============================
   Fun Facts Section
 ============================= */
@@ -691,7 +823,7 @@
   color: #fff;
   font-size: 25px;
   line-height: 1.1;
-  background-color: #FEB835;
+  background-color: #feb835;
   border-radius: 50px;
   padding: 10px;
   transform: rotate(-10deg);
@@ -700,7 +832,7 @@
 }
 
 .fun-facts-section .section-head h2 {
-  color: #44022F;
+  color: #44022f;
   font-size: 50px;
   line-height: 1.1;
   margin-top: 20px;
@@ -722,6 +854,7 @@
 .fun-facts-section .section-head .head-image {
   max-width: 92px;
 }
+
 /* Grid */
 .fun-grid {
   display: flex;
@@ -741,7 +874,7 @@
   justify-content: flex-end;
   cursor: default;
   overflow: hidden;
-  transition: ease .3s;
+  transition: ease 0.3s;
 }
 
 .fun-card::before {
@@ -754,9 +887,9 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  opacity: 0.30;
+  opacity: 0.3;
   pointer-events: none;
-  transition: .3s ease;
+  transition: 0.3s ease;
 }
 
 .fun-card:hover {
@@ -764,7 +897,7 @@
 }
 
 .fun-card:hover:before {
-  opacity: .8;
+  opacity: 0.8;
 }
 
 /* Labels */
@@ -797,7 +930,7 @@ html body.cco_body .gi-wrapper .fun-card p {
 
 /* Green – Ages */
 .fun-card.green {
-  background: #61AB59;
+  background: #61ab59;
   max-width: 267px;
 }
 
@@ -811,7 +944,7 @@ html body.cco_body .gi-wrapper .fun-card p {
 
 /* Orange – Dates */
 .fun-card.orange {
-  background: #FF5833;
+  background: #ff5833;
   max-width: 355px;
 }
 
@@ -825,7 +958,7 @@ html body.cco_body .gi-wrapper .fun-card p {
 
 /* Blue – Hours */
 .fun-card.blue {
-  background: #498ACA;
+  background: #498aca;
   max-width: 340px;
 }
 
@@ -840,7 +973,7 @@ html body.cco_body .gi-wrapper .fun-card p {
 
 /* Yellow – Location */
 .fun-card.yellow {
-  background: #FFCA24;
+  background: #ffca24;
   max-width: 267px;
 }
 
@@ -850,6 +983,50 @@ html body.cco_body .gi-wrapper .fun-card p {
   right: -20px;
   top: -40px;
   background-image: url("../images/yellow-card-icon.svg");
+}
+
+@media screen and (max-width: 1199px) {
+  .fun-facts-section .section-head h2 {
+    font-size: 45px;
+  }
+
+  .fun-facts-section .section-head .head-image {
+    max-width: 80px;
+  }
+
+  .fun-card {
+    padding: 20px;
+  }
+
+  .fun-card p {
+    font-size: 30px;
+  }
+
+  .fun-card::before {
+    max-width: 140px;
+  }
+
+  .fun-card.yellow::before {
+    max-width: 200px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .fun-grid {
+    flex-wrap: wrap;
+  }
+
+  .fun-card {
+    flex: 45%;
+    max-width: 100%;
+  }
+
+  .fun-card.orange,
+  .fun-card.blue,
+  .fun-card.green,
+  .fun-card.yellow {
+    max-width: 100%;
+  }
 }
 
 /* =============================
@@ -863,6 +1040,7 @@ html body.cco_body .gi-wrapper .fun-card p {
   display: flex;
   align-items: start;
   gap: 30px;
+  position: relative;
 }
 
 .register-cta-layout .cta-decor {
@@ -872,7 +1050,7 @@ html body.cco_body .gi-wrapper .fun-card p {
 
 .register-cta-layout .cta-card {
   color: #fff;
-  background-color: #44022F;
+  background-color: #44022f;
   padding: 60px 50px 50px;
   border-radius: 30px;
   max-width: 640px;
@@ -887,13 +1065,13 @@ html body.cco_body .gi-wrapper .fun-card p {
 }
 
 .register-cta-layout .cta-card .btn {
-  color: #44022F;
+  color: #44022f;
   background-color: #fff;
-  margin-top: 34px
+  margin-top: 34px;
 }
 
 .register-cta-layout .cta-card .btn .arrow-circle {
-  background-color: #44022F;
+  background-color: #44022f;
 }
 
 .register-cta-layout .cta-card:hover .btn {
@@ -911,6 +1089,7 @@ html body.cco_body .gi-wrapper .fun-card p {
 
 .register-cta-layout .cta-image img {
   object-fit: cover;
+  width: 100%;
   height: 100%;
   transition: 0.3s ease;
 }
@@ -918,3 +1097,35 @@ html body.cco_body .gi-wrapper .fun-card p {
 .register-cta-layout .cta-image:hover img {
   transform: scale(1.02);
 }
+
+@media screen and (max-width: 1199px) {
+  .register-cta-layout .cta-decor {
+    max-width: 100px;
+    top: -60px;
+    left: -40px;
+    position: absolute;
+  }
+
+  .register-cta-layout .cta-card p {
+    color: #fff;
+    font-size: 50px;
+  }
+
+  .register-cta-layout .cta-image {
+    height: 414px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .register-cta-section .register-cta-layout {
+    flex-direction: column;
+  }
+
+  .register-cta-layout .cta-card {
+    max-width: 100%;
+  }
+
+    .register-cta-layout .cta-image {
+      max-width: 100%;
+    }
+} 

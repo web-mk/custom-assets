@@ -176,6 +176,8 @@ samp {
   outline-offset: 2px;
 }
 
+html body.cco_body .gi-wrapper a,
+html body.cco_body .gi-wrapper span ,
 html body.cco_body .gi-wrapper em ,
 html body.cco_body .gi-wrapper u ,
 html body.cco_body .gi-wrapper strong ,
