@@ -251,11 +251,12 @@ body.mobile .gi-wrapper div#chabad_head .chabad_navigator_bar ul {
 }
 
 body.mobile .gi-wrapper .chabad_navigator_bar .chabad_menu_content ul {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
-body.mobile .gi-wrapper .chabad_navigator_bar .chabad_menu_content #menu {
+body.mobile .gi-wrapper #navigation.chabad_navigator_bar #menu,
+body.mobile .gi-wrapper #navigation.chabad_navigator_bar #menu .sub_menu {
   overflow: visible;
 }
 
@@ -1456,9 +1457,9 @@ html body.cco_body .gi-wrapper .fun-card p {
 }
 
 @media (max-width: 460px) {
-    body.sites-article #content {
-        margin-top: 51px;
-    }
+  body.sites-article #content {
+    margin-top: 51px;
+  }
 }
 
 aside.page-tools-sidebar {
