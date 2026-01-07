@@ -1467,3 +1467,27 @@ aside.page-tools-sidebar {
 }
 
 /* ----------------------------- */
+
+/* SLIDER GPU Stable CSS */
+
+/* GPU stabilization */
+.photos-slider,
+.photos-slider .slick-track,
+.photos-slider .slick-slide {
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+/* Prevent image flashing */
+.photos-slider img {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: block;
+}
+
+/* Safari / iOS repaint fix */
+.photos-slider .slick-track {
+  will-change: transform;
+}
+
+/* ---------------------- */
