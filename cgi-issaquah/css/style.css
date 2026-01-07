@@ -255,6 +255,10 @@ body.mobile .gi-wrapper .chabad_navigator_bar .chabad_menu_content ul {
     padding: 0;
 }
 
+body.mobile .gi-wrapper .chabad_navigator_bar .chabad_menu_content #menu {
+  overflow: visible;
+}
+
 body.mobile .gi-wrapper #navigation.chabad_navigator_bar #menu li:not(.heading) {
   padding-left: 0;
 }
