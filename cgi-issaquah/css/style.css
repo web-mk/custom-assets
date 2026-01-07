@@ -1457,4 +1457,8 @@ html body.cco_body .gi-wrapper .fun-card p {
     }
 }
 
+aside.page-tools-sidebar {
+  display: none;
+}
+
 /* ----------------------------- */
