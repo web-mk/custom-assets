@@ -1225,6 +1225,7 @@ html body.cco_body .gi-wrapper .fun-card p {
 
   .fun-facts-section .section-head h2 {
     font-size: 40px;
+    margin-top: 12px;
   }
 
   .fun-facts-section .section-head h2::after {
