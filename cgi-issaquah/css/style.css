@@ -237,6 +237,15 @@
   font-family: "Luckiest Guy", cursive;
 }
 
+/* CHABAD MENU MOBILE OVERRIDES */
+body.mobile .gi-wrapper div#chabad_head .chabad_navigator_bar {
+  width: 100%;
+}
+
+body.mobile .gi-wrapper div#chabad_head .chabad_navigator_bar .navi li.heading {
+  display: none;
+}
+
 /* Mobile menu toggle */
 .menu-toggle-btn {
   display: none;
@@ -1411,3 +1420,4 @@ html body.cco_body .gi-wrapper .fun-card p {
 }
 
 /* ----------------------------- */
+
