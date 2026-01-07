@@ -246,6 +246,27 @@ body.mobile .gi-wrapper div#chabad_head .chabad_navigator_bar .navi li.heading {
   display: none;
 }
 
+body.mobile .gi-wrapper div#chabad_head .chabad_navigator_bar ul {
+  display: flex;
+}
+
+body.mobile .gi-wrapper .chabad_navigator_bar .chabad_menu_content ul {
+    margin: 0;
+    padding: 0;
+}
+
+body.mobile .gi-wrapper #navigation.chabad_navigator_bar #menu li:not(.heading) {
+  padding-left: 0;
+}
+
+body.mobile .chabad_navigator_bar .chabad_menu_content li a {
+  font-weight: 400;
+}
+
+body.mobile .gi-wrapper #menu li.item.parent:not(:first-child) {
+  display: block;
+}
+
 /* Mobile menu toggle */
 .menu-toggle-btn {
   display: none;
@@ -1421,3 +1442,19 @@ html body.cco_body .gi-wrapper .fun-card p {
 
 /* ----------------------------- */
 
+/* CHABAD OVERIDES */
+#BodyContainer>.body_wrapper::before {
+  display: none;
+}
+
+.body_wrapper.clearfix.co_body {
+  display: none;
+}
+
+@media (max-width: 460px) {
+    body.sites-article #content {
+        margin-top: 51px;
+    }
+}
+
+/* ----------------------------- */
