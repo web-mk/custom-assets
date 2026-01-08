@@ -39,6 +39,18 @@
   }
 }
 
+.gi-wrapper .body_wrapper {
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 1140px) {
+  .gi-wrapper #co_body_container {
+    width: 100%;
+  }
+}
+
 /* =============================
    Buttons
 ============================= */
@@ -168,7 +180,7 @@
   font-size: 0;
 }
 
-.site-header .header-nav ul.navi li>a {
+.site-header .header-nav ul.navi li > a {
   font-size: 18px;
 }
 
@@ -260,7 +272,15 @@ body.mobile .gi-wrapper #navigation.chabad_navigator_bar #menu .sub_menu {
   overflow: visible;
 }
 
-body.mobile .gi-wrapper #navigation.chabad_navigator_bar #menu li:not(.heading) {
+body.mobile .gi-wrapper #navigation.chabad_navigator_bar #menu .sub_menu {
+  display: none;
+}
+
+body.mobile
+  .gi-wrapper
+  #navigation.chabad_navigator_bar
+  #menu
+  li:not(.heading) {
   padding-left: 0;
 }
 
@@ -293,7 +313,6 @@ body.mobile .gi-wrapper #menu li.item.parent:not(:first-child) {
 }
 
 @media screen and (max-width: 1199px) {
-
   .site-header .header-nav .chabad_navigator_bar,
   .site-header .header-nav .chabad_menu_content,
   .site-header .header-nav ul.navi {
@@ -348,11 +367,11 @@ body.mobile .gi-wrapper #menu li.item.parent:not(:first-child) {
     border-bottom: 1px solid #44022f;
   }
 
-  .site-header .header-nav ul.navi li>a {
+  .site-header .header-nav ul.navi li > a {
     font-size: 20px;
   }
 
-  .site-header .header-nav ul.navi li>a::before {
+  .site-header .header-nav ul.navi li > a::before {
     display: none;
   }
 
@@ -626,9 +645,9 @@ body.mobile .gi-wrapper #menu li.item.parent:not(:first-child) {
 }
 
 .camp-experience-section .experience-avatars img {
-  width: 100%;
+  width: 118px;
   position: absolute;
-  max-width: 118px;
+  max-width: 100%;
   border-radius: 100px;
   animation-name: float;
   animation-iteration-count: infinite;
@@ -734,7 +753,7 @@ body.mobile .gi-wrapper #menu li.item.parent:not(:first-child) {
 
 @media screen and (max-width: 991px) {
   .camp-experience-section .experience-avatars img {
-    max-width: 80px;
+    width: 80px;
   }
 
   .camp-experience-section .experience-text {
@@ -756,7 +775,7 @@ body.mobile .gi-wrapper #menu li.item.parent:not(:first-child) {
   }
 
   .camp-experience-section .experience-avatars img {
-    max-width: 62px;
+    width: 62px;
   }
 
   .camp-experience-section .experience-avatars img:nth-child(1) {
@@ -1126,6 +1145,7 @@ body.mobile .gi-wrapper #menu li.item.parent:not(:first-child) {
 
 /* Labels */
 .fun-card h3 {
+  color: #fff;
   font-size: 20px;
   font-weight: bold;
   font-style: italic;
@@ -1448,7 +1468,7 @@ html body.cco_body .gi-wrapper .fun-card p {
 /* ----------------------------- */
 
 /* CHABAD OVERIDES */
-#BodyContainer>.body_wrapper::before {
+#BodyContainer > .body_wrapper::before {
   display: none;
 }
 
@@ -1464,6 +1484,10 @@ html body.cco_body .gi-wrapper .fun-card p {
 
 aside.page-tools-sidebar {
   display: none;
+}
+
+.gi-wrapper .no-hero-image #co_body_container {
+  padding-top: 0;
 }
 
 /* ----------------------------- */
