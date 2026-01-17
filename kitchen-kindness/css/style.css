@@ -265,7 +265,7 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   position: relative;
 }
 
-.ckk-wrapper .hero-section .hero-content img,
+#co_content_container .co_body .hero-section .hero-content img,
 .hero-section .hero-content img {
   width: 100%;
   max-width: 550px;
