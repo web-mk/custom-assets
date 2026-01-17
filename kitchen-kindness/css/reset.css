@@ -178,4 +178,10 @@ iframe {
   outline: none;
 }
 
+
+/* Chabad CSS Overrides */
+body.cco_templateless_page, body.mobile div#chabad_body_page {
+  background-color: #fcf7dd;
+}
+
 /* END OF CODE */

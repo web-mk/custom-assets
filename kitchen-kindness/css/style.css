@@ -44,12 +44,24 @@ body {
   }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+.ckk-wrapper .body_wrapper {
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 1140px) {
+  .ckk-wrapper #co_body_container {
+    width: 100%;
+  }
+}
+
+.ckk-wrapper h1,
+.ckk-wrapper h2,
+.ckk-wrapper h3,
+.ckk-wrapper h4,
+.ckk-wrapper h5,
+.ckk-wrapper h6 {
   font-family: "Libre Baskerville", serif;
 }
 
@@ -77,9 +89,20 @@ h6 {
   max-width: 60px;
 }
 
+.site-header .header-nav .chabad_navigator_bar,
+.site-header .header-nav .chabad_menu_content,
+.site-header .header-nav ul.navi {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+}
+
 .site-header .header-nav .navi {
   display: flex;
   align-items: center;
+  list-style: none;
   gap: 50px;
 }
 
@@ -122,9 +145,53 @@ h6 {
   transition: 0.3s ease;
 }
 
+.site-header .header-nav .navi .item > a.selected::after,
 .site-header .header-nav .navi .item > a:hover:after {
   width: 100%;
   opacity: 1;
+}
+
+/* CHABAD MENU MOBILE OVERRIDES */
+body.mobile .ckk-wrapper div#chabad_head .chabad_navigator_bar {
+  width: 100%;
+}
+
+body.mobile .ckk-wrapper div#chabad_head .chabad_navigator_bar .navi li.heading {
+  display: none;
+}
+
+body.mobile .ckk-wrapper div#chabad_head .chabad_navigator_bar ul {
+  display: flex;
+}
+
+body.mobile .ckk-wrapper .chabad_navigator_bar .chabad_menu_content ul {
+  margin: 0;
+  padding: 0;
+}
+
+body.mobile .ckk-wrapper #navigation.chabad_navigator_bar #menu,
+body.mobile .ckk-wrapper #navigation.chabad_navigator_bar #menu .sub_menu {
+  overflow: visible;
+}
+
+body.mobile .ckk-wrapper #navigation.chabad_navigator_bar #menu .sub_menu {
+  display: none;
+}
+
+body.mobile
+  .ckk-wrapper
+  #navigation.chabad_navigator_bar
+  #menu
+  li:not(.heading) {
+  padding-left: 0;
+}
+
+body.mobile .chabad_navigator_bar .chabad_menu_content li a {
+  font-weight: 400;
+}
+
+body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
+  display: block;
 }
 
 /** ---------------
