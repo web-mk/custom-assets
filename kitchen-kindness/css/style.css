@@ -62,6 +62,7 @@ body {
 .ckk-wrapper h4,
 .ckk-wrapper h5,
 .ckk-wrapper h6 {
+  font-weight: bold;
   font-family: "Libre Baskerville", serif;
 }
 
@@ -130,6 +131,7 @@ body {
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+  text-decoration: none;
   position: relative;
 }
 
@@ -389,6 +391,7 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
     rgba(250, 167, 85, 0.2) 10%,
     rgba(250, 167, 85, 0) 100%
   );
+  text-decoration: none;
   transition: 0.2s;
 }
 
@@ -438,6 +441,7 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   padding-bottom: 0;
 }
 
+#co_content_container .stats-section .stats-list .stat-item > img,
 .stats-section .stats-list .stat-item > img {
   width: 100%;
   max-width: 90px;
