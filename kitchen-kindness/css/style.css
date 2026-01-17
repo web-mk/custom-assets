@@ -50,6 +50,10 @@ body {
   max-width: 100%;
 }
 
+.co_content_container {
+  padding-top: 0;
+}
+
 @media (max-width: 1140px) {
   .ckk-wrapper #co_body_container {
     width: 100%;
@@ -158,7 +162,12 @@ body.mobile .ckk-wrapper div#chabad_head .chabad_navigator_bar {
   width: 100%;
 }
 
-body.mobile .ckk-wrapper div#chabad_head .chabad_navigator_bar .navi li.heading {
+body.mobile
+  .ckk-wrapper
+  div#chabad_head
+  .chabad_navigator_bar
+  .navi
+  li.heading {
   display: none;
 }
 
@@ -175,7 +184,7 @@ body.mobile .ckk-wrapper #navigation.chabad_navigator_bar #menu,
 body.mobile .ckk-wrapper #navigation.chabad_navigator_bar #menu .sub_menu {
   overflow: visible;
 }
-
+body .ckk-wrapper #navigation.chabad_navigator_bar #menu .sub_menu,
 body.mobile .ckk-wrapper #navigation.chabad_navigator_bar #menu .sub_menu {
   display: none;
 }
@@ -256,6 +265,7 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   position: relative;
 }
 
+.ckk-wrapper .hero-section .hero-content img,
 .hero-section .hero-content img {
   width: 100%;
   max-width: 550px;
@@ -295,7 +305,7 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #F9A755;
+  background-color: #f9a755;
   opacity: 50%;
   pointer-events: none;
 }
