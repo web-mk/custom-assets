@@ -75,7 +75,7 @@ body {
 --------------------------------- */
 
 .site-header {
-  height: 150px;
+  min-height: 150px;
   padding-block: 25px;
   background-color: #fcf7dd;
   display: flex;
@@ -514,7 +514,7 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   width: 100%;
   height: 100%;
   max-width: max-content;
-  max-height: 180px;
+  max-height: 150px;
 }
 
 .gallery-section .gallery-slider {
@@ -528,3 +528,195 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
 .gallery-section .gallery-slider .slide {
   margin-inline: 6px;
 }
+
+/* --------------------------
+  RESPONSIVE CSS
+--------------------------- */
+
+@media screen and (max-width: 1199px) {
+  .site-header {
+    min-height: 120px;
+  }
+
+  .site-header .header-nav .navi {
+    gap: 40px;
+  }
+
+  .site-header .header-nav .navi .item:not(:last-child):after {
+    right: -20px;
+  }
+
+  .stats-section .stats-layout {
+    gap: 30px;
+  }
+
+  .stats-section .actions-grid {
+    gap: 20px;
+    row-gap: 25px;
+  }
+
+  .partners-section .partners-slider .slide img {
+    max-height: 150px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .site-header .header-layout {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .site-header .header-nav .navi {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 20px;
+  }
+
+  .hero-section .hero-content img {
+    max-width: 450px;
+  }
+
+  .mission-section .mission-row {
+    max-width: 85%;
+    margin-inline: auto;
+  }
+
+  .mission-section .mission-row .mission-text p {
+    font-size: 20px;
+  }
+
+  .mission-section .mission-quote-box {
+    min-height: 180px;
+  }
+
+  .stats-section .stats-layout {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .stats-section .actions-grid {
+    margin-inline: auto;
+  }
+
+  .stats-section .vertical-divider span {
+    height: 6px;
+    width: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(250, 167, 85, 0.25) 0%,
+      rgba(250, 167, 85, 0) 100%
+    );
+  }
+
+  .stats-section .stats-list {
+    margin-inline: auto;
+  }
+
+  .stats-section .stats-list .stat-item {
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+  }
+
+  .stats-section .stats-list .stat-item > img {
+    max-width: 80px;
+    max-height: 80px;
+  }
+
+  .stats-section .stats-list .stat-item h3 {
+    font-size: 45px;
+  }
+
+  .partners-section .section-title {
+    font-size: 35px;
+  }
+
+  .partners-section .partners-slider .slide img {
+    max-height: 90px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .site-header .header-logo {
+    max-width: 50px;
+  }
+
+  .site-header .header-nav .navi {
+    gap: 25px;
+    row-gap: 15px;
+  }
+
+  .site-header .header-nav .navi .item:not(:last-child):after {
+    right: -12.5px;
+  }
+
+  .hero-section {
+    height: 75vh;
+  }
+
+  .mission-section {
+    padding-block: 60px;
+    background-color: #fcf7dd;
+  }
+
+  .mission-section .mission-row {
+    flex-direction: column;
+  }
+
+  .mission-section .mission-row .mission-media {
+    width: 100%;
+  }
+
+  .mission-section .mission-row .mission-text p {
+    font-size: 18px;
+  }
+
+  .mission-section .mission-quote-box blockquote {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .stats-section {
+    padding-block: 0 60px;
+  }
+
+  .stats-section .actions-grid .action-card h3 {
+    font-size: 18px;
+  }
+
+  .stats-section .stats-list .stat-item {
+    gap: 15px;
+  }
+
+  .stats-section .stats-list .stat-item > img {
+    max-width: 72px;
+    max-height: 72px;
+  }
+
+  .stats-section .stats-list .stat-item h3 {
+    font-size: 40px;
+  }
+
+  .partners-section {
+    padding-block: 60px;
+  }
+
+  .partners-section .section-title {
+    font-size: 28px;
+    margin-bottom: 25px;
+  }
+
+  .partners-section .partners-slider .slide {
+    margin-inline: 20px;
+  }
+
+  .partners-section .partners-slider .slide img {
+    max-height: 60px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .stats-section .actions-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* *********************************** */

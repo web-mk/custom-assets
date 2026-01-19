@@ -32,27 +32,22 @@ $(".partners-slider").slick({
   slidesToScroll: 1,
   autoplay: true,
   autoplaySpeed: 2000,
-  variableWidth: true,
+  variableWidth: false,
   touchThreshold: 20,
   responsive: [
     {
       breakpoint: 1024,
       settings: {
         slidesToShow: 3,
+          variableWidth: false,
         slidesToScroll: 1,
       },
     },
     {
-      breakpoint: 600,
+      breakpoint: 991,
       settings: {
         slidesToShow: 2,
-        slidesToScroll: 1,
-      },
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
+          variableWidth: false,
         slidesToScroll: 1,
       },
     },
@@ -88,7 +83,7 @@ $(".gallery-slider").slick({
     {
       breakpoint: 480,
       settings: {
-        slidesToShow: 1,
+        slidesToShow: 2,
         slidesToScroll: 1,
       },
     },
