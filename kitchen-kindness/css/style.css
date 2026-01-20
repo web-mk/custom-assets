@@ -772,7 +772,7 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   .article-header
   .article-header__title::before {
   content: "";
-  background-image: url(images/hero-top-icon.svg);
+  background-image: url(https://web-mk.github.io/custom-assets/kitchen-kindness/images/hero-top-icon.svg);
   background-size: contain;
   background-position: center;
   width: 210px;
