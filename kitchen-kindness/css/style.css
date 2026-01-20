@@ -3,8 +3,6 @@
   Kitchen of Kindness Project
 ============================= */
 
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap");
-
 body {
   color: #231f20;
   line-height: 1.3;
@@ -66,8 +64,9 @@ body {
 .ckk-wrapper h4,
 .ckk-wrapper h5,
 .ckk-wrapper h6 {
+  line-height: 1;
   font-weight: bold;
-  font-family: "Libre Baskerville", serif;
+  font-family: "Bouge";
 }
 
 /** ------------------------------
@@ -720,3 +719,79 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   }
 }
 /* *********************************** */
+
+
+/**
+* Tenplate Styles Started
+*/
+
+.ckk-wrapper .content_page_full {
+  max-width: 1050px;
+  margin-inline: auto;
+}
+
+.ckk-wrapper .master-content-wrapper .article-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 600px;
+  padding-block: 40px;
+  position: relative;
+  z-index: 9;
+}
+
+.ckk-wrapper .master-content-wrapper .article-header::before {
+  content: "";
+  display: block;
+  background: linear-gradient(
+    282.64deg,
+    rgba(241, 100, 87, 0.9) 0%,
+    rgba(241, 100, 87, 0.7) 50.46%,
+    rgba(241, 100, 87, 0.9) 99.01%
+  );
+  position: absolute;
+  width: 100vw;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  margin-left: -50vw;
+  z-index: -2;
+}
+
+.ckk-wrapper .master-content-wrapper .article-header .article-header__title {
+  color: #fff;
+  font-size: 105px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.ckk-wrapper
+  .master-content-wrapper
+  .article-header
+  .article-header__title::before {
+  content: "";
+  background-image: url(images/hero-top-icon.svg);
+  background-size: contain;
+  background-position: center;
+  width: 210px;
+  height: 125px;
+  display: block;
+  text-align: center;
+  margin-inline: auto;
+  margin-bottom: 40px;
+}
+
+.ckk-wrapper .master-content-wrapper .article-header .article-header__subtitle {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  text-align: center;
+  font-family: "DM Sans", sans-serif;
+  max-width: 635px;
+  margin-inline: auto;
+  display: block;
+}
