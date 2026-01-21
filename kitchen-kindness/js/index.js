@@ -22,6 +22,24 @@ if (heroVideo) {
   });
 }
 
+// Loop Videos
+document.addEventListener("DOMContentLoaded", function () {
+  const videos = document.querySelectorAll(".js-auto-video");
+
+  videos.forEach(video => {
+    video.muted = true;
+    video.loop = true;
+    video.setAttribute("playsinline", "");
+
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+      });
+    }
+  });
+});
+
+
 // Partners Slider
 $(".partners-slider").slick({
   dots: false,
