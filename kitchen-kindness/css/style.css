@@ -740,6 +740,12 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   display: none;
 }
 
+.ckk-wrapper .no_overflow,
+.ckk-wrapper .overflow_hidden,
+.ckk-wrapper #cco_body {
+  overflow: visible;
+}
+
 .ckk-wrapper .master-content-wrapper .article-header {
   display: flex;
   flex-direction: column;
@@ -997,6 +1003,7 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
 .recipe-section.has-bg {
     background-color: #F16457;
     position: relative;
+    z-index: 9;
 }
 
 .recipe-section.has-bg::before {
