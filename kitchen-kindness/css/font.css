@@ -3,10 +3,11 @@
 /* Luckiest Guy Font */
 @font-face {
   font-family: "Bouge";
-  font-style: normal;
-  font-weight: bold;
+  font-style: italic;
+  font-weight: 700;
   font-display: swap;
-  src: url('https://web-mk.github.io/custom-assets/kitchen-kindness/fonts/bogue-bold.ttf') format('truetype');
+  src: url("https://web-mk.github.io/custom-assets/kitchen-kindness/fonts/Bogue-BoldItalic.woff") format("woff2"),
+       url("https://web-mk.github.io/custom-assets/kitchen-kindness/fonts/Bogue-BoldItalic.woff2") format("woff");
 }
 
 /* Averia Libre Font */
