@@ -1329,6 +1329,7 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
 .ckk-wrapper .userform-form .form-radio-item label .donation-amount {
   color: #f9a755;
   font-size: 30px;
+  font-family: "Bogue", serif;
 }
 
 .ckk-wrapper .co_body .content .form-all li.form-input-wide {
@@ -1500,7 +1501,7 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   }
 
   .ckk-wrapper .userform-form .form-line .form-input-wide {
-    gap: 0;
+    gap: 16px;
     flex-direction: column;
     align-items: start;
   }
@@ -1543,6 +1544,10 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
     padding-bottom: 16px;
   }
 
+  .ckk-wrapper .userform-form .form-address-table .form-sub-label-container {
+    margin-bottom: 0;
+  }
+
   .ckk-wrapper .co_body .content .form-all li.form-input-wide,
   .ckk-wrapper .form-line,
   .ckk-wrapper .co_body .content .form-all .form-line {
@@ -1553,3 +1558,15 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
     padding-left: 10px;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .ckk-wrapper .userform-form .form-line .form-input-wide {
+    gap: 0;
+  }
+}
+
+@media only screen and (max-width: 550px) and (max-device-width: 550px) {
+    .ckk-wrapper .userform-form .form-buttons-wrapper {
+        margin: auto !important;
+    }
+  }
