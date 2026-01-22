@@ -1233,7 +1233,7 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
 .ckk-wrapper input,
 .ckk-wrapper select,
 .ckk-wrapper textarea {
-    font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 
 .ckk-wrapper .userform-form .form-single-column {
@@ -1290,9 +1290,7 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   width: 100%;
 }
 
-.ckk-wrapper
-  .userform-form
-  .form-radio-item input[type="radio"] {
+.ckk-wrapper .userform-form .form-radio-item input[type="radio"] {
   position: relative;
   width: 28px;
   height: 28px;
@@ -1300,11 +1298,10 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   border-radius: 50%;
   background: #fff;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
-.ckk-wrapper
-  .userform-form
-  .form-radio-item input[type="radio"]::after {
+.ckk-wrapper .userform-form .form-radio-item input[type="radio"]::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -1315,17 +1312,14 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
 
 .ckk-wrapper
   .userform-form
-  .form-radio-item input[type="radio"]:checked::after {
+  .form-radio-item
+  input[type="radio"]:checked::after {
   border-width: 8px;
 }
 
-
-.ckk-wrapper
-  .userform-form
-  .form-radio-item input[type="radio"]:checked {
+.ckk-wrapper .userform-form .form-radio-item input[type="radio"]:checked {
   box-shadow: 0 0 0 8px #f26357 inset;
 }
-
 
 .ckk-wrapper .userform-form .form-radio-item label {
   font-size: 26px;
@@ -1372,7 +1366,16 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   width: 100%;
 }
 
-.ckk-wrapper .userform-form .form-address-table td+td {
+.ckk-wrapper
+  .userform-form
+  .form-line
+  .form-input-wide
+  .form-address-table
+  table {
+  width: 100%;
+}
+
+.ckk-wrapper .userform-form .form-address-table td + td {
   padding-left: 0;
 }
 
@@ -1403,19 +1406,23 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   flex-shrink: 0;
 }
 
-.ckk-wrapper .userform-form .form-sub-label-container:has(input) .form-sub-label::after {
+.ckk-wrapper
+  .userform-form
+  .form-sub-label-container:has(input)
+  .form-sub-label::after {
   content: ":";
   color: #f26357;
   font-size: 20px;
 }
 
-.ckk-wrapper .form-input .form-error-message, .ckk-wrapper .form-input-wide .form-error-message {
+.ckk-wrapper .form-input .form-error-message,
+.ckk-wrapper .form-input-wide .form-error-message {
   position: absolute;
 }
 
 .ckk-wrapper .userform-form .form-address-table td,
 .ckk-wrapper .userform-form .form-address-table th {
-    padding-bottom: 24px;
+  padding-bottom: 24px;
 }
 
 .ckk-wrapper .userform-form .form-payment-methods {
@@ -1432,14 +1439,13 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   padding-left: 10px;
 }
 
-
 .ckk-wrapper .userform-form tr {
   display: flex;
   align-items: center;
   gap: 24px;
 }
 
-.ckk-wrapper .userform-form  table tr>* {
+.ckk-wrapper .userform-form table tr > * {
   flex: 1;
 }
 
@@ -1452,9 +1458,98 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   color: #ffffff;
   box-shadow: none;
   border: 0;
-  background-color: #FAA755;
+  background-color: #faa755;
   border-radius: 50px;
   text-transform: uppercase;
   font-size: 24px;
   padding: 16px 40px;
+}
+
+@media screen and (max-width: 767px) {
+  .ckk-wrapper .userform-form {
+    padding-block: 50px;
+  }
+
+  .ckk-wrapper .form-input-wide .form-header-group {
+    margin-bottom: 25px !important;
+  }
+
+  .ckk-wrapper .userform-form .form-header {
+    font-size: 32px;
+  }
+
+  .ckk-wrapper .userform-form .form-radio-item label {
+    font-size: 20px;
+  }
+
+  .ckk-wrapper .userform-form .form-radio-item label .donation-amount {
+    font-size: 24px;
+  }
+
+  .ckk-wrapper .userform-form .form-radio-item input[type="radio"] {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ckk-wrapper .userform-form .form-radio-item {
+    margin-bottom: 20px;
+  }
+
+  .ckk-wrapper .userform-form li.form-input-wide:not(:first-child) {
+    margin-top: 40px;
+  }
+
+  .ckk-wrapper .userform-form .form-line .form-input-wide {
+    gap: 0;
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .ckk-wrapper .userform-form .form-sub-label-container {
+    width: 100%;
+  }
+
+  .ckk-wrapper
+    .userform-form
+    .form-line
+    .form-input-wide
+    .form-sub-label-container:has(input, select) {
+    min-height: 60px;
+    font-size: 18px;
+    gap: 8px;
+  }
+
+  .ckk-wrapper .userform-form .form-sub-label-container .form-sub-label {
+    font-size: 18px;
+  }
+
+  .ckk-wrapper .userform-form .form-sub-label-container .form-textbox,
+  .ckk-wrapper .userform-form .form-sub-label-container .form-dropdown {
+    font-size: 18px;
+  }
+
+  .ckk-wrapper .userform-form tr {
+    align-items: start;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .ckk-wrapper .userform-form tr > td {
+    width: 100%;
+  }
+
+  .ckk-wrapper .userform-form .form-address-table td,
+  .ckk-wrapper .userform-form .form-address-table th {
+    padding-bottom: 16px;
+  }
+
+  .ckk-wrapper .co_body .content .form-all li.form-input-wide,
+  .ckk-wrapper .form-line,
+  .ckk-wrapper .co_body .content .form-all .form-line {
+    padding-bottom: 0;
+  }
+
+  .ckk-wrapper .userform-form .credit_card th {
+    padding-left: 10px;
+  }
 }
