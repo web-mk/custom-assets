@@ -3,6 +3,10 @@
   Kitchen of Kindness Project
 ============================= */
 
+* {
+  font-family: "DM Sans", sans-serif;
+}
+
 body {
   color: #231f20;
   line-height: 1.3;
@@ -802,6 +806,7 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   color: #fff;
   font-size: 20px;
   font-weight: 500;
+  font-style: normal;
   line-height: 1.5;
   text-align: center;
   font-family: "DM Sans", sans-serif;
@@ -1222,6 +1227,22 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
 }
 /* -------------------------- */
 
+/* Footer */
+.footer3 {
+  padding-block: 40px 20px;
+  border-top: 2px solid #231f20;
+}
+
+.footer3 span {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.footer3 .footer-title {
+  font-size: 25px;
+  font-family: "Bogue";
+}
+
 .ckk-wrapper .userform-form {
   width: 100%;
   max-width: 800px;
@@ -1236,6 +1257,10 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   font-family: "DM Sans", sans-serif;
 }
 
+.ckk-wrapper textarea {
+  resize: none;
+}
+
 .ckk-wrapper .userform-form .form-single-column {
   width: 100%;
 }
@@ -1245,7 +1270,15 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
 .ckk-wrapper .co_body .content .form-all .form-line {
   padding: 0;
   border: 0;
-  padding-bottom: 20px;
+  padding-bottom: 25px;
+}
+
+.ckk-wrapper .userform-form .form-input,
+.ckk-wrapper .userform-form .form-input-wide {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  width: 100%;
+  gap: 10px;
 }
 
 .ckk-wrapper .form-input-wide .form-header-group {
@@ -1264,6 +1297,8 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   max-width: 100%;
 }
 
+.ckk-wrapper .userform-form .form-dropdown:focus,
+.ckk-wrapper .userform-form .form-textarea:focus,
 .ckk-wrapper .userform-form .form-textbox:focus {
   border-color: #f26357;
   outline: none;
@@ -1340,119 +1375,71 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   margin-top: 60px;
 }
 
-.ckk-wrapper .userform-form .form-line .form-input-wide {
-  display: flex;
-  align-items: center;
-  gap: 24px;
+.ckk-wrapper .userform-form label:not(.form-sub-label) {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 12px;
 }
 
-.ckk-wrapper
-  .userform-form
-  .form-line
-  .form-input-wide
-  .form-sub-label-container:has(input, select) {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  background: #fff;
-  border-radius: 50px;
-  min-height: 70px;
-  padding-inline: 30px;
-  font-size: 20px;
-  gap: 12px;
+.ckk-wrapper .userform-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 24px center;
 }
 
-.ckk-wrapper .userform-form .form-line .form-input-wide .form-address-table {
-  max-width: 100%;
+.ckk-wrapper .userform-form .form-dropdown,
+.ckk-wrapper .userform-form .form-textarea,
+.ckk-wrapper .userform-form .form-textbox {
   width: 100%;
-}
-
-.ckk-wrapper
-  .userform-form
-  .form-line
-  .form-input-wide
-  .form-address-table
-  table {
-  width: 100%;
-}
-
-.ckk-wrapper .userform-form .form-address-table td + td {
-  padding-left: 0;
-}
-
-.ckk-wrapper .userform-form .form-sub-label-container .form-textbox,
-.ckk-wrapper .userform-form .form-sub-label-container .form-dropdown {
-  order: 2;
-  font-size: 20px;
-  border: 0;
-  box-shadow: none;
-  width: 100%;
-}
-
-.ckk-wrapper .userform-form .form-sub-label-container .form-dropdown {
-  cursor: pointer;
-}
-
-.ckk-wrapper .userform-form .form-sub-label-container .form-dropdown:focus {
-  outline: none;
-  box-shadow: none;
-  border: 0;
-}
-
-.ckk-wrapper .userform-form .form-sub-label-container .form-sub-label {
   font-size: 20px;
   font-weight: 500;
-  color: #f26357;
-  position: relative;
-  flex-shrink: 0;
+  background-color: #fff;
+  border: 1px solid #fff;
+  padding: 24px 16px;
+  border-radius: 50px;
+  box-shadow: none;
 }
 
-.ckk-wrapper
-  .userform-form
-  .form-sub-label-container:has(input)
-  .form-sub-label::after {
-  content: ":";
-  color: #f26357;
-  font-size: 20px;
+.ckk-wrapper .userform-form .form-sub-label-container {
+  width: 100%;
 }
 
-.ckk-wrapper .form-input .form-error-message,
-.ckk-wrapper .form-input-wide .form-error-message {
-  position: absolute;
+.ckk-wrapper .userform-form .form-sub-label-container > * {
+  flex: 1;
 }
 
-.ckk-wrapper .userform-form .form-address-table td,
-.ckk-wrapper .userform-form .form-address-table th {
-  padding-bottom: 24px;
+.ckk-wrapper .userform-form .form-sub-label {
+  padding-top: 10px;
 }
 
-.ckk-wrapper .userform-form .form-payment-methods {
-  display: none;
+.ckk-wrapper .userform-form table {
+  width: 100%;
+  max-width: 100%;
+}
+
+.ckk-wrapper .userform-form .form-address-table tr td {
+  padding-bottom: 25px;
+}
+
+.ckk-wrapper .userform-form tr.credit_card > * {
+  width: 100%;
+  flex: 1;
 }
 
 .ckk-wrapper .userform-form .credit_card th {
-  padding-left: 10px;
-  font-size: 25px;
+  padding-bottom: 0;
 }
 
-.ckk-wrapper .userform-form .credit_card .cc-icons,
-.ckk-wrapper .userform-form .credit_card .form-sub-label-container {
-  padding-left: 10px;
-}
-
-.ckk-wrapper .userform-form tr {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.ckk-wrapper .userform-form table tr > * {
-  flex: 1;
+.ckk-wrapper .userform-form .credit_card .cc-field-wrapper.icon:after {
+  right: 12px;
+  top: 20px;
 }
 
 .ckk-wrapper .userform-form .form-buttons-wrapper {
-  margin-inline: auto;
-  margin-top: 10px;
+  margin: auto;
 }
 
 .ckk-wrapper .userform-form .form-buttons-wrapper .form-submit-button {
@@ -1471,102 +1458,63 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
     padding-block: 50px;
   }
 
-  .ckk-wrapper .form-input-wide .form-header-group {
-    margin-bottom: 25px !important;
+  .ckk-wrapper .userform-form .form-input,
+  .ckk-wrapper .userform-form .form-input-wide {
+    grid-template-columns: 1fr;
+  }
+
+  .ckk-wrapper .userform-form label:not(.form-sub-label) {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .ckk-wrapper .userform-form li.form-input-wide:not(:first-child) {
+    margin-top: 60px;
+  }
+
+  .ckk-wrapper .userform-form .form-dropdown,
+  .ckk-wrapper .userform-form .form-textarea,
+  .ckk-wrapper .userform-form .form-textbox {
+    font-size: 16px;
+    padding: 15px 12px;
   }
 
   .ckk-wrapper .userform-form .form-header {
     font-size: 32px;
   }
 
-  .ckk-wrapper .userform-form .form-radio-item label {
-    font-size: 20px;
-  }
-
-  .ckk-wrapper .userform-form .form-radio-item label .donation-amount {
-    font-size: 24px;
-  }
-
-  .ckk-wrapper .userform-form .form-radio-item input[type="radio"] {
-    width: 24px;
-    height: 24px;
-  }
-
-  .ckk-wrapper .userform-form .form-radio-item {
-    margin-bottom: 20px;
-  }
-
-  .ckk-wrapper .userform-form li.form-input-wide:not(:first-child) {
-    margin-top: 40px;
-  }
-
-  .ckk-wrapper .userform-form .form-line .form-input-wide {
-    gap: 16px;
-    flex-direction: column;
-    align-items: start;
-  }
-
-  .ckk-wrapper .userform-form .form-sub-label-container {
-    width: 100%;
-  }
-
-  .ckk-wrapper
-    .userform-form
-    .form-line
-    .form-input-wide
-    .form-sub-label-container:has(input, select) {
-    min-height: 60px;
-    font-size: 18px;
-    gap: 8px;
-  }
-
-  .ckk-wrapper .userform-form .form-sub-label-container .form-sub-label {
-    font-size: 18px;
-  }
-
-  .ckk-wrapper .userform-form .form-sub-label-container .form-textbox,
-  .ckk-wrapper .userform-form .form-sub-label-container .form-dropdown {
-    font-size: 18px;
-  }
-
-  .ckk-wrapper .userform-form tr {
-    align-items: start;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .ckk-wrapper .userform-form tr > td {
-    width: 100%;
-  }
-
-  .ckk-wrapper .userform-form .form-address-table td,
-  .ckk-wrapper .userform-form .form-address-table th {
-    padding-bottom: 16px;
-  }
-
-  .ckk-wrapper .userform-form .form-address-table .form-sub-label-container {
-    margin-bottom: 0;
+  .ckk-wrapper .userform-form .form-address-table tr td {
+    padding-bottom: 15px;
   }
 
   .ckk-wrapper .co_body .content .form-all li.form-input-wide,
   .ckk-wrapper .form-line,
   .ckk-wrapper .co_body .content .form-all .form-line {
-    padding-bottom: 0;
+    padding-bottom: 16px;
   }
 
-  .ckk-wrapper .userform-form .credit_card th {
-    padding-left: 10px;
+  .ckk-wrapper .userform-form .form-buttons-wrapper .form-submit-button {
+    font-size: 20px;
+    padding: 12px 32px;
   }
-}
 
-@media screen and (max-width: 600px) {
-  .ckk-wrapper .userform-form .form-line .form-input-wide {
-    gap: 0;
+  .footer3 span {
+    font-size: 18px;
+  }
+
+  .footer3 .footer-title {
+    font-size: 22px;
   }
 }
 
 @media only screen and (max-width: 550px) and (max-device-width: 550px) {
-    .ckk-wrapper .userform-form .form-buttons-wrapper {
-        margin: auto !important;
-    }
+  .ckk-wrapper .userform-form .form-textarea {
+    width: 100% !important;
   }
+}
+
+@media only screen and (max-width: 550px) and (max-device-width: 550px) {
+  .ckk-wrapper .userform-form .form-header-group {
+    margin-bottom: 30px !important;
+  }
+}

@@ -107,20 +107,3 @@ $(".gallery-slider").slick({
     },
   ],
 });
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll(".ckk-wrapper .form-radio-item label").forEach(label => {
-    const text = label.textContent.trim();
-    if (!text.startsWith("$")) return;
-
-    const parts = text.split(" ");
-    const amount = parts.shift();
-    const rest = parts.join(" ");
-
-    label.innerHTML = `
-      <span class="donation-amount">${amount}</span>
-      <span class="donation-text">${rest}</span>
-    `;
-  });
-});
