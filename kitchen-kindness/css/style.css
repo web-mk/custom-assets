@@ -931,6 +931,7 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
 
 .ckk-wrapper .article_index_container .item .item_contents .title a {
   color: #f26357;
+  font-family: "Bogue";
 }
 
 .ckk-wrapper .article_index_container .item .item_contents .synopsis {
@@ -1062,6 +1063,7 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   font-weight: 500;
   line-height: 1.6;
   max-width: 600px;
+  font-family: "DM Sans", sans-serif;
 }
 
 .recipe-section.has-bg .content-layout .layout-text p {
@@ -1226,6 +1228,24 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   }
 }
 /* -------------------------- */
+
+.ckk-wrapper .contact-inline {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 500;
+  padding-bottom: 30px;
+}
+
+.ckk-wrapper .contact-inline .divider {
+  color: #f16457;
+  letter-spacing: 3px;
+  margin-inline: 8px;
+}
+
+.ckk-wrapper .contact-inline .value {
+  font-family: "Bogue";
+  text-decoration: none;
+}
 
 /* Footer */
 .footer3 {
@@ -1424,11 +1444,6 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   padding-bottom: 25px;
 }
 
-.ckk-wrapper .userform-form tr.credit_card > * {
-  width: 100%;
-  flex: 1;
-}
-
 .ckk-wrapper .userform-form .credit_card th {
   padding-bottom: 0;
 }
@@ -1451,6 +1466,12 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   text-transform: uppercase;
   font-size: 24px;
   padding: 16px 40px;
+}
+
+@media screen and (max-width: 991px) {
+  .ckk-wrapper .contact-inline {
+    font-size: 22px;
+  }
 }
 
 @media screen and (max-width: 767px) {
