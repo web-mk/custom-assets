@@ -76,7 +76,7 @@ body {
 .ckk-wrapper h6 {
   line-height: 1;
   font-weight: bold;
-  font-family: "Bouge", serif;
+  font-family: "Bogue", serif;
   font-style: italic;
 }
 
@@ -919,7 +919,7 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
 
 .ckk-wrapper .article_index_container .item .item_contents .title {
   color: #f26357;
-  font-family: "Bouge";
+  font-family: "Bogue";
   font-size: 40px;
   line-height: 1;
 }
@@ -1080,7 +1080,7 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   color: #f16457;
   font-size: 34px;
   line-height: 1.35;
-  font-family: "Bouge", serif;
+  font-family: "Bogue", serif;
   max-width: 540px;
   margin-inline: auto;
 }
@@ -1095,7 +1095,7 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   background-color: transparent;
   text-decoration: none;
   font-size: 16px;
-  font-family: "Bouge", serif;
+  font-family: "Bogue", serif;
   text-transform: uppercase;
   transition: all 0.3s ease;
 }
