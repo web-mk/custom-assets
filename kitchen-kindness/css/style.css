@@ -1565,3 +1565,9 @@ article.content.js-content:has(#formContainer) {
     margin-bottom: 30px !important;
   }
 }
+
+.ckk-wrapper .chabad_right_column {display: none}
+
+.ckk-wrapper .content-footer .section-articles {display: none}
+
+/* ************* */
