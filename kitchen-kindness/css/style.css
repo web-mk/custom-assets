@@ -3,8 +3,13 @@
   Kitchen of Kindness Project
 ============================= */
 
+.co_body .content p,
 * {
   font-family: "DM Sans", sans-serif;
+}
+
+.cco_templateless_template {
+  opacity: 0;
 }
 
 body {
@@ -862,6 +867,14 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   }
 }
 
+article.content.js-content {
+  margin-top: 60px;
+}
+
+article.content.js-content:has(#formContainer) {
+  margin-top: 0;
+}
+
 /**
 * Volunteer Cards
 */
@@ -1250,7 +1263,6 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
 /* Footer */
 .footer3 {
   padding-block: 40px 20px;
-  border-top: 2px solid #231f20;
 }
 
 .footer3 span {
@@ -1261,6 +1273,7 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
 .footer3 .footer-title {
   font-size: 25px;
   font-family: "Bogue";
+  color: #f16457;
 }
 
 .ckk-wrapper .userform-form {
@@ -1466,6 +1479,7 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
   text-transform: uppercase;
   font-size: 24px;
   padding: 16px 40px;
+  text-shadow: none;
 }
 
 @media screen and (max-width: 991px) {
