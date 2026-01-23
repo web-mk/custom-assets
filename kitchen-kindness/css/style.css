@@ -1414,6 +1414,10 @@ article.content.js-content:has(#formContainer) {
   margin-bottom: 12px;
 }
 
+.ckk-wrapper .userform-form .form-radio-item label {
+  margin-bottom: 0;
+}
+
 .ckk-wrapper .userform-form select {
   appearance: none;
   -webkit-appearance: none;
