@@ -10,6 +10,7 @@
 
 .cco_templateless_template {
   opacity: 0;
+  max-height: 0;
 }
 
 body {
