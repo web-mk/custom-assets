@@ -420,11 +420,18 @@ body.mobile .ckk-wrapper #menu li.item.parent:not(:first-child) {
     rgba(250, 167, 85, 0) 100%
   );
   text-decoration: none;
+  position: relative;
   transition: 0.2s;
 }
 
 .stats-section .actions-grid .action-card:hover {
   border: 2px solid #faa755;
+}
+
+.stats-layout .actions-grid .action-card .action-card-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
 
 .stats-section .actions-grid .action-card img {
