@@ -1593,4 +1593,9 @@ article.content.js-content:has(#formContainer) {
   text-align: center;
 }
 
+:where(html:not(:has(#k32454))) .co_body h3:not(.form-header), .co_body h3 {
+    font-size: 24px;
+    color: #f16457;
+}
+
 /* ************* */
