@@ -1,3 +1,9 @@
+const isUpcoming = document.title.toLowerCase().includes('upcoming events');
+
+if (isUpcoming) {
+  document.body.classList.add('upcoming-events')
+}
+
 // Hero Vide Optimization
 const heroVideo = document.querySelector(".hero-video");
 
