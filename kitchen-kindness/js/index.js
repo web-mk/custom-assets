@@ -4,14 +4,15 @@ if (isUpcoming) {
   document.body.classList.add('upcoming-events')
 }
 
-// Add footer link
-const footerTitle = document.querySelector('span.footer-title');
-if (footerTitle) {
-  footerTitle.outerHTML =
-    `<a href="/" class="footer-title">` +
-    footerTitle.innerHTML +
-    `</a>`;
-}
+const addFooterLink = () => {
+  const footerTitle = document.querySelector('span.footer-title');
+  if (footerTitle) {
+    footerTitle.outerHTML =
+      `<a href="/" class="footer-title">` +
+      footerTitle.innerHTML +
+      `</a>`;
+  }
+};
 
 // Hero Vide Optimization
 const heroVideo = document.querySelector(".hero-video");
@@ -39,6 +40,7 @@ if (heroVideo) {
 
 // Loop Videos
 document.addEventListener("DOMContentLoaded", function () {
+  addFooterLink();
   const videos = document.querySelectorAll(".js-auto-video");
 
   videos.forEach(video => {
