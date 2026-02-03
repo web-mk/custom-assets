@@ -4,6 +4,15 @@ if (isUpcoming) {
   document.body.classList.add('upcoming-events')
 }
 
+// Add footer link
+const footerTitle = document.querySelector('span.footer-title');
+if (footerTitle) {
+  footerTitle.outerHTML =
+    `<a href="/" class="footer-title">` +
+    document.querySelector('span.footer-title').innerHTML +
+    `</a>`;
+}
+
 // Hero Vide Optimization
 const heroVideo = document.querySelector(".hero-video");
 
