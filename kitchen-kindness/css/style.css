@@ -1570,4 +1570,27 @@ article.content.js-content:has(#formContainer) {
 
 .ckk-wrapper .content-footer .section-articles {display: none}
 
+/* Upcoming Events */
+@media (min-width: 768px) {
+  .upcoming-events .form-line:has(.form-html) {
+    display: inline-flex;
+    gap: 10px;
+  }
+
+  .upcoming-events .form-input-wide:has(.form-html) {
+    grid-template-columns: unset;
+  }
+}
+
+.upcoming-events .form-line .form-html img {
+  max-width: 250px;
+}
+
+.upcoming-events .form-line .form-html p {
+  font-family: "Bogue", serif;
+  font-style: italic;
+  color: #f26357;
+  text-align: center;
+}
+
 /* ************* */
