@@ -138,6 +138,20 @@ body {
   position: relative;
 }
 
+.site-header .header-nav .navi .item:last-child {
+  /* flex-basis: 100%; */
+  text-align: center;
+}
+
+body:not(.mobile) .site-header .header-nav .navi .item:last-child {
+    margin-left: -30px;
+}
+
+body.mobile .site-header .header-nav .navi .item:last-child {
+    display: block;
+    flex-basis: 100%;
+}
+
 .site-header .header-nav .navi .item:not(:last-child):after {
   content: "";
   position: absolute;
@@ -151,7 +165,7 @@ body {
 
 .site-header .header-nav .navi .item > a {
   color: #f26357;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -175,6 +189,18 @@ body {
 .site-header .header-nav .navi .item > a:hover:after {
   width: 100%;
   opacity: 1;
+}
+
+.site-header .header-nav .navi .item:last-child > a {
+  font-size: 10px;
+  color: white;
+  text-align: center;
+  background: #f9a755;
+  max-width: 220px;
+  border-radius: 10px;
+  padding: 5px 7px;
+  margin: auto;
+  display: block;
 }
 
 /* CHABAD MENU MOBILE OVERRIDES */
