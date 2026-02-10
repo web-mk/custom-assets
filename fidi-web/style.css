@@ -1,7 +1,99 @@
 @import url("https://f002.backblazeb2.com/file/webmksites/chabad-fidi/font/style.css");
 
-.co_body .content .form-all, .co_body .content p, .co_body h1, .co_body h1 a, .co_body h2, .co_body h2 a, .co_body h3, .co_body h3 a, .co_body h4, .co_body h4 a, .co_body h5, .co_body h5 a, .co_body h6, .co_body h6 a, .cps-container h1, .cps-container h2, .cps-container p, .form-all, a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, html body.cco_body, html body.cco_body p, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, pre, q, ruby, s, samp, section, small, strike, sub, summary, sup, table, tfoot, time, tt, u, ul, var, video {
-    font-family: "Associate Sans", sans-serif !important;
+.co_body .content .form-all,
+.co_body .content p,
+.co_body h1,
+.co_body h1 a,
+.co_body h2,
+.co_body h2 a,
+.co_body h3,
+.co_body h3 a,
+.co_body h4,
+.co_body h4 a,
+.co_body h5,
+.co_body h5 a,
+.co_body h6,
+.co_body h6 a,
+.cps-container h1,
+.cps-container h2,
+.cps-container p,
+.form-all,
+a,
+abbr,
+acronym,
+address,
+applet,
+article,
+aside,
+audio,
+b,
+big,
+blockquote,
+body,
+canvas,
+caption,
+center,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+embed,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+html body.cco_body,
+html body.cco_body p,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+output,
+pre,
+q,
+ruby,
+s,
+samp,
+section,
+small,
+strike,
+sub,
+summary,
+sup,
+table,
+tfoot,
+time,
+tt,
+u,
+ul,
+var,
+video {
+  font-family: "Associate Sans", sans-serif !important;
 }
 
 body,
@@ -337,7 +429,7 @@ body.cco_body #tabContentMain .co_menu_item.donate_link span.parent a {
 
 .hp-table .hp-row-first .promo_slider .slider .cycle-caption big {
   color: #42515a;
-  max-width: 800px;
+  max-width: 650px;
   padding: 0;
   margin: 0;
   overflow: visible;
@@ -347,6 +439,14 @@ body.cco_body #tabContentMain .co_menu_item.donate_link span.parent a {
   transform: none;
   position: static;
   letter-spacing: -0.03em;
+}
+
+.hp-table .hp-row-first .promo_slider .slider .cycle-caption big img {
+  max-height: 1em;
+  display: inline-block;
+  float: none;
+  margin: 0;
+  transform: translateY(6px);
 }
 
 .hp-table .hp-row-first .promo_slider .slider .cycle-caption big span {
@@ -426,7 +526,7 @@ body.cco_body #tabContentMain .co_menu_item.donate_link span.parent a {
 .chabad_updates .widget_header.widget_header h5,
 [class*="widget-"] .widget_header.widget_header h5 {
   color: #42515a;
-  font-weight: bold;
+  font-weight: 300;
   line-height: 1;
   font-size: 45px;
   margin: 0;
@@ -491,6 +591,7 @@ body.cco_body #tabContentMain .co_menu_item.donate_link span.parent a {
   background: #fff;
   padding: 50px 60px;
   border-radius: 20px;
+  gap: 25px;
 }
 
 .chai_club_heading_items {

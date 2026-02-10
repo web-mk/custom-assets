@@ -5,7 +5,7 @@ function updateCycleCaption() {
   const caption = document.querySelector(".cycle-caption span");
   if (!caption) return;
 
-  const big = caption.querySelector("big");
+  const big = caption.querySelector(".cycle-caption span big");
   if (!big) return;
 
   const nodes = Array.from(caption.childNodes);
@@ -21,6 +21,23 @@ function updateCycleCaption() {
 
   caption.appendChild(subtitle);
   textNode.remove();
+}
+
+/* =================================
+   HERO TITLE UPDATE
+================================= */
+function updateHeroTitle() {
+  setTimeout(() => {
+    const heroTitle = document.querySelector(".cycle-caption span big");
+    if (!heroTitle) return;
+
+    heroTitle.innerHTML = `
+      Judaism With 
+      <img src="https://webmk.centers.chabad.org/media/images/1357/BZwx13573770.png">
+      in the 
+      <span class="highlighted-text">Heart of FiDi</span>
+    `;
+  });
 }
 
 /* =================================
@@ -312,23 +329,6 @@ function updateDonateSection() {
     // Insert donate_items after donate_header
     donateHeader.after(donateItems);
   }
-}
-
-/* =================================
-   HERO TITLE UPDATE
-================================= */
-function updateHeroTitle() {
-  setTimeout(() => {
-    const heroTitle = document.querySelector(".cycle-caption span big");
-    if (!heroTitle) return;
-
-    heroTitle.innerHTML = `
-      Judaism With 
-      <span class="styled-font">Warmth</span> 
-      in the 
-      <span class="highlighted-text">Heart of FiDi</span>
-    `;
-  }, 300);
 }
 
 /* =================================
