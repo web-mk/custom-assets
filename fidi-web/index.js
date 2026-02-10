@@ -10,7 +10,7 @@ function updateCycleCaption() {
 
   const nodes = Array.from(caption.childNodes);
   const textNode = nodes.find(
-    (n) => n.nodeType === 3 && n.textContent.trim() !== ""
+    (n) => n.nodeType === 3 && n.textContent.trim() !== "",
   );
 
   if (!textNode) return;
@@ -23,7 +23,6 @@ function updateCycleCaption() {
   textNode.remove();
 }
 
-
 /* =================================
    ABOUT SECTION RESTRUCTURE
 ================================= */
@@ -33,7 +32,7 @@ function addSection() {
 
   const widgetHeader = wrapperTwo.querySelector(".widget_header");
   const widgetContent = wrapperTwo.querySelector(
-    ".widget_content.message_format"
+    ".widget_content.message_format",
   );
 
   if (!widgetHeader || !widgetContent) return;
@@ -60,7 +59,6 @@ function addSection() {
   futureItems.appendChild(widgetContent);
 }
 
-
 /* =================================
    CHAI SECTION UPDATE
 ================================= */
@@ -69,9 +67,7 @@ function updateChaiSection() {
   if (!wrapper) return;
 
   const widgetHeader = wrapper.querySelector(".widget_header");
-  const widgetContent = wrapper.querySelector(
-    ".widget_content.message_format"
-  );
+  const widgetContent = wrapper.querySelector(".widget_content.message_format");
   const h5 = wrapper.querySelector("h5");
 
   if (!widgetHeader || !widgetContent || !h5) return;
@@ -109,7 +105,6 @@ function updateChaiSection() {
   chaiHeader.appendChild(widgetContent);
 }
 
-
 /* =================================
    SNEAK PEEK GRID WRAP
 ================================= */
@@ -117,9 +112,7 @@ function wrapSneakItems() {
   const container = document.querySelector(".sneak-peek-container");
   if (!container) return;
 
-  const items = Array.from(
-    container.querySelectorAll(".sneak-peek-item")
-  );
+  const items = Array.from(container.querySelectorAll(".sneak-peek-item"));
 
   if (!items.length) return;
 
@@ -132,21 +125,16 @@ function wrapSneakItems() {
   container.querySelectorAll(".clear").forEach((el) => el.remove());
 }
 
-
 /* =================================
    SWIPER EVENTS CAROUSEL
 ================================= */
 function carouselEvent() {
-  const widgetContent = document.querySelector(
-    ".widget_content.index_format"
-  );
+  const widgetContent = document.querySelector(".widget_content.index_format");
   if (!widgetContent) return;
 
   const items = Array.from(widgetContent.querySelectorAll(".item"));
 
-  widgetContent
-    .querySelectorAll(".separator")
-    .forEach((sep) => sep.remove());
+  widgetContent.querySelectorAll(".separator").forEach((sep) => sep.remove());
 
   const carouselContainer = document.createElement("div");
   carouselContainer.className = "carousel_container";
@@ -225,10 +213,7 @@ function carouselEvent() {
   swiperRoot.appendChild(swiperWrapper);
   carouselContainer.appendChild(swiperRoot);
 
-  widgetContent.parentNode.replaceChild(
-    carouselContainer,
-    widgetContent
-  );
+  widgetContent.parentNode.replaceChild(carouselContainer, widgetContent);
 
   new Swiper(".swiper-events", {
     slidesPerView: 3,
@@ -251,18 +236,24 @@ function carouselEvent() {
 ================================= */
 function addProgramLogos() {
   const logoMap = {
-    "Hebrew School": "https://webmk.centers.chabad.org/media/images/1357/pxRZ13572238.png",
-    "Gan Accademia": "https://webmk.centers.chabad.org/media/images/1357/BGYP13572237.png",
-    "Young Professionals": "https://webmk.centers.chabad.org/media/images/1357/ptvM13572241.png",
-    "Shabbat & Holidays": "https://webmk.centers.chabad.org/media/images/1357/JUop13572239.png",
-    "Women’s Circle": "https://webmk.centers.chabad.org/media/images/1357/JiQn13572240.png",
-    "Adult Education": "https://webmk.centers.chabad.org/media/images/1357/awQn13572236.png"
+    "Hebrew School":
+      "https://webmk.centers.chabad.org/media/images/1357/pxRZ13572238.png",
+    "Gan Accademia":
+      "https://webmk.centers.chabad.org/media/images/1357/BGYP13572237.png",
+    "Young Professionals":
+      "https://webmk.centers.chabad.org/media/images/1357/ptvM13572241.png",
+    "Shabbat & Holidays":
+      "https://webmk.centers.chabad.org/media/images/1357/JUop13572239.png",
+    "Women’s Circle":
+      "https://webmk.centers.chabad.org/media/images/1357/JiQn13572240.png",
+    "Adult Education":
+      "https://webmk.centers.chabad.org/media/images/1357/awQn13572236.png",
   };
 
   const cards = document.querySelectorAll(".sneak-peek-item");
   if (!cards.length) return;
 
-  cards.forEach(card => {
+  cards.forEach((card) => {
     const titleEl = card.querySelector("h6 a");
     if (!titleEl) return;
 
@@ -281,19 +272,63 @@ function addProgramLogos() {
   });
 }
 
+// Donate Section
+function updateDonateSection() {
+  const wrapper = document.querySelector(".hp-row:nth-child(6) .wrapper");
+  if (!wrapper) return;
+
+  const widgetHeader = wrapper.querySelector(
+    ".hp-row:nth-child(6) .widget_header",
+  );
+  const widgetContent = wrapper.querySelector(
+    ".hp-row:nth-child(6) .widget_content.message_format",
+  );
+
+  if (widgetHeader && widgetContent) {
+    // Step 1: Create donate_header wrapper
+    const donateHeader = document.createElement("div");
+    donateHeader.classList.add("donate_header");
+
+    // Insert before widgetHeader
+    wrapper.insertBefore(donateHeader, widgetHeader);
+
+    // Move widgetHeader + widgetContent inside
+    donateHeader.appendChild(widgetHeader);
+    donateHeader.appendChild(widgetContent);
+
+    // Step 2: Create donate_items div
+    const donateItems = document.createElement("div");
+    donateItems.classList.add("donate_items");
+
+    const headline = document.createElement("h5");
+    headline.innerHTML = "DONATE";
+
+    const donateImage = document.createElement("div");
+    donateImage.classList.add("donate_image");
+
+    donateItems.appendChild(headline);
+    donateItems.appendChild(donateImage);
+
+    // Insert donate_items after donate_header
+    donateHeader.after(donateItems);
+  }
+}
+
 /* =================================
-   HERO TITLE TEXT
+   HERO TITLE UPDATE
 ================================= */
 function updateHeroTitle() {
-  const heroTitle = document.querySelector(".cycle-caption span big");
-  if (!heroTitle) return;
+  setTimeout(() => {
+    const heroTitle = document.querySelector(".cycle-caption span big");
+    if (!heroTitle) return;
 
-  heroTitle.innerHTML = `
-    Judaism With 
-    <span class="styled-font">Warmth</span> 
-    in the 
-    <span class="highlighted-text">Heart of FiDi</span>
-  `;
+    heroTitle.innerHTML = `
+      Judaism With 
+      <span class="styled-font">Warmth</span> 
+      in the 
+      <span class="highlighted-text">Heart of FiDi</span>
+    `;
+  }, 300);
 }
 
 /* =================================
@@ -308,6 +343,31 @@ function updateChaiTitleText() {
   `;
 }
 
+/* =================================
+   Hero Desc Custom Class added
+================================= */
+function cycleDescClass() {
+  const caption = document.querySelector(".cycle-caption span");
+  if (!caption) return;
+
+  const big = caption.querySelector("big");
+  if (!big) return;
+
+  // Get everything after <big>
+  const nodes = Array.from(caption.childNodes);
+  const textNode = nodes.find(
+    (n) => n.nodeType === 3 && n.textContent.trim() !== "",
+  );
+
+  if (textNode) {
+    const subtitle = document.createElement("div");
+    subtitle.className = "cycle-caption-desc";
+    subtitle.textContent = textNode.textContent.trim();
+
+    caption.appendChild(subtitle);
+    textNode.remove();
+  }
+};
 
 /* =================================
    HOMEPAGE INITIALIZER
@@ -323,7 +383,9 @@ const setupHomepage = () => {
   updateChaiTitleText();
   wrapSneakItems();
   addProgramLogos();
+  updateDonateSection();
   carouselEvent();
+  cycleDescClass();
 };
 
 document.addEventListener("DOMContentLoaded", setupHomepage);
