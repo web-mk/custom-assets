@@ -5,7 +5,8 @@ function updateCycleCaption() {
   const caption = document.querySelector(".cycle-caption span");
   if (!caption) return;
 
-  const big = caption.querySelector(".cycle-caption span big");
+  const big = caption.querySelector("big");
+
   if (!big) return;
 
   const nodes = Array.from(caption.childNodes);
@@ -27,16 +28,36 @@ function updateCycleCaption() {
    HERO TITLE UPDATE
 ================================= */
 function updateHeroTitle() {
-  setTimeout(() => {
-    const heroTitle = document.querySelector(".cycle-caption span big");
+  const captionContainer = document.querySelector(".cycle-caption");
+  if (!captionContainer) return;
+
+  const applyChange = () => {
+    const heroTitle = captionContainer.querySelector("span big");
     if (!heroTitle) return;
 
     heroTitle.innerHTML = `
       Judaism With 
-      <img src="https://webmk.centers.chabad.org/media/images/1357/BZwx13573770.png">
+      <img 
+        class="styled-text"
+        src="https://webmk.centers.chabad.org/media/images/1357/BZwx13573770.png"
+        alt="Warmth"
+      />
       in the 
       <span class="highlighted-text">Heart of FiDi</span>
     `;
+  };
+
+  // Run once initially
+  applyChange();
+
+  // Observe caption changes (Cycle rewrites it)
+  const observer = new MutationObserver(() => {
+    applyChange();
+  });
+
+  observer.observe(captionContainer, {
+    childList: true,
+    subtree: true
   });
 }
 
