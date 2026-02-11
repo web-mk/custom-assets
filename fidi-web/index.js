@@ -1,41 +1,19 @@
 /* =================================
-   CYCLE CAPTION UPDATE
+   HERO + CYCLE CAPTION UPDATE
 ================================= */
-function updateCycleCaption() {
-  const caption = document.querySelector(".cycle-caption span");
-  if (!caption) return;
+function updateHeroWithCycle() {
+  const slideshow = document.querySelector(".cycle-slideshow");
+  if (!slideshow) return;
 
-  const big = caption.querySelector("big");
+  const applyHeroUpdates = () => {
+    const span = document.querySelector(".cycle-caption p span");
+    if (!span) return;
 
-  if (!big) return;
+    const big = span.querySelector("big");
+    if (!big) return;
 
-  const nodes = Array.from(caption.childNodes);
-  const textNode = nodes.find(
-    (n) => n.nodeType === 3 && n.textContent.trim() !== "",
-  );
-
-  if (!textNode) return;
-
-  const subtitle = document.createElement("div");
-  subtitle.className = "cycle-caption-desc";
-  subtitle.textContent = textNode.textContent.trim();
-
-  caption.appendChild(subtitle);
-  textNode.remove();
-}
-
-/* =================================
-   HERO TITLE UPDATE
-================================= */
-function updateHeroTitle() {
-  const captionContainer = document.querySelector(".cycle-caption");
-  if (!captionContainer) return;
-
-  const applyChange = () => {
-    const heroTitle = captionContainer.querySelector("span big");
-    if (!heroTitle) return;
-
-    heroTitle.innerHTML = `
+    /* --- Update Hero Title --- */
+    big.innerHTML = `
       Judaism With 
       <img 
         class="styled-text"
@@ -45,20 +23,26 @@ function updateHeroTitle() {
       in the 
       <span class="highlighted-text">Heart of FiDi</span>
     `;
+
+    /* --- Update Subtitle --- */
+    const textNode = Array.from(span.childNodes).find(
+      node => node.nodeType === 3 && node.textContent.trim()
+    );
+
+    if (textNode && !span.querySelector(".cycle-caption-desc")) {
+      const desc = document.createElement("div");
+      desc.className = "cycle-caption-desc";
+      desc.textContent = textNode.textContent.trim();
+      span.appendChild(desc);
+      textNode.remove();
+    }
   };
 
-  // Run once initially
-  applyChange();
+  /* Run once after Cycle renders */
+  setTimeout(applyHeroUpdates, 50);
 
-  // Observe caption changes (Cycle rewrites it)
-  const observer = new MutationObserver(() => {
-    applyChange();
-  });
-
-  observer.observe(captionContainer, {
-    childList: true,
-    subtree: true
-  });
+  /* Run after every slide change */
+  slideshow.addEventListener("cycle-after", applyHeroUpdates);
 }
 
 /* =================================
@@ -391,14 +375,224 @@ function cycleDescClass() {
 };
 
 /* =================================
+   LATEST PHOTOS SWIPER (FULL VERSION)
+================================= */
+function initLatestPhotosSwiper() {
+  const widget = document.querySelector(".latest_photos .wrapper");
+  if (!widget) return;
+
+  const widgetHeaderContainer = widget.querySelector(".widget_header");
+  const widgetHeader = widgetHeaderContainer?.querySelector("h5");
+  const widgetContent = widget.querySelector(".widget_content");
+  const ul = widgetContent?.querySelector("ul");
+
+  if (!widgetHeaderContainer || !widgetHeader || !widgetContent || !ul) return;
+
+  // Prevent double initialization
+  if (widget.querySelector(".swiper-latest-photos")) return;
+
+  widgetHeader.innerHTML = `
+    LATEST <span class="bold">PHOTOS</span>
+  `;
+
+  const headerRow = document.createElement("div");
+  headerRow.className = "latest_photos_header";
+
+  const headingWrap = document.createElement("div");
+  headingWrap.className = "latest_photos_heading";
+  headingWrap.appendChild(widgetHeaderContainer);
+
+  const controlsWrap = document.createElement("div");
+  controlsWrap.className = "latest_photos_controls";
+
+  /* --- SVG Prev Button --- */
+  const prevBtn = document.createElement("button");
+  prevBtn.className = "latest-prev";
+  prevBtn.innerHTML = `
+    <svg width="16" height="16" viewBox="0 0 16 16">
+      <path d="M16 9H3.83L8 13.18V16L0 8L8 0V2.82L3.83 7H16V9Z"
+            fill="currentColor"/>
+    </svg>
+  `;
+
+  /* --- SVG Next Button --- */
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "latest-next";
+  nextBtn.innerHTML = `
+    <svg width="16" height="16" viewBox="0 0 16 16"
+         style="transform: rotate(180deg);">
+      <path d="M16 9H3.83L8 13.18V16L0 8L8 0V2.82L3.83 7H16V9Z"
+            fill="currentColor"/>
+    </svg>
+  `;
+
+  /* --- Slide Text --- */
+  const slideText = document.createElement("span");
+  slideText.className = "slide_text";
+  slideText.textContent = "VIEW MORE PHOTOS";
+
+  controlsWrap.appendChild(prevBtn);
+  controlsWrap.appendChild(nextBtn);
+  controlsWrap.appendChild(slideText);
+
+  headerRow.appendChild(headingWrap);
+  headerRow.appendChild(controlsWrap);
+
+  widget.insertBefore(headerRow, widgetContent);
+
+  /* ----------------------------
+     3️⃣ Build Swiper Structure
+  ----------------------------- */
+
+  const swiperRoot = document.createElement("div");
+  swiperRoot.className = "swiper swiper-latest-photos";
+
+  const swiperWrapper = document.createElement("div");
+  swiperWrapper.className = "swiper-wrapper";
+
+  const items = Array.from(ul.querySelectorAll("li"));
+
+  items.forEach((li) => {
+    li.classList.add("swiper-slide");
+    swiperWrapper.appendChild(li);
+  });
+
+  swiperRoot.appendChild(swiperWrapper);
+
+  // Replace UL with Swiper container
+  ul.parentNode.replaceChild(swiperRoot, ul);
+
+  new Swiper(".swiper-latest-photos", {
+    slidesPerView: 2.5,
+    spaceBetween: 20,
+    grabCursor: true,
+    loop: true,
+    speed: 600,
+    navigation: {
+      nextEl: nextBtn,
+      prevEl: prevBtn,
+    },
+    breakpoints: {
+      1400: { slidesPerView: 2.5 },
+      1024: { slidesPerView: 2.5 },
+      768: { slidesPerView: 2 },
+      480: { slidesPerView: 1.5 },
+    },
+  });
+}
+
+/* =================================
+   FOOTER REDESIGN (UPDATED + FIXED)
+================================= */
+function updateFooterDesign() {
+  const footer = document.querySelector("#footer .wrapper.body_container");
+  if (!footer) return;
+
+  if (footer.querySelector(".custom_footer_layout")) return;
+
+  const footerInner = footer.querySelector(".footer_inner_container");
+  if (!footerInner) return;
+
+  /* ----------------------------
+     1️⃣ Extract Existing Data
+  ----------------------------- */
+
+  const street =
+    footerInner.querySelector(".footer-street")?.textContent.trim() || "";
+
+  const cityState =
+    footerInner.querySelector(".footer-city-state")?.textContent.trim() || "";
+
+  const phone =
+    footerInner.querySelector(".footer3 span:last-of-type")?.textContent.trim() || "";
+
+  const poweredHTML =
+    footerInner.innerHTML.match(/Powered by[\s\S]*/)?.[0] || "";
+
+  // 🔥 IMPORTANT — grab social icons BEFORE clearing
+  const socialLinks = Array.from(
+    footer.querySelectorAll(".cs-f-social-icons a")
+  );
+
+  /* ----------------------------
+     2️⃣ Clear Old Footer Content
+  ----------------------------- */
+
+  footer.innerHTML = "";
+
+  /* ----------------------------
+     3️⃣ Build New Layout
+  ----------------------------- */
+
+  const layout = document.createElement("div");
+  layout.className = "custom_footer_layout";
+
+  /* ===== LEFT SIDE ===== */
+
+  const left = document.createElement("div");
+  left.className = "footer_left";
+
+  const followTitle = document.createElement("h3");
+  followTitle.innerHTML = `<span>FOLLOW</span> US`;
+
+  const followDesc = document.createElement("p");
+  followDesc.textContent =
+    "Updates, community moments, and highlights from Chabad FiDi.";
+
+  const socialWrap = document.createElement("div");
+  socialWrap.className = "footer_social";
+
+  socialLinks.forEach((link) => {
+    socialWrap.appendChild(link.cloneNode(true));
+  });
+
+  left.appendChild(followTitle);
+  left.appendChild(followDesc);
+  left.appendChild(socialWrap);
+
+  /* ===== RIGHT SIDE ===== */
+
+  const right = document.createElement("div");
+  right.className = "footer_right";
+
+  const mainTitle = document.createElement("h2");
+  mainTitle.innerHTML = `
+    THE <span>CHABAD</span><br>
+    JEWISH CENTER OF <span class="highlighted">FIDI</span>
+  `;
+
+  const address = document.createElement("p");
+  address.textContent = `${street}, ${cityState} | ${phone}`;
+
+  const powered = document.createElement("div");
+  powered.className = "footer_powered";
+  powered.innerHTML = poweredHTML;
+
+  right.appendChild(mainTitle);
+  right.appendChild(address);
+  right.appendChild(powered);
+
+  /* ----------------------------
+     Append Everything
+  ----------------------------- */
+
+  layout.appendChild(left);
+  layout.appendChild(right);
+
+  footer.appendChild(layout);
+}
+
+updateFooterDesign();
+
+
+/* =================================
    HOMEPAGE INITIALIZER
 ================================= */
 const setupHomepage = () => {
   // Run ONLY on homepage
   if (window.location.pathname !== "/") return;
 
-  updateCycleCaption();
-  updateHeroTitle();
+  updateHeroWithCycle();
   addSection();
   updateChaiSection();
   updateChaiTitleText();
@@ -406,7 +600,7 @@ const setupHomepage = () => {
   addProgramLogos();
   updateDonateSection();
   carouselEvent();
-  cycleDescClass();
+  initLatestPhotosSwiper();
 };
 
 document.addEventListener("DOMContentLoaded", setupHomepage);
