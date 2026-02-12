@@ -263,12 +263,12 @@ function carouselEvent() {
   widgetContent.parentNode.replaceChild(carouselContainer, widgetContent);
 
   new Swiper(".swiper-events", {
-    slidesPerView: 3,
+    slidesPerView: 1.1,
     spaceBetween: 30,
     grabCursor: false,
     navigation: {
       nextEl: nextBtn,
-      prevEl: prevBtn,
+      prevEl: prevBtn,    
     },
     breakpoints: {
       1399: { slidesPerView: 3 },
@@ -473,7 +473,7 @@ function initLatestPhotosSwiper() {
   widget.insertBefore(headerRow, widgetContent);
 
   /* ----------------------------
-     3️⃣ Build Swiper Structure
+      Build Swiper Structure
   ----------------------------- */
 
   const swiperRoot = document.createElement("div");
@@ -495,7 +495,7 @@ function initLatestPhotosSwiper() {
   ul.parentNode.replaceChild(swiperRoot, ul);
 
   new Swiper(".swiper-latest-photos", {
-    slidesPerView: 2.5,
+    slidesPerView:1.5,
     spaceBetween: 20,
     grabCursor: true,
     loop: true,
@@ -526,7 +526,7 @@ function updateFooterDesign() {
   if (!footerInner) return;
 
   /* ----------------------------
-     1️⃣ Extract Existing Data
+     Extract Existing Data
   ----------------------------- */
 
   const street =

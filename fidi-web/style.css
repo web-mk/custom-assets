@@ -500,9 +500,6 @@ body.cco_body #tabContentMain .co_menu_item.multi_level .co_submenu_container {
   border-radius: 20px 20px 0 0;
   background: url("https://webmk.centers.chabad.org/media/images/1357/dtGz13572060.jpg")
     center center / cover no-repeat;
-  /* background: linear-gradient(180deg, rgba(0, 0, 0, 0) 55.26%, #000 100%),
-            url("https://cdn.webmk.co/chabad-maine/assets/hero_image.jpg") center center / cover
-            no-repeat; */
 }
 
 .hp-table .hp-row-first .promo_slider .slider .cycle-caption {
@@ -579,6 +576,7 @@ body.cco_body #tabContentMain .co_menu_item.multi_level .co_submenu_container {
   overflow: visible;
   font-size: 70px;
   font-weight: 300;
+  line-height: 1;
   text-transform: none;
   transform: none;
   position: static;
@@ -1010,6 +1008,7 @@ body.cco_body #tabContentMain .co_menu_item.multi_level .co_submenu_container {
 }
 
 .donate_items {
+  width: 100%;
   text-align: left;
   flex: 1;
 }
@@ -1498,7 +1497,7 @@ body > #footer > .wrapper {
   }
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1024px) {
   body,
   body.cco_body {
     padding: 0 24px;
@@ -1508,8 +1507,16 @@ body > #footer > .wrapper {
     padding: 0 32px;
   }
 
+  body > #header > .wrapper {
+    margin-top: 20px;
+  }
+
   .hp-table .hp-row-first .promo_slider .slider .slides {
     min-height: 400px;
+  }
+
+  .hp-table .hp-row-first .promo_slider .slider .cycle-caption {
+    padding-inline: 24px;
   }
 
   .hp-table .hp-row-first .promo_slider .slider .cycle-caption big {
@@ -1560,4 +1567,129 @@ body > #footer > .wrapper {
   body > #footer > .wrapper {
     padding-inline: 0;
   }
+}
+
+@media screen and (max-width: 767px) {
+  body,
+  body.cco_body {
+    padding: 0 5px;
+  }
+
+  .hp-row > * {
+    padding: 0 15px;
+  }
+
+  body > #header > .wrapper {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .branding-search #header_branding.logo img {
+    width: 76px;
+    height: 50px;
+  }
+
+  .hp-table .hp-row-first .promo_slider .slider {
+    padding-top: 60px;
+  }
+
+  .hp-table .hp-row-first .promo_slider .slider {
+    padding-top: 60px;
+  }
+
+  .hp-table .hp-row-first .promo_slider .slider .cycle-caption p span {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .hp-table .hp-row-first .promo_slider .slider .cycle-caption big {
+    max-width: 100%;
+    font-size: 50px;
+  }
+
+  .hp-table
+    .hp-row-first
+    .promo_slider
+    .slider
+    .cycle-caption
+    .cycle-caption-desc {
+    max-width: 100%;
+  }
+
+  .hp-table .hp-row-first .promo_slider .slider .slides {
+        min-height: 350px;
+    }
+
+  .slide_wrapper a {
+    background: url(https://webmk.centers.chabad.org/media/images/1357/bfNX13576398.jpg);
+  }
+
+  .about_image {
+    display: none;
+  }
+
+  .chabad_updates .widget_header.widget_header h5, [class*="widget-"] .widget_header.widget_header h5 {
+        font-size: 35px;
+    }
+
+    .message .wrapper .about_items .message_format div {
+        font-size: 18px;
+    }
+
+    .hp-table > :nth-child(3) .wrapper {
+        padding: 50px 20px;
+    }
+
+    .chai_club_title {
+        font-size: 35px;
+    }
+
+    .sneak-peek-container .header-title {
+        font-size: 35px;
+    }
+
+    .sneak-peek-container .flexbox-grid {
+      gap: 10px;
+    }
+
+    .sneak-peek-container .sneak-peek-item .wrapper .program-logo img {
+        max-height: 70px;
+    }
+
+    .sneak-peek-container .sneak_peek .widget_content h6 a {
+        font-size: 18px;
+        font-weight: 500;
+        text-align: left;
+        padding: 30px 10px;
+    }
+
+    .sneak-peek-container .sneak-peek-item {
+      padding: 0;
+      min-height: 190px;
+    }
+
+    .carousel_header .carousel_heading {
+        font-size: 35px;
+    }
+
+    .hp-row:nth-child(6) {
+      padding-block: 50px;
+    }
+
+    .hp-row:nth-child(6) .wrapper {
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .donate_items .donate_image {
+      min-height: 300px;
+    }
+
+    .message .wrapper .donate_header .widget_header h5 {
+        font-size: 35px;
+    }
+
+    .message .wrapper .donate_header .widget_content.message_format div {
+        font-size: 18px;
+    }
 }
