@@ -272,8 +272,8 @@ function carouselEvent() {
     },
     breakpoints: {
       1399: { slidesPerView: 3 },
-      900: { slidesPerView: 2 },
-      500: { slidesPerView: 1.1 },
+      575: { slidesPerView: 2 },
+      480: { slidesPerView: 1.1 },
     },
   });
 }
@@ -324,41 +324,48 @@ function updateDonateSection() {
   const wrapper = document.querySelector(".hp-row:nth-child(6) .wrapper");
   if (!wrapper) return;
 
-  const widgetHeader = wrapper.querySelector(
-    ".hp-row:nth-child(6) .widget_header",
-  );
-  const widgetContent = wrapper.querySelector(
-    ".hp-row:nth-child(6) .widget_content.message_format",
-  );
+  const widgetHeader = wrapper.querySelector(".widget_header");
+  const widgetContent = wrapper.querySelector(".widget_content.message_format");
 
-  if (widgetHeader && widgetContent) {
-    // Step 1: Create donate_header wrapper
-    const donateHeader = document.createElement("div");
-    donateHeader.classList.add("donate_header");
+  if (!widgetHeader || !widgetContent) return;
 
-    // Insert before widgetHeader
-    wrapper.insertBefore(donateHeader, widgetHeader);
-
-    // Move widgetHeader + widgetContent inside
-    donateHeader.appendChild(widgetHeader);
-    donateHeader.appendChild(widgetContent);
-
-    // Step 2: Create donate_items div
-    const donateItems = document.createElement("div");
-    donateItems.classList.add("donate_items");
-
-    const headline = document.createElement("h5");
-    headline.innerHTML = "DONATE";
-
-    const donateImage = document.createElement("div");
-    donateImage.classList.add("donate_image");
-
-    donateItems.appendChild(headline);
-    donateItems.appendChild(donateImage);
-
-    // Insert donate_items after donate_header
-    donateHeader.after(donateItems);
+  const heading = widgetHeader.querySelector("h5");
+  if (heading) {
+    heading.innerHTML = `
+      <span>SUPPORT</span>
+      JEWISH LIFE IN FIDI
+    `;
   }
+
+  /* ----------------------------
+     Create donate_header wrapper
+  ----------------------------- */
+
+  const donateHeader = document.createElement("div");
+  donateHeader.classList.add("donate_header");
+
+  wrapper.insertBefore(donateHeader, widgetHeader);
+
+  donateHeader.appendChild(widgetHeader);
+  donateHeader.appendChild(widgetContent);
+
+  /* ----------------------------
+     Create donate_items div
+  ----------------------------- */
+
+  const donateItems = document.createElement("div");
+  donateItems.classList.add("donate_items");
+
+  const headline = document.createElement("h5");
+  headline.textContent = "DONATE";
+
+  const donateImage = document.createElement("div");
+  donateImage.classList.add("donate_image");
+
+  donateItems.appendChild(headline);
+  donateItems.appendChild(donateImage);
+
+  donateHeader.after(donateItems);
 }
 
 /* =================================
@@ -536,20 +543,13 @@ function updateFooterDesign() {
   const poweredHTML =
     footerInner.innerHTML.match(/Powered by[\s\S]*/)?.[0] || "";
 
-  // 🔥 IMPORTANT — grab social icons BEFORE clearing
+ 
   const socialLinks = Array.from(
     footer.querySelectorAll(".cs-f-social-icons a"),
   );
 
-  /* ----------------------------
-     2️⃣ Clear Old Footer Content
-  ----------------------------- */
-
   footer.innerHTML = "";
 
-  /* ----------------------------
-     3️⃣ Build New Layout
-  ----------------------------- */
 
   const layout = document.createElement("div");
   layout.className = "custom_footer_layout";
@@ -634,26 +634,6 @@ function updateAboutHeading() {
 
 document.addEventListener("DOMContentLoaded", updateAboutHeading);
 
-/* =================================
-   DONATE SECTION HEADING UPDATE
-================================= */
-function updateDonateHeading() {
-  const heading = document.querySelector(".donate_header .widget_header h5");
-
-  if (!heading) return;
-
-  // Prevent double execution
-  if (heading.dataset.updated === "true") return;
-
-  heading.innerHTML = `
-    <span>SUPPORT</span>
-      JEWISH LIFE IN FIDI
-  `;
-
-  heading.dataset.updated = "true";
-}
-
-updateDonateHeading();
 
 /* =================================
    HOMEPAGE INITIALIZER
