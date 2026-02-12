@@ -15,10 +15,8 @@ function updateHeroWithCycle() {
     const big = span.querySelector("big");
     if (!big) return;
 
-    // Prevent re-processing
     if (big.dataset.updated === "true") return;
 
-    /* --- Update Hero Title --- */
     big.innerHTML = `
       Judaism With 
       <img 
@@ -32,9 +30,8 @@ function updateHeroWithCycle() {
 
     big.dataset.updated = "true";
 
-    /* --- Update Subtitle --- */
     const textNode = Array.from(span.childNodes).find(
-      (node) => node.nodeType === 3 && node.textContent.trim(),
+      node => node.nodeType === 3 && node.textContent.trim()
     );
 
     if (textNode && !span.querySelector(".cycle-caption-desc")) {
@@ -46,10 +43,8 @@ function updateHeroWithCycle() {
     }
   };
 
-  // Run once after initial render
-  setTimeout(applyHeroUpdates, 100);
+  applyHeroUpdates();
 
-  // Observe caption rewrites
   const observer = new MutationObserver(() => {
     applyHeroUpdates();
   });
@@ -59,6 +54,21 @@ function updateHeroWithCycle() {
     subtree: true,
   });
 }
+
+/* =================================
+   WAIT UNTIL SLIDER EXISTS
+================================= */
+
+function waitForHero() {
+  const interval = setInterval(() => {
+    const slider = document.querySelector(".slider .cycle-caption");
+    if (slider) {
+      clearInterval(interval);
+      updateHeroWithCycle();
+    }
+  }, 200);
+}
+
 
 /* =================================
    ABOUT SECTION RESTRUCTURE
@@ -652,6 +662,7 @@ const setupHomepage = () => {
   // Run ONLY on homepage
   if (window.location.pathname !== "/") return;
 
+  waitForHero();
   updateHeroWithCycle();
   addSection();
   updateChaiSection();
