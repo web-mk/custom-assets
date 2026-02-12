@@ -1,16 +1,22 @@
 /* =================================
-   HERO + CYCLE CAPTION UPDATE
+   HERO + CYCLE CAPTION UPDATE (FOR .slider)
 ================================= */
 function updateHeroWithCycle() {
-  const slideshow = document.querySelector(".cycle-slideshow");
-  if (!slideshow) return;
+  const slider = document.querySelector(".slider");
+  if (!slider) return;
+
+  const caption = slider.querySelector(".cycle-caption");
+  if (!caption) return;
 
   const applyHeroUpdates = () => {
-    const span = document.querySelector(".cycle-caption p span");
+    const span = caption.querySelector("p span");
     if (!span) return;
 
     const big = span.querySelector("big");
     if (!big) return;
+
+    // Prevent re-processing
+    if (big.dataset.updated === "true") return;
 
     /* --- Update Hero Title --- */
     big.innerHTML = `
@@ -24,9 +30,11 @@ function updateHeroWithCycle() {
       <span class="highlighted-text">Heart of FiDi</span>
     `;
 
+    big.dataset.updated = "true";
+
     /* --- Update Subtitle --- */
     const textNode = Array.from(span.childNodes).find(
-      node => node.nodeType === 3 && node.textContent.trim()
+      (node) => node.nodeType === 3 && node.textContent.trim(),
     );
 
     if (textNode && !span.querySelector(".cycle-caption-desc")) {
@@ -38,11 +46,18 @@ function updateHeroWithCycle() {
     }
   };
 
-  /* Run once after Cycle renders */
-  setTimeout(applyHeroUpdates, 50);
+  // Run once after initial render
+  setTimeout(applyHeroUpdates, 100);
 
-  /* Run after every slide change */
-  slideshow.addEventListener("cycle-after", applyHeroUpdates);
+  // Observe caption rewrites
+  const observer = new MutationObserver(() => {
+    applyHeroUpdates();
+  });
+
+  observer.observe(caption, {
+    childList: true,
+    subtree: true,
+  });
 }
 
 /* =================================
@@ -372,7 +387,7 @@ function cycleDescClass() {
     caption.appendChild(subtitle);
     textNode.remove();
   }
-};
+}
 
 /* =================================
    LATEST PHOTOS SWIPER (FULL VERSION)
@@ -504,14 +519,16 @@ function updateFooterDesign() {
     footerInner.querySelector(".footer-city-state")?.textContent.trim() || "";
 
   const phone =
-    footerInner.querySelector(".footer3 span:last-of-type")?.textContent.trim() || "";
+    footerInner
+      .querySelector(".footer3 span:last-of-type")
+      ?.textContent.trim() || "";
 
   const poweredHTML =
     footerInner.innerHTML.match(/Powered by[\s\S]*/)?.[0] || "";
 
   // 🔥 IMPORTANT — grab social icons BEFORE clearing
   const socialLinks = Array.from(
-    footer.querySelectorAll(".cs-f-social-icons a")
+    footer.querySelectorAll(".cs-f-social-icons a"),
   );
 
   /* ----------------------------
@@ -557,8 +574,8 @@ function updateFooterDesign() {
 
   const mainTitle = document.createElement("h2");
   mainTitle.innerHTML = `
-    THE <span>CHABAD</span><br>
-    JEWISH CENTER OF <span class="highlighted">FIDI</span>
+    THE <span>CHABAD<br>
+    JEWISH CENTER OF <span class="highlighted">FIDI</span></span>
   `;
 
   const address = document.createElement("p");
@@ -584,6 +601,49 @@ function updateFooterDesign() {
 
 updateFooterDesign();
 
+/* =================================
+   ABOUT SECTION HEADING UPDATE
+================================= */
+function updateAboutHeading() {
+  const heading = document.querySelector(".widget-4.message .widget_header h5");
+
+  if (!heading) return;
+
+  // Prevent double update
+  if (heading.dataset.updated === "true") return;
+
+  heading.innerHTML = `
+    THE <span>CHABAD<br>
+    JEWISH CENTER OF 
+    <span class="highlighted">FIDI</span>
+    </span>
+  `;
+
+  heading.dataset.updated = "true";
+}
+
+document.addEventListener("DOMContentLoaded", updateAboutHeading);
+
+/* =================================
+   DONATE SECTION HEADING UPDATE
+================================= */
+function updateDonateHeading() {
+  const heading = document.querySelector(".donate_header .widget_header h5");
+
+  if (!heading) return;
+
+  // Prevent double execution
+  if (heading.dataset.updated === "true") return;
+
+  heading.innerHTML = `
+    <span>SUPPORT</span>
+      JEWISH LIFE IN FIDI
+  `;
+
+  heading.dataset.updated = "true";
+}
+
+updateDonateHeading();
 
 /* =================================
    HOMEPAGE INITIALIZER
