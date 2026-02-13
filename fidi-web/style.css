@@ -2081,6 +2081,7 @@ body.sites-article #content {
   text-align: left;
   background-color: #fff;
   border: 0;
+  margin-inline: auto;
 }
 
 /* REMOVE CMS WIDTH LIMIT */
@@ -2102,6 +2103,9 @@ body.sites-article #content {
   .article-header {
   padding: 0;
   text-align: left;
+        margin: 0;
+    margin-bottom: 30px;
+
 }
 
 #BodyContainer
