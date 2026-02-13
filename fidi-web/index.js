@@ -31,7 +31,7 @@ function updateHeroWithCycle() {
     big.dataset.updated = "true";
 
     const textNode = Array.from(span.childNodes).find(
-      node => node.nodeType === 3 && node.textContent.trim()
+      (node) => node.nodeType === 3 && node.textContent.trim(),
     );
 
     if (textNode && !span.querySelector(".cycle-caption-desc")) {
@@ -68,7 +68,6 @@ function waitForHero() {
     }
   }, 200);
 }
-
 
 /* =================================
    ABOUT SECTION RESTRUCTURE
@@ -180,7 +179,6 @@ function carouselEvent() {
   if (!widgetContent) return;
 
   const items = Array.from(widgetContent.querySelectorAll(".item"));
-
   widgetContent.querySelectorAll(".separator").forEach((sep) => sep.remove());
 
   const carouselContainer = document.createElement("div");
@@ -189,7 +187,10 @@ function carouselEvent() {
   const swiperRoot = document.createElement("div");
   swiperRoot.className = "swiper swiper-events";
 
-  /* Header */
+  /* ======================
+        HEADER
+  ====================== */
+
   const headerRow = document.createElement("div");
   headerRow.className = "carousel_header";
 
@@ -231,7 +232,10 @@ function carouselEvent() {
   headerRow.appendChild(heading);
   headerRow.appendChild(controlsGroup);
 
-  /* Slides */
+  /* ======================
+        SLIDES
+  ====================== */
+
   const swiperWrapper = document.createElement("div");
   swiperWrapper.className = "swiper-wrapper";
 
@@ -258,22 +262,38 @@ function carouselEvent() {
 
   swiperRoot.appendChild(headerRow);
   swiperRoot.appendChild(swiperWrapper);
-  carouselContainer.appendChild(swiperRoot);
 
+  /* ======================
+     DUPLICATE CONTROLS BELOW
+  ====================== */
+
+  const bottomControls = controlsGroup.cloneNode(true);
+  bottomControls.classList.add("controls_group--bottom");
+
+  swiperRoot.appendChild(bottomControls);
+
+  const bottomPrevBtn = bottomControls.querySelector(".swiper-prev");
+  const bottomNextBtn = bottomControls.querySelector(".swiper-next");
+
+  carouselContainer.appendChild(swiperRoot);
   widgetContent.parentNode.replaceChild(carouselContainer, widgetContent);
+
+  /* ======================
+        INIT SWIPER
+  ====================== */
 
   new Swiper(".swiper-events", {
     slidesPerView: 1.1,
-    spaceBetween: 30,
+    spaceBetween: 20,
     grabCursor: false,
     navigation: {
-      nextEl: nextBtn,
-      prevEl: prevBtn,    
+      nextEl: [nextBtn, bottomNextBtn],
+      prevEl: [prevBtn, bottomPrevBtn],
     },
     breakpoints: {
       1399: { slidesPerView: 3 },
       575: { slidesPerView: 2 },
-      480: { slidesPerView: 1.1 },
+      480: { slidesPerView: 1.1, spaceBetween: 30 },
     },
   });
 }
@@ -427,6 +447,10 @@ function initLatestPhotosSwiper() {
     LATEST <span class="bold">PHOTOS</span>
   `;
 
+  /* ----------------------------
+      HEADER + TOP CONTROLS
+  ----------------------------- */
+
   const headerRow = document.createElement("div");
   headerRow.className = "latest_photos_header";
 
@@ -437,7 +461,7 @@ function initLatestPhotosSwiper() {
   const controlsWrap = document.createElement("div");
   controlsWrap.className = "latest_photos_controls";
 
-  /* --- SVG Prev Button --- */
+  // Prev Button
   const prevBtn = document.createElement("button");
   prevBtn.className = "latest-prev";
   prevBtn.innerHTML = `
@@ -447,7 +471,7 @@ function initLatestPhotosSwiper() {
     </svg>
   `;
 
-  /* --- SVG Next Button --- */
+  // Next Button
   const nextBtn = document.createElement("button");
   nextBtn.className = "latest-next";
   nextBtn.innerHTML = `
@@ -458,7 +482,7 @@ function initLatestPhotosSwiper() {
     </svg>
   `;
 
-  /* --- Slide Text --- */
+  // Slide Text
   const slideText = document.createElement("span");
   slideText.className = "slide_text";
   slideText.textContent = "VIEW MORE PHOTOS";
@@ -473,7 +497,7 @@ function initLatestPhotosSwiper() {
   widget.insertBefore(headerRow, widgetContent);
 
   /* ----------------------------
-      Build Swiper Structure
+      BUILD SWIPER STRUCTURE
   ----------------------------- */
 
   const swiperRoot = document.createElement("div");
@@ -494,25 +518,40 @@ function initLatestPhotosSwiper() {
   // Replace UL with Swiper container
   ul.parentNode.replaceChild(swiperRoot, ul);
 
+  /* ----------------------------
+      BOTTOM CONTROLS (CLONE)
+  ----------------------------- */
+
+  const bottomControlsWrap = controlsWrap.cloneNode(true);
+  bottomControlsWrap.classList.add("latest_photos_controls--bottom");
+
+  widget.appendChild(bottomControlsWrap);
+
+  const bottomPrevBtn = bottomControlsWrap.querySelector(".latest-prev");
+  const bottomNextBtn = bottomControlsWrap.querySelector(".latest-next");
+
+  /* ----------------------------
+      INIT SWIPER
+  ----------------------------- */
+
   new Swiper(".swiper-latest-photos", {
-    slidesPerView:1.5,
+    slidesPerView: 1.1,
     spaceBetween: 20,
     grabCursor: true,
     loop: true,
     speed: 600,
     navigation: {
-      nextEl: nextBtn,
-      prevEl: prevBtn,
+      nextEl: [nextBtn, bottomNextBtn],
+      prevEl: [prevBtn, bottomPrevBtn],
     },
     breakpoints: {
       1400: { slidesPerView: 2.5 },
       1024: { slidesPerView: 2.5 },
       768: { slidesPerView: 2 },
-      480: { slidesPerView: 1.5 },
+      480: { slidesPerView: 1.1 },
     },
   });
 }
-
 /* =================================
    FOOTER REDESIGN (UPDATED + FIXED)
 ================================= */
@@ -543,13 +582,11 @@ function updateFooterDesign() {
   const poweredHTML =
     footerInner.innerHTML.match(/Powered by[\s\S]*/)?.[0] || "";
 
- 
   const socialLinks = Array.from(
     footer.querySelectorAll(".cs-f-social-icons a"),
   );
 
   footer.innerHTML = "";
-
 
   const layout = document.createElement("div");
   layout.className = "custom_footer_layout";
@@ -633,7 +670,6 @@ function updateAboutHeading() {
 }
 
 document.addEventListener("DOMContentLoaded", updateAboutHeading);
-
 
 /* =================================
    HOMEPAGE INITIALIZER
