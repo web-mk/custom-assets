@@ -722,3 +722,38 @@ const setupHomepage = () => {
 };
 
 document.addEventListener("DOMContentLoaded", setupHomepage);
+
+
+/* =================================
+   Master Content Wrapper Inner
+================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+  const wrapper = document.querySelector(".master-content-wrapper");
+  if (!wrapper) return;
+
+  if (wrapper.classList.contains("custom-section")) return;
+
+  const header = wrapper.querySelector(".article-header");
+  if (!header) return;
+
+  const bgImage = wrapper.style.backgroundImage;
+  if (!bgImage) return;
+
+  wrapper.style.backgroundImage = "none";
+
+  const textDiv = document.createElement("div");
+  textDiv.className = "section-text";
+  textDiv.appendChild(header);
+
+  const imageDiv = document.createElement("div");
+  imageDiv.className = "section-image";
+  imageDiv.style.backgroundImage = bgImage;
+
+  wrapper.innerHTML = "";
+
+  wrapper.appendChild(textDiv);
+  wrapper.appendChild(imageDiv);
+
+  wrapper.classList.add("custom-section");
+});
