@@ -2214,6 +2214,8 @@ body.sites-article #content {
   grid-template-columns: 1fr 1fr 1fr;
   padding-inline: 60px;
   gap: 20px;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .body_wrapper .article_index_container .co_index.article_index .row {
@@ -2249,17 +2251,45 @@ body.sites-article #content {
   .row
   .item
   .synopsis_icon {
-  float: left;
+  float: none;
   display: block;
   margin: 0;
   width: auto;
-  background-color: #fff;
 }
 
-.article_index_container .co_index.article_index .row .item .synopsis_icon a.synopsis_icon {
-  background-color: #fff;
+.article_index_container
+  .co_index.article_index
+  .row
+  .item
+  .synopsis_icon
+  a.synopsis_icon {
+  background-color: transparent;
   height: auto;
   padding-top: 0;
+  width: 150px;
+  height: 150px;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.body_wrapper
+  .article_index_container
+  .co_index.article_index.with_icons
+  .row
+  .item:hover {
+  background-color: #f7f2ed;
+}
+
+.body_wrapper
+  .article_index_container
+  .co_index.article_index.with_icons
+  .row
+  .item:hover
+  .synopsis_icon
+  a.synopsis_icon {
+  width: 100%;
+  height: 208px;
 }
 
 .body_wrapper
@@ -2271,19 +2301,51 @@ body.sites-article #content {
   a.synopsis_icon
   img {
   position: static;
-  width: 150px;
-  height: 150px;
-  border-radius: 20px;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
-.body_wrapper .article_index_container .co_index.article_index.with_icons .row .item .item_contents .title {
+.body_wrapper
+  .article_index_container
+  .co_index.article_index.with_icons
+  .row
+  .item
+  .item_contents {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.body_wrapper
+  .article_index_container
+  .co_index.article_index.with_icons
+  .row
+  .item
+  .item_contents
+  .title {
   position: static;
-  margin-top: 30px;
+  padding-top: 0;
 }
 
-.body_wrapper .article_index_container .co_index.article_index .row .item .title a {
+#co_body_container
+  .article_index_container
+  .co_index.article_index
+  .row
+  .item
+  .inner {
+  margin-top: auto;
+}
+
+.body_wrapper
+  .article_index_container
+  .co_index.article_index
+  .row
+  .item
+  .title
+  a {
   padding: 0;
-  color: #42515A;
+  color: #42515a;
   font-size: 25px;
   font-weight: 300;
   line-height: 1.1;
@@ -2291,15 +2353,60 @@ body.sites-article #content {
   justify-content: space-between;
 }
 
-.body_wrapper .article_index_container .co_index.article_index .row .item .title a::after {
+.body_wrapper
+  .article_index_container
+  .co_index.article_index
+  .row
+  .item
+  .title
+  a::after {
   content: "";
-  background-image: url();
+  background-image: url(https://webmk.centers.chabad.org/media/images/1358/xFUr13580889.png);
+  background-size: 18px;
+  background-repeat: no-repeat;
+  background-position: center;
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background-color: #BC9C78;
+  background-color: #bc9c78;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.body_wrapper
+  .article_index_container
+  .co_index.article_index
+  .row
+  .item:hover
+  .title
+  a::after {
+  opacity: 1;
+  visibility: visible;
+  transition: 0.3s;
+}
+
+.body_wrapper
+  .article_index_container
+  .co_index.article_index
+  .row
+  .item
+  .title
+  a:hover {
+  background-color: transparent;
 }
 
 #BodyContainer .body_wrapper {
   background-color: #fff;
+}
+
+@media screen and (max-width: 1024px) {
+  .body_wrapper .article_index_container .co_index.article_index {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .body_wrapper .article_index_container .co_index.article_index {
+    grid-template-columns: 1fr;
+  }
 }
