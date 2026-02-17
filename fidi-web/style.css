@@ -2396,7 +2396,8 @@ body.sites-article #content {
 }
 
 #BodyContainer .body_wrapper {
-  background-color: #fff;
+  margin: 0 auto;
+  max-width: 1320px;
 }
 
 @media screen and (max-width: 1024px) {
