@@ -489,11 +489,79 @@ body.cco_body:not(.home)
   border-left: 1px solid #42515a;
 }
 
+body.cco_body #tabContentMain .co_menu_item.hover span.parent a {
+  font-size: 16px !important;
+  font-weight: 300;
+}
+
+body.cco_body
+  #tabContentMain
+  .co_menu_item.multi_level
+  span.parent
+  a:hover:after {
+  transform: rotate(180deg);
+}
+
 .hp-row {
   padding: 0;
   max-width: 1320px;
   margin-inline: auto;
   background-color: #fff;
+}
+
+body.cco_body
+  #tabContentMain
+  .co_menu_item.multi_level
+  .co_submenu_container
+  a.item {
+  border: 0;
+  font-weight: 300 !important;
+}
+
+body.cco_body
+  #tabContentMain
+  .co_menu_item.multi_level
+  .co_submenu_container
+  a.item:hover
+  span {
+  color: #bc9c78 !important;
+}
+
+body.cco_body
+  #tabContentMain
+  .co_menu_item.multi_level
+  .co_submenu_container
+  a.item:hover {
+  margin-left: 0;
+}
+
+body.cco_body
+  #tabContentMain
+  .co_menu_item.multi_level
+  .co_submenu_container
+  a.item
+  span {
+  font-weight: 300 !important;
+  font-family: "Associate Sans", sans-serif !important;
+}
+
+body.coo_body #tabContentMain .co_submenu_container .co_column .child_item {
+  margin-block: 4px;
+}
+
+body.cco_body #tabContentMain .co_menu_item.hover.arrow a:hover span,
+body.coo_body #tabContentMain .co_submenu_container .co_column a:hover {
+  color: #bc9c78 !important;
+  transition: 0.3s;
+}
+
+body.coo_body #tabContentMain .co_submenu_container .co_column .child_item span,
+body.cco_body #tabContentMain .co_submenu_container .co_column a {
+  font-weight: 300;
+}
+
+.dir_ltr .co_menu_item.multi_level .co_submenu_container.reversed a.item.hover {
+  margin-left: 0;
 }
 
 .hp-row > * {
