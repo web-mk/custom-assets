@@ -2583,3 +2583,20 @@ body.sites-article #content {
     padding-inline: 16px;
   }
 }
+
+.dir_ltr .co_menu_item.multi_level .co_submenu_container .menu_child.selected,
+.dir_rtl
+  .co_menu_item.multi_level
+  .co_submenu_container.reversed
+  .menu_child.selected {
+  border-top: 0;
+}
+
+.dir_ltr .co_menu_item.multi_level .co_submenu_container a.item.hover,
+.dir_ltr .co_menu_item.multi_level .co_submenu_container a.item:hover,
+.dir_rtl .co_menu_item.multi_level .co_submenu_container.reversed a.item.hover,
+.dir_rtl .co_menu_item.multi_level .co_submenu_container.reversed a.item:hover {
+  margin-right: 0;
+}
+
+/* --------------------- */
