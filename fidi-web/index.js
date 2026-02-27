@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
 /* =================================
    HERO + CYCLE CAPTION UPDATE (FOR .slider)
 ================================= */
@@ -321,6 +320,10 @@ function carouselEvent() {
       nextEl: [nextBtn, bottomNextBtn],
       prevEl: [prevBtn, bottomPrevBtn],
     },
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
     breakpoints: {
       1399: { slidesPerView: 3 },
       575: { slidesPerView: 2 },
@@ -575,7 +578,12 @@ function initLatestPhotosSwiper() {
       nextEl: [nextBtn, bottomNextBtn],
       prevEl: [prevBtn, bottomPrevBtn],
     },
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
     breakpoints: {
+      1800: { slidesPerView: 3.5 },
       1400: { slidesPerView: 2.5 },
       1024: { slidesPerView: 2.5 },
       575: { slidesPerView: 2 },
@@ -722,7 +730,6 @@ const setupHomepage = () => {
 };
 
 document.addEventListener("DOMContentLoaded", setupHomepage);
-
 
 /* =================================
    Master Content Wrapper Inner
