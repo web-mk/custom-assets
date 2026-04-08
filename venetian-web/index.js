@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const icon = menuBtn.querySelector("i");
   if (icon) icon.remove();
 
+  // Inject bars only once
   if (!menuBtn.querySelector(".bar")) {
     for (let i = 0; i < 3; i++) {
       const bar = document.createElement("span");
@@ -18,10 +19,15 @@ document.addEventListener("DOMContentLoaded", function () {
     menuBtn.classList.toggle("active");
 
     setTimeout(() => {
-      document.body.classList.toggle("menu-open", menuBtn.classList.contains("active"));
+      if (menuBtn.classList.contains("active")) {
+        document.body.classList.add("menu-open");
+      } else {
+        document.body.classList.remove("menu-open");
+      }
     }, 0);
   });
 });
+
 
 /* =================================
    SNEAK PEEK GRID WRAP
@@ -31,6 +37,7 @@ function wrapSneakItems() {
   if (!container) return;
 
   const items = Array.from(container.querySelectorAll(".sneak-peek-item"));
+
   if (!items.length) return;
 
   const grid = document.createElement("div");
@@ -42,6 +49,9 @@ function wrapSneakItems() {
   container.querySelectorAll(".clear").forEach((el) => el.remove());
 }
 
+wrapSneakItems();
+
+
 /* =================================
    HERO SECTION
 ================================= */
@@ -51,31 +61,38 @@ function updateHeroSection() {
 
   slider.innerHTML = `
     <div class="hero-inner">
+
       <div class="hero-content-left">
         <h1 class="hero-heading">
           <span class="hero-title-teal">Chabad Of</span> The Venetian &amp; Sunset Islands
         </h1>
-        <p class="hero-subtitle">A welcoming home for Jewish life, learning, and connection.</p>
+        <p class="hero-subtitle">A welcoming home for Jewish life, learning, and connection on the Venetian &amp; Sunset Islands.</p>
         <a class="hero-cta" href="/about">Learn More About Us</a>
         <div class="hero-body">
           <p>
-            Chabad of the Venetian & Sunset Islands is a vibrant Jewish center...
-            <span class="hero-body-more"> Guided by Rabbi...</span>
+            Chabad of the Venetian & Sunset Islands is a vibrant Jewish center offering meaningful experiences for individuals and families of all ages. From prayer and education to holidays, programs, and community gatherings, Chabad provides a warm, inclusive space where Jewish life is lived with purpose and joy
+            <span class="hero-body-more"> Guided by Rabbi Shmuel and Tzippy Mann, together with Rabbi Menachem and Mushka Rapoport, Chabad blends timeless Jewish values with a modern, approachable spirit. Every Jew is welcomed with respect — regardless of background, affiliation, or level of observance — creating a place where tradition feels relevant, alive, and deeply personal.</span>
           </p>
           <button class="hero-see-more-btn">... see more</button>
         </div>
       </div>
 
       <div class="hero-image-block">
-        <img src="/media/images/1365/nuVu13654947.png" />
+        <img
+          class="hero-building-img"
+          src="/media/images/1365/nuVu13654947.png"
+          alt="Chabad of The Venetian & Sunset Islands"
+        />
       </div>
+
     </div>
   `;
 
+  // See more toggle
   const btn = slider.querySelector(".hero-see-more-btn");
   const more = slider.querySelector(".hero-body-more");
 
-  if (btn && more) {
+ if (btn && more) {
     more.style.display = "none";
     btn.addEventListener("click", () => {
       more.style.display = "inline";
@@ -84,51 +101,9 @@ function updateHeroSection() {
   }
 }
 
-/* =================================
-   EVENT CARD RESTRUCTURE (FIXED)
-================================= */
-function restructureEventCards() {
-  const cards = document.querySelectorAll(".swiper-events .swiper-slide");
+updateHeroSection();
 
-  cards.forEach((card) => {
-    if (card.querySelector(".card_content")) return;
 
-    const title = card.querySelector(".title");
-    const desc = card.querySelector(".subtitle");
-    const date = card.querySelector(".readMore");
-
-    if (!title || !desc || !date) return;
-
-    const contentWrapper = document.createElement("div");
-    contentWrapper.className = "card_content";
-
-    const dateEl = document.createElement("div");
-    dateEl.className = "card_date";
-    dateEl.textContent = date.textContent.trim();
-
-    const titleEl = document.createElement("div");
-    titleEl.className = "card_title";
-    titleEl.innerHTML = title.innerHTML;
-
-    const descEl = document.createElement("div");
-    descEl.className = "card_desc";
-    descEl.textContent = desc.textContent.trim();
-
-    contentWrapper.appendChild(dateEl);
-    contentWrapper.appendChild(titleEl);
-    contentWrapper.appendChild(descEl);
-
-    title.remove();
-    desc.remove();
-    date.remove();
-
-    card.appendChild(contentWrapper);
-  });
-}
-
-/* =================================
-   EVENTS CAROUSEL (FIXED)
-================================= */
 function carouselEvent() {
   const widgetContent = document.querySelector(".widget_content.index_format");
   if (!widgetContent) return;
@@ -136,18 +111,26 @@ function carouselEvent() {
   const items = Array.from(widgetContent.querySelectorAll(".item"));
   widgetContent.querySelectorAll(".separator").forEach((sep) => sep.remove());
 
-  const container = document.createElement("div");
-  container.className = "carousel_container";
+  const carouselContainer = document.createElement("div");
+  carouselContainer.className = "carousel_container";
 
   const swiperRoot = document.createElement("div");
   swiperRoot.className = "swiper swiper-events";
 
-  const header = document.createElement("div");
-  header.className = "carousel_header";
+  /* ======================
+        HEADER
+  ====================== */
+
+  const headerRow = document.createElement("div");
+  headerRow.className = "carousel_header";
 
   const heading = document.createElement("div");
   heading.className = "carousel_heading";
-  heading.textContent = "Upcoming Events";
+  heading.innerHTML = `Upcoming Events`;
+
+  /* ======================
+     CONTROL CREATOR
+  ====================== */
 
   function createControls() {
     const controls = document.createElement("div");
@@ -158,7 +141,16 @@ function carouselEvent() {
 
     const nextBtn = document.createElement("button");
     nextBtn.className = "swiper-next";
-    nextBtn.innerHTML = `<svg width="22" height="22"><path d="M8 5L16 12L8 19" stroke="currentColor" stroke-width="2.5" fill="none"/></svg>`;
+    nextBtn.innerHTML = `
+      <svg width="22" height="22" viewBox="0 0 24 24">
+        <path d="M8 5L16 12L8 19"
+              stroke="currentColor"
+              stroke-width="2.5"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"/>
+      </svg>
+    `;
 
     controls.appendChild(pagination);
     controls.appendChild(nextBtn);
@@ -166,37 +158,51 @@ function carouselEvent() {
     return { controls, pagination, nextBtn };
   }
 
-  const top = createControls();
-  header.appendChild(heading);
-  header.appendChild(top.controls);
+  // TOP CONTROLS
+  const topControlsData = createControls();
+  headerRow.appendChild(heading);
+  headerRow.appendChild(topControlsData.controls);
 
-  const wrapper = document.createElement("div");
-  wrapper.className = "swiper-wrapper";
+  /* ======================
+        SLIDES
+  ====================== */
+
+  const swiperWrapper = document.createElement("div");
+  swiperWrapper.className = "swiper-wrapper";
 
   items.forEach((item) => {
     item.classList.add("swiper-slide");
-    wrapper.appendChild(item);
+    item.style.position = "relative";
+
+    swiperWrapper.appendChild(item);
   });
 
-  const bottom = createControls();
-  bottom.controls.classList.add("controls_group--bottom");
+  /* ======================
+     BOTTOM CONTROLS
+  ====================== */
 
-  swiperRoot.appendChild(header);
-  swiperRoot.appendChild(wrapper);
-  swiperRoot.appendChild(bottom.controls);
+  const bottomControlsData = createControls();
+  bottomControlsData.controls.classList.add("controls_group--bottom");
 
-  container.appendChild(swiperRoot);
-  widgetContent.parentNode.replaceChild(container, widgetContent);
+  swiperRoot.appendChild(headerRow);
+  swiperRoot.appendChild(swiperWrapper);
+  swiperRoot.appendChild(bottomControlsData.controls);
+
+  carouselContainer.appendChild(swiperRoot);
+  widgetContent.parentNode.replaceChild(carouselContainer, widgetContent);
+
+  /* ======================
+        INIT SWIPER
+  ====================== */
 
   const swiper = new Swiper(".swiper-events", {
     slidesPerView: 1.1,
     spaceBetween: 20,
     loop: true,
-    loopedSlides: items.length,
-    loopAdditionalSlides: items.length,
+    grabCursor: false,
 
     navigation: {
-      nextEl: [top.nextBtn, bottom.nextBtn],
+      nextEl: [topControlsData.nextBtn, bottomControlsData.nextBtn],
     },
 
     autoplay: {
@@ -212,11 +218,6 @@ function carouselEvent() {
 
     on: {
       init: function () {
-        
-        setTimeout(() => {
-          restructureEventCards();
-        }, 0);
-
         createPagination(this);
         updatePagination(this);
       },
@@ -226,11 +227,22 @@ function carouselEvent() {
     },
   });
 
+  /* ======================
+     CREATE PAGINATION
+  ====================== */
+
   function createPagination(swiperInstance) {
-    [top.pagination, bottom.pagination].forEach((pagination) => {
+    const paginations = [
+      topControlsData.pagination,
+      bottomControlsData.pagination,
+    ];
+
+    paginations.forEach((pagination) => {
       pagination.innerHTML = "";
 
-      for (let i = 0; i < items.length; i++) {
+      const totalSlides = items.length;
+
+      for (let i = 0; i < totalSlides; i++) {
         const dot = document.createElement("div");
         dot.className = "pagination_dot";
 
@@ -248,18 +260,32 @@ function carouselEvent() {
     });
   }
 
+  /* ======================
+     UPDATE PAGINATION (FIXED)
+  ====================== */
+
   function updatePagination(swiperInstance) {
-    swiperRoot.querySelectorAll(".custom_pagination").forEach((pagination) => {
-      pagination.querySelectorAll(".pagination_dot").forEach((dot, index) => {
+    const allPaginations = swiperRoot.querySelectorAll(".custom_pagination");
+
+    allPaginations.forEach((pagination) => {
+      const dots = pagination.querySelectorAll(".pagination_dot");
+
+      dots.forEach((dot, index) => {
         const progress = dot.querySelector(".pagination_progress");
 
+        // remove active
         dot.classList.remove("active");
+
+        // HARD RESET
         progress.style.transition = "none";
         progress.style.width = "0%";
+
+        // FORCE REFLOW (critical fix)
         progress.offsetWidth;
 
         if (index === swiperInstance.realIndex) {
           dot.classList.add("active");
+
           progress.style.transition = "width 3000ms linear";
           progress.style.width = "100%";
         }
@@ -268,13 +294,61 @@ function carouselEvent() {
   }
 }
 
-/* =================================
-   INIT
-================================= */
-document.addEventListener("DOMContentLoaded", () => {
+carouselEvent();
+
+
+// Card Update HTML JS
+function restructureEventCards() {
+  const cards = document.querySelectorAll(".swiper-events .item");
+
+  cards.forEach((card) => {
+    const title = card.querySelector(".title");
+    const desc = card.querySelector(".subtitle");
+    const date = card.querySelector(".readMore");
+
+    if (!title || !desc || !date) return;
+
+    // create wrapper
+    const contentWrapper = document.createElement("div");
+    contentWrapper.className = "card_content";
+
+    const dateEl = document.createElement("div");
+    dateEl.className = "card_date";
+    dateEl.textContent = date.textContent;
+
+    const titleEl = document.createElement("div");
+    titleEl.className = "card_title";
+    titleEl.innerHTML = title.innerHTML;
+
+    const descEl = document.createElement("div");
+    descEl.className = "card_desc";
+    descEl.textContent = desc.textContent;
+
+    // append in order
+    contentWrapper.appendChild(dateEl);
+    contentWrapper.appendChild(titleEl);
+    contentWrapper.appendChild(descEl);
+
+    // remove old elements
+    title.remove();
+    desc.remove();
+    date.remove();
+
+    // append new wrapper
+    card.appendChild(contentWrapper);
+  });
+}
+
+restructureEventCards() 
+
+
+const setupHomepage = () => {
   if (window.location.pathname !== "/") return;
 
   updateHeroSection();
   wrapSneakItems();
+  restructureEventCards();
   carouselEvent();
-});
+};
+
+document.addEventListener("DOMContentLoaded", setupHomepage);
