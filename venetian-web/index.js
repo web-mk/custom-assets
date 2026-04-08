@@ -27,3 +27,78 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 0);
   });
 });
+
+
+/* =================================
+   SNEAK PEEK GRID WRAP
+================================= */
+function wrapSneakItems() {
+  const container = document.querySelector(".sneak-peek-container");
+  if (!container) return;
+
+  const items = Array.from(container.querySelectorAll(".sneak-peek-item"));
+
+  if (!items.length) return;
+
+  const grid = document.createElement("div");
+  grid.className = "flexbox-grid";
+
+  container.insertBefore(grid, items[0]);
+  items.forEach((item) => grid.appendChild(item));
+
+  container.querySelectorAll(".clear").forEach((el) => el.remove());
+}
+
+wrapSneakItems();
+
+
+/* =================================
+   HERO SECTION
+================================= */
+function updateHeroSection() {
+  const slider = document.querySelector(".slider");
+  if (!slider) return;
+
+  slider.innerHTML = `
+    <div class="hero-inner">
+
+      <div class="hero-content-left">
+        <h1 class="hero-heading">
+          <span class="hero-title-teal">Chabad Of</span> The Venetian &amp; Sunset Islands
+        </h1>
+        <p class="hero-subtitle">A welcoming home for Jewish life, learning, and connection on the Venetian &amp; Sunset Islands.</p>
+        <a class="hero-cta" href="/about">Learn More About Us</a>
+        <div class="hero-body">
+          <p>
+            Chabad of the Venetian & Sunset Islands is a vibrant Jewish center offering meaningful experiences for individuals and families of all ages. From prayer and education to holidays, programs, and community gatherings, Chabad provides a warm, inclusive space where Jewish life is lived with purpose and joy
+            <span class="hero-body-more"> Guided by Rabbi Shmuel and Tzippy Mann, together with Rabbi Menachem and Mushka Rapoport, Chabad blends timeless Jewish values with a modern, approachable spirit. Every Jew is welcomed with respect — regardless of background, affiliation, or level of observance — creating a place where tradition feels relevant, alive, and deeply personal.</span>
+          </p>
+          <button class="hero-see-more-btn">... see more</button>
+        </div>
+      </div>
+
+      <div class="hero-image-block">
+        <img
+          class="hero-building-img"
+          src="/media/images/1365/nuVu13654947.png"
+          alt="Chabad of The Venetian & Sunset Islands"
+        />
+      </div>
+
+    </div>
+  `;
+
+  // See more toggle
+  const btn = slider.querySelector(".hero-see-more-btn");
+  const more = slider.querySelector(".hero-body-more");
+
+ if (btn && more) {
+    more.style.display = "none";
+    btn.addEventListener("click", () => {
+      more.style.display = "inline";
+      btn.style.display = "none";
+    });
+  }
+}
+
+updateHeroSection();
