@@ -49,8 +49,6 @@ function wrapSneakItems() {
   container.querySelectorAll(".clear").forEach((el) => el.remove());
 }
 
-wrapSneakItems();
-
 
 /* =================================
    HERO SECTION
@@ -92,7 +90,7 @@ function updateHeroSection() {
   const btn = slider.querySelector(".hero-see-more-btn");
   const more = slider.querySelector(".hero-body-more");
 
- if (btn && more) {
+  if (btn && more) {
     more.style.display = "none";
     btn.addEventListener("click", () => {
       more.style.display = "inline";
@@ -101,9 +99,62 @@ function updateHeroSection() {
   }
 }
 
-updateHeroSection();
+
+/* =================================
+   CARD RESTRUCTURE
+================================= */
+function restructureEventCards() {
+  const cards = document.querySelectorAll(".swiper-events .item");
+
+  cards.forEach((card) => {
+    // skip if already restructured
+    if (card.querySelector(".card_content")) return;
+
+    const title = card.querySelector(".title");
+    const desc = card.querySelector(".subtitle");
+    const date = card.querySelector(".readMore");
+
+    // bail only if ALL fields missing — card has nothing to show
+    if (!title && !desc && !date) return;
+
+    const contentWrapper = document.createElement("div");
+    contentWrapper.className = "card_content";
+
+    if (date) {
+      const dateEl = document.createElement("div");
+      dateEl.className = "card_date";
+      dateEl.textContent = date.textContent.trim();
+      contentWrapper.appendChild(dateEl);
+      date.remove();
+    }
+
+    if (title) {
+      const titleEl = document.createElement("div");
+      titleEl.className = "card_title";
+      titleEl.innerHTML = title.innerHTML;
+      contentWrapper.appendChild(titleEl);
+      title.remove();
+    }
+
+    if (desc) {
+      const descText = desc.textContent.trim();
+      if (descText) {
+        const descEl = document.createElement("div");
+        descEl.className = "card_desc";
+        descEl.textContent = descText;
+        contentWrapper.appendChild(descEl);
+      }
+      desc.remove();
+    }
+
+    card.appendChild(contentWrapper);
+  });
+}
 
 
+/* =================================
+   CAROUSEL
+================================= */
 function carouselEvent() {
   const widgetContent = document.querySelector(".widget_content.index_format");
   if (!widgetContent) return;
@@ -173,9 +224,11 @@ function carouselEvent() {
   items.forEach((item) => {
     item.classList.add("swiper-slide");
     item.style.position = "relative";
-
     swiperWrapper.appendChild(item);
   });
+
+  // ← restructure cards AFTER they're in the wrapper
+  restructureEventCards();
 
   /* ======================
      BOTTOM CONTROLS
@@ -199,6 +252,7 @@ function carouselEvent() {
     slidesPerView: 1.1,
     spaceBetween: 20,
     loop: true,
+    loopAdditionalSlides: 3, // ← keeps clones ready outside wrapper
     grabCursor: false,
 
     navigation: {
@@ -261,7 +315,7 @@ function carouselEvent() {
   }
 
   /* ======================
-     UPDATE PAGINATION (FIXED)
+     UPDATE PAGINATION
   ====================== */
 
   function updatePagination(swiperInstance) {
@@ -273,19 +327,17 @@ function carouselEvent() {
       dots.forEach((dot, index) => {
         const progress = dot.querySelector(".pagination_progress");
 
-        // remove active
         dot.classList.remove("active");
 
         // HARD RESET
         progress.style.transition = "none";
         progress.style.width = "0%";
 
-        // FORCE REFLOW (critical fix)
+        // FORCE REFLOW
         progress.offsetWidth;
 
         if (index === swiperInstance.realIndex) {
           dot.classList.add("active");
-
           progress.style.transition = "width 3000ms linear";
           progress.style.width = "100%";
         }
@@ -294,61 +346,16 @@ function carouselEvent() {
   }
 }
 
-carouselEvent();
 
-
-// Card Update HTML JS
-function restructureEventCards() {
-  const cards = document.querySelectorAll(".swiper-events .item");
-
-  cards.forEach((card) => {
-    const title = card.querySelector(".title");
-    const desc = card.querySelector(".subtitle");
-    const date = card.querySelector(".readMore");
-
-    if (!title || !desc || !date) return;
-
-    // create wrapper
-    const contentWrapper = document.createElement("div");
-    contentWrapper.className = "card_content";
-
-    const dateEl = document.createElement("div");
-    dateEl.className = "card_date";
-    dateEl.textContent = date.textContent;
-
-    const titleEl = document.createElement("div");
-    titleEl.className = "card_title";
-    titleEl.innerHTML = title.innerHTML;
-
-    const descEl = document.createElement("div");
-    descEl.className = "card_desc";
-    descEl.textContent = desc.textContent;
-
-    // append in order
-    contentWrapper.appendChild(dateEl);
-    contentWrapper.appendChild(titleEl);
-    contentWrapper.appendChild(descEl);
-
-    // remove old elements
-    title.remove();
-    desc.remove();
-    date.remove();
-
-    // append new wrapper
-    card.appendChild(contentWrapper);
-  });
-}
-
-restructureEventCards() 
-
-
+/* =================================
+   HOMEPAGE INIT
+================================= */
 const setupHomepage = () => {
   if (window.location.pathname !== "/") return;
 
   updateHeroSection();
   wrapSneakItems();
-  restructureEventCards();
-  carouselEvent();
+  carouselEvent(); // ← restructureEventCards runs inside this now
 };
 
 document.addEventListener("DOMContentLoaded", setupHomepage);
