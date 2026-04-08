@@ -104,9 +104,6 @@ function updateHeroSection() {
 updateHeroSection();
 
 
-/* =================================
-   SWIPER EVENTS CAROUSEL (FINAL - DUP CONTROLS)
-================================= */
 function carouselEvent() {
   const widgetContent = document.querySelector(".widget_content.index_format");
   if (!widgetContent) return;
@@ -129,7 +126,11 @@ function carouselEvent() {
 
   const heading = document.createElement("div");
   heading.className = "carousel_heading";
-  heading.innerHTML = `Upcoming Events`;
+  heading.innerHTML = `
+    Register for 
+    <span class="bold highlighted">Upcoming</span> 
+    <span class="bold">Programs</span>
+  `;
 
   /* ======================
      CONTROL CREATOR
@@ -165,6 +166,20 @@ function carouselEvent() {
   const topControlsData = createControls();
   headerRow.appendChild(heading);
   headerRow.appendChild(topControlsData.controls);
+
+  /* ======================
+        SLIDES
+  ====================== */
+
+  const swiperWrapper = document.createElement("div");
+  swiperWrapper.className = "swiper-wrapper";
+
+  items.forEach((item) => {
+    item.classList.add("swiper-slide");
+    item.style.position = "relative";
+
+    swiperWrapper.appendChild(item);
+  });
 
   /* ======================
      BOTTOM CONTROLS
@@ -284,3 +299,48 @@ function carouselEvent() {
 }
 
 carouselEvent();
+
+
+// Card Update HTML JS
+function restructureEventCards() {
+  const cards = document.querySelectorAll(".swiper-events .item");
+
+  cards.forEach((card) => {
+    const title = card.querySelector(".title");
+    const desc = card.querySelector(".subtitle");
+    const date = card.querySelector(".readMore");
+
+    if (!title || !desc || !date) return;
+
+    // create wrapper
+    const contentWrapper = document.createElement("div");
+    contentWrapper.className = "card_content";
+
+    const dateEl = document.createElement("div");
+    dateEl.className = "card_date";
+    dateEl.textContent = date.textContent;
+
+    const titleEl = document.createElement("div");
+    titleEl.className = "card_title";
+    titleEl.innerHTML = title.innerHTML;
+
+    const descEl = document.createElement("div");
+    descEl.className = "card_desc";
+    descEl.textContent = desc.textContent;
+
+    // append in order
+    contentWrapper.appendChild(dateEl);
+    contentWrapper.appendChild(titleEl);
+    contentWrapper.appendChild(descEl);
+
+    // remove old elements
+    title.remove();
+    desc.remove();
+    date.remove();
+
+    // append new wrapper
+    card.appendChild(contentWrapper);
+  });
+}
+
+restructureEventCards() 
