@@ -102,3 +102,185 @@ function updateHeroSection() {
 }
 
 updateHeroSection();
+
+
+/* =================================
+   SWIPER EVENTS CAROUSEL (FINAL - DUP CONTROLS)
+================================= */
+function carouselEvent() {
+  const widgetContent = document.querySelector(".widget_content.index_format");
+  if (!widgetContent) return;
+
+  const items = Array.from(widgetContent.querySelectorAll(".item"));
+  widgetContent.querySelectorAll(".separator").forEach((sep) => sep.remove());
+
+  const carouselContainer = document.createElement("div");
+  carouselContainer.className = "carousel_container";
+
+  const swiperRoot = document.createElement("div");
+  swiperRoot.className = "swiper swiper-events";
+
+  /* ======================
+        HEADER
+  ====================== */
+
+  const headerRow = document.createElement("div");
+  headerRow.className = "carousel_header";
+
+  const heading = document.createElement("div");
+  heading.className = "carousel_heading";
+  heading.innerHTML = `Upcoming Events`;
+
+  /* ======================
+     CONTROL CREATOR
+  ====================== */
+
+  function createControls() {
+    const controls = document.createElement("div");
+    controls.className = "controls_group";
+
+    const pagination = document.createElement("div");
+    pagination.className = "custom_pagination";
+
+    const nextBtn = document.createElement("button");
+    nextBtn.className = "swiper-next";
+    nextBtn.innerHTML = `
+      <svg width="22" height="22" viewBox="0 0 24 24">
+        <path d="M8 5L16 12L8 19"
+              stroke="currentColor"
+              stroke-width="2.5"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"/>
+      </svg>
+    `;
+
+    controls.appendChild(pagination);
+    controls.appendChild(nextBtn);
+
+    return { controls, pagination, nextBtn };
+  }
+
+  // TOP CONTROLS
+  const topControlsData = createControls();
+  headerRow.appendChild(heading);
+  headerRow.appendChild(topControlsData.controls);
+
+  /* ======================
+     BOTTOM CONTROLS
+  ====================== */
+
+  const bottomControlsData = createControls();
+  bottomControlsData.controls.classList.add("controls_group--bottom");
+
+  swiperRoot.appendChild(headerRow);
+  swiperRoot.appendChild(swiperWrapper);
+  swiperRoot.appendChild(bottomControlsData.controls);
+
+  carouselContainer.appendChild(swiperRoot);
+  widgetContent.parentNode.replaceChild(carouselContainer, widgetContent);
+
+  /* ======================
+        INIT SWIPER
+  ====================== */
+
+  const swiper = new Swiper(".swiper-events", {
+    slidesPerView: 1.1,
+    spaceBetween: 20,
+    loop: true,
+    grabCursor: false,
+
+    navigation: {
+      nextEl: [topControlsData.nextBtn, bottomControlsData.nextBtn],
+    },
+
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+
+    breakpoints: {
+      1399: { slidesPerView: 3 },
+      575: { slidesPerView: 2 },
+      480: { slidesPerView: 1.1, spaceBetween: 30 },
+    },
+
+    on: {
+      init: function () {
+        createPagination(this);
+        updatePagination(this);
+      },
+      slideChange: function () {
+        updatePagination(this);
+      },
+    },
+  });
+
+  /* ======================
+     CREATE PAGINATION
+  ====================== */
+
+  function createPagination(swiperInstance) {
+    const paginations = [
+      topControlsData.pagination,
+      bottomControlsData.pagination,
+    ];
+
+    paginations.forEach((pagination) => {
+      pagination.innerHTML = "";
+
+      const totalSlides = items.length;
+
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement("div");
+        dot.className = "pagination_dot";
+
+        const progress = document.createElement("div");
+        progress.className = "pagination_progress";
+
+        dot.appendChild(progress);
+
+        dot.addEventListener("click", () => {
+          swiperInstance.slideToLoop(i);
+        });
+
+        pagination.appendChild(dot);
+      }
+    });
+  }
+
+  /* ======================
+     UPDATE PAGINATION (FIXED)
+  ====================== */
+
+  function updatePagination(swiperInstance) {
+    const allPaginations = swiperRoot.querySelectorAll(".custom_pagination");
+
+    allPaginations.forEach((pagination) => {
+      const dots = pagination.querySelectorAll(".pagination_dot");
+
+      dots.forEach((dot, index) => {
+        const progress = dot.querySelector(".pagination_progress");
+
+        // remove active
+        dot.classList.remove("active");
+
+        // HARD RESET
+        progress.style.transition = "none";
+        progress.style.width = "0%";
+
+        // FORCE REFLOW (critical fix)
+        progress.offsetWidth;
+
+        if (index === swiperInstance.realIndex) {
+          dot.classList.add("active");
+
+          progress.style.transition = "width 3000ms linear";
+          progress.style.width = "100%";
+        }
+      });
+    });
+  }
+}
+
+carouselEvent();
