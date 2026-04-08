@@ -126,11 +126,7 @@ function carouselEvent() {
 
   const heading = document.createElement("div");
   heading.className = "carousel_heading";
-  heading.innerHTML = `
-    Register for 
-    <span class="bold highlighted">Upcoming</span> 
-    <span class="bold">Programs</span>
-  `;
+  heading.innerHTML = `Upcoming Events`;
 
   /* ======================
      CONTROL CREATOR
@@ -344,3 +340,16 @@ function restructureEventCards() {
 }
 
 restructureEventCards() 
+
+
+const setupHomepage = () => {
+  // Run ONLY on homepage
+  if (window.location.pathname !== "/") return;
+
+  updateHeroSection();
+  wrapSneakItems();
+  carouselEvent();
+  restructureEventCards();
+};
+
+document.addEventListener("DOMContentLoaded", setupHomepage);
