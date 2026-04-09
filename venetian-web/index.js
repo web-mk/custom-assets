@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
 /* =================================
    SNEAK PEEK GRID WRAP
 ================================= */
@@ -48,7 +47,6 @@ function wrapSneakItems() {
 
   container.querySelectorAll(".clear").forEach((el) => el.remove());
 }
-
 
 /* =================================
    HERO SECTION
@@ -98,7 +96,6 @@ function updateHeroSection() {
     });
   }
 }
-
 
 /* =================================
    CARD RESTRUCTURE
@@ -151,7 +148,6 @@ function restructureEventCards() {
   });
 }
 
-
 /* =================================
    CAROUSEL
 ================================= */
@@ -188,7 +184,7 @@ function carouselEvent() {
     controls.className = "controls_group";
 
     const pagination = document.createElement("div");
-    pagination.className = "custom_pagination";
+    pagination.className = "custom-pagination";
 
     const nextBtn = document.createElement("button");
     nextBtn.className = "swiper-next";
@@ -227,9 +223,6 @@ function carouselEvent() {
     swiperWrapper.appendChild(item);
   });
 
-  // ← restructure cards AFTER they're in the wrapper
-  restructureEventCards();
-
   /* ======================
      BOTTOM CONTROLS
   ====================== */
@@ -248,7 +241,7 @@ function carouselEvent() {
         INIT SWIPER
   ====================== */
 
-  const swiper = new Swiper(".swiper-events", {
+  new Swiper(".swiper-events", {
     slidesPerView: 1.1,
     spaceBetween: 20,
     loop: false,
@@ -256,6 +249,11 @@ function carouselEvent() {
 
     navigation: {
       nextEl: [topControlsData.nextBtn, bottomControlsData.nextBtn],
+    },
+
+    pagination: {
+      el: ".custom-pagination",
+      clickable: true,
     },
 
     autoplay: {
@@ -268,83 +266,8 @@ function carouselEvent() {
       575: { slidesPerView: 2 },
       480: { slidesPerView: 1.1, spaceBetween: 20 },
     },
-
-    on: {
-      init: function () {
-        createPagination(this);
-        updatePagination(this);
-      },
-      slideChange: function () {
-        updatePagination(this);
-      },
-    },
   });
-
-  /* ======================
-     CREATE PAGINATION
-  ====================== */
-
-  function createPagination(swiperInstance) {
-    const paginations = [
-      topControlsData.pagination,
-      bottomControlsData.pagination,
-    ];
-
-    paginations.forEach((pagination) => {
-      pagination.innerHTML = "";
-
-      const totalSlides = items.length;
-
-      for (let i = 0; i < totalSlides; i++) {
-        const dot = document.createElement("div");
-        dot.className = "pagination_dot";
-
-        const progress = document.createElement("div");
-        progress.className = "pagination_progress";
-
-        dot.appendChild(progress);
-
-        dot.addEventListener("click", () => {
-          swiperInstance.slideToLoop(i);
-        });
-
-        pagination.appendChild(dot);
-      }
-    });
-  }
-
-  /* ======================
-     UPDATE PAGINATION
-  ====================== */
-
-  function updatePagination(swiperInstance) {
-    const allPaginations = swiperRoot.querySelectorAll(".custom_pagination");
-
-    allPaginations.forEach((pagination) => {
-      const dots = pagination.querySelectorAll(".pagination_dot");
-
-      dots.forEach((dot, index) => {
-        const progress = dot.querySelector(".pagination_progress");
-
-        dot.classList.remove("active");
-
-        // HARD RESET
-        progress.style.transition = "none";
-        progress.style.width = "0%";
-
-        // FORCE REFLOW
-        progress.offsetWidth;
-
-        if (index === swiperInstance.realIndex) {
-          dot.classList.add("active");
-          progress.style.transition = "width 3000ms linear";
-          progress.style.width = "100%";
-        }
-      });
-    });
-  }
 }
-
 
 /* =================================
    HOMEPAGE INIT
