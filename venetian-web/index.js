@@ -328,15 +328,22 @@ function buildFeaturedPhotos() {
   const img3 = getItemHTML(2);
   const img4 = getItemHTML(3);
 
-  button.classList.add('featured_btn');
-  const buttonHTML = button.outerHTML;
+  // ✅ Clean button (no span, no readMore class)
+  const buttonText = button.textContent.trim();
+  const buttonLink = button.getAttribute('href') || '#';
+
+  const cleanButton = `
+    <a href="${buttonLink}" class="featured_btn">
+      ${buttonText}
+    </a>
+  `;
 
   const newHTML = `
     <div class="featured_section">
 
       <div class="featured_header">
         <h2 class="featured_heading">${headingText}</h2>
-        ${buttonHTML}
+        ${cleanButton}
       </div>
 
       <div class="featured_layout">
