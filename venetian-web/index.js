@@ -266,6 +266,43 @@ function initEventsCarousel() {
   });
 }
 
+
+function buildSupportSection() {
+  const section = document.querySelector('.hp-row .widget-4.message.custom');
+  if (!section) return;
+
+  const header = section.querySelector('.widget_header h5');
+  const content = section.querySelector('.widget_content .bottom_padding');
+  const button = section.querySelector('.readMore');
+
+  if (!header || !content || !button) return;
+
+  // Extract content
+  const title = header.innerText;
+  const description = content.innerText;
+  const buttonText = button.innerText;
+  const buttonLink = button.getAttribute('href') || '#';
+
+  // Create new structure
+  const newHTML = `
+    <div class="support_section">
+      <div class="support_left">
+        <p class="support_tagline">Your support helps Jewish life thrive.</p>
+        const formattedTitle = title.replace(/^(\w+)/, '<span class="highlight">$1</span>');
+        <h2 class="support_heading">${formattedTitle}</h2>
+        <a href="${buttonLink}" class="support_btn">${buttonText}</a>
+      </div>
+      <div class="support_right">
+        <p class="support_desc">${description}</p>
+      </div>
+    </div>
+  `;
+
+  // Replace existing content
+  const wrapper = section.querySelector('.wrapper');
+  wrapper.innerHTML = newHTML;
+}
+
 /* =================================
    HOMEPAGE INIT
 ================================= */
@@ -276,6 +313,7 @@ const setupHomepage = () => {
   wrapSneakItems();
   restructureEventCards();
   initEventsCarousel();
+  buildSupportSection();
 };
 
 document.addEventListener("DOMContentLoaded", setupHomepage);
