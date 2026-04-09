@@ -148,7 +148,6 @@ function restructureEventCards() {
   });
 }
 
-
 function carouselEvent() {
   const widgetContent = document.querySelector(".widget_content.index_format");
   if (!widgetContent) return;
@@ -176,29 +175,26 @@ function carouselEvent() {
   const controlsGroup = document.createElement("div");
   controlsGroup.className = "controls_group";
 
-  const prevBtn = document.createElement("button");
-  prevBtn.className = "swiper-prev";
-  prevBtn.innerHTML = `
-    <svg width="16" height="16" viewBox="0 0 16 16">
-      <path d="M16 9H3.83L8 13.18V16L0 8L8 0V2.82L3.83 7H16V9Z" fill="currentColor"/>
-    </svg>
-  `;
+  /* ✅ Pagination (NEW) */
+  const pagination = document.createElement("div");
+  pagination.className = "swiper-pagination";
 
+  /* ✅ Next Button (NEW) */
   const nextBtn = document.createElement("button");
-  nextBtn.className = "swiper-next";
+  nextBtn.className = "swiper-button-next";
   nextBtn.innerHTML = `
-    <svg width="16" height="16" viewBox="0 0 16 16" style="transform: rotate(180deg);">
-      <path d="M16 9H3.83L8 13.18V16L0 8L8 0V2.82L3.83 7H16V9Z" fill="currentColor"/>
+    <svg width="22" height="22" viewBox="0 0 24 24">
+      <path d="M8 5L16 12L8 19"
+            stroke="currentColor"
+            stroke-width="2.5"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"/>
     </svg>
   `;
 
-  const slideText = document.createElement("span");
-  slideText.className = "slide_text";
-  slideText.textContent = "Slide Next";
-
-  controlsGroup.appendChild(prevBtn);
+  controlsGroup.appendChild(pagination);
   controlsGroup.appendChild(nextBtn);
-  controlsGroup.appendChild(slideText);
 
   headerRow.appendChild(heading);
   headerRow.appendChild(controlsGroup);
@@ -243,8 +239,7 @@ function carouselEvent() {
 
   swiperRoot.appendChild(bottomControls);
 
-  const bottomPrevBtn = bottomControls.querySelector(".swiper-prev");
-  const bottomNextBtn = bottomControls.querySelector(".swiper-next");
+  const bottomNextBtn = bottomControls.querySelector(".swiper-button-next");
 
   carouselContainer.appendChild(swiperRoot);
   widgetContent.parentNode.replaceChild(carouselContainer, widgetContent);
@@ -258,14 +253,21 @@ function carouselEvent() {
     spaceBetween: 20,
     grabCursor: false,
     loop: true,
+
     navigation: {
       nextEl: [nextBtn, bottomNextBtn],
-      prevEl: [prevBtn, bottomPrevBtn],
     },
+
+    pagination: {
+      el: swiperRoot.querySelectorAll(".swiper-pagination"),
+      clickable: true,
+    },
+
     autoplay: {
       delay: 3000,
       disableOnInteraction: false,
     },
+
     breakpoints: {
       1399: { slidesPerView: 3 },
       575: { slidesPerView: 2 },
