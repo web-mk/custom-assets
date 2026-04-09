@@ -257,6 +257,7 @@ function carouselEvent() {
     slidesPerView: 1.1,
     spaceBetween: 20,
     grabCursor: false,
+    loop: true,
     navigation: {
       nextEl: [nextBtn, bottomNextBtn],
       prevEl: [prevBtn, bottomPrevBtn],
