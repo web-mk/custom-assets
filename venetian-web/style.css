@@ -1308,7 +1308,12 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   background-color: #064F6A;
   border-radius: 30px;
   padding: 10px 15px;
+  display: inline-block;
   color: #fff;
+}
+
+.message .wrapper .widget_content .readMore {
+  text-transform: capitalize;
 }
 
 .hp-row:nth-child(4) .support_right {

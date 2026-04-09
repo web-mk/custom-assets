@@ -277,18 +277,18 @@ function buildSupportSection() {
 
   if (!header || !content || !button) return;
 
-  // Extract content
   const title = header.innerText;
   const description = content.innerText;
   const buttonText = button.innerText;
   const buttonLink = button.getAttribute('href') || '#';
+
+  const formattedTitle = title.replace(/^(\w+)/, '<span class="highlight">$1</span>');
 
   // Create new structure
   const newHTML = `
     <div class="support_section">
       <div class="support_left">
         <p class="support_tagline">Your support helps Jewish life thrive.</p>
-        const formattedTitle = title.replace(/^(\w+)/, '<span class="highlight">$1</span>');
         <h2 class="support_heading">${formattedTitle}</h2>
         <a href="${buttonLink}" class="support_btn">${buttonText}</a>
       </div>
@@ -298,7 +298,6 @@ function buildSupportSection() {
     </div>
   `;
 
-  // Replace existing content
   const wrapper = section.querySelector('.wrapper');
   wrapper.innerHTML = newHTML;
 }
