@@ -244,7 +244,7 @@ function carouselEvent() {
   new Swiper(".swiper-events", {
     slidesPerView: 1.1,
     spaceBetween: 20,
-    loop: false,
+    loop: true,
     grabCursor: false,
 
     navigation: {
