@@ -1097,6 +1097,7 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   height: 400px;
   object-fit: cover;
   object-position: center;
+  border-radius: 0;
 }
 
 .hp-row:nth-child(3) .carousel_container .swiper-slide .card_content {
