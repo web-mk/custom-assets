@@ -820,7 +820,6 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   height: 100%;
   background: linear-gradient(180deg, #68C3A6 0%, rgba(104, 195, 166, 0) 76.5%);
   opacity: 0;
-  transition: 0.3s;
   z-index: 99;
 }
 
@@ -1294,13 +1293,14 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   letter-spacing: -0.01em;
   margin-bottom: 20px;
   color: #064F6A;
+  max-width: 650px;
 }
 
 .hp-row:nth-child(4) .support_heading .highlight {
   color: #fff;
 }
 
-.hp-row:nth-child(4) .support_btn {
+.hp-row:nth-child(4) .support_section .readMore {
   border: 0;
   font-size: 16px;
   font-weight: 400;
