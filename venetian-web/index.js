@@ -148,41 +148,36 @@ function restructureEventCards() {
   });
 }
 
-function carouselEvent() {
-  const widgetContent = document.querySelector(".widget_content.index_format");
-  if (!widgetContent) return;
+function initEventsCarousel() {
+  const widget = document.querySelector('.widget_content.index_format');
+  if (!widget) return;
 
-  const items = Array.from(widgetContent.querySelectorAll(".item"));
-  widgetContent.querySelectorAll(".separator").forEach((sep) => sep.remove());
+  const items = Array.from(widget.querySelectorAll('.item'));
+  if (!items.length) return;
 
-  const carouselContainer = document.createElement("div");
-  carouselContainer.className = "carousel_container";
-
-  const swiperRoot = document.createElement("div");
-  swiperRoot.className = "swiper swiper-events";
+  const container = document.createElement('div');
+  container.className = 'carousel_container';
 
   /* ======================
-        HEADER
+      HEADER
   ====================== */
 
-  const headerRow = document.createElement("div");
-  headerRow.className = "carousel_header";
+  const header = document.createElement('div');
+  header.className = 'carousel_header';
 
-  const heading = document.createElement("div");
-  heading.className = "carousel_heading";
-  heading.innerHTML = `Upcoming Events`;
+  const heading = document.createElement('div');
+  heading.className = 'carousel_heading';
+  heading.textContent = 'Upcoming Events';
 
-  const controlsGroup = document.createElement("div");
-  controlsGroup.className = "controls_group";
+  const controls = document.createElement('div');
+  controls.className = 'controls_group';
 
-  /* ✅ Pagination (NEW) */
-  const pagination = document.createElement("div");
-  pagination.className = "swiper-pagination";
+  const pagination = document.createElement('div');
+  pagination.className = 'swiper-pagination';
 
-  /* ✅ Next Button (NEW) */
-  const nextBtn = document.createElement("button");
-  nextBtn.className = "swiper-button-next";
-  nextBtn.innerHTML = `
+  const btnNext = document.createElement('button');
+  btnNext.className = 'swiper-button-next';
+  btnNext.innerHTML = `
     <svg width="22" height="22" viewBox="0 0 24 24">
       <path d="M8 5L16 12L8 19"
             stroke="currentColor"
@@ -193,74 +188,55 @@ function carouselEvent() {
     </svg>
   `;
 
-  controlsGroup.appendChild(pagination);
-  controlsGroup.appendChild(nextBtn);
+  controls.appendChild(pagination);
+  controls.appendChild(btnNext);
 
-  headerRow.appendChild(heading);
-  headerRow.appendChild(controlsGroup);
+  header.appendChild(heading);
+  header.appendChild(controls);
 
   /* ======================
-        SLIDES
+      SWIPER
   ====================== */
 
-  const swiperWrapper = document.createElement("div");
-  swiperWrapper.className = "swiper-wrapper";
+  const swiperContainer = document.createElement('div');
+  swiperContainer.className = 'swiper events-swiper';
 
-  items.forEach((item) => {
-    item.classList.add("swiper-slide");
-    item.style.position = "relative";
+  const swiperWrapper = document.createElement('div');
+  swiperWrapper.className = 'swiper-wrapper';
 
-    const arrowBox = document.createElement("div");
-    arrowBox.className = "card_arrow";
-    arrowBox.innerHTML = `
-      <svg width="18" height="18" viewBox="0 0 16 16">
-        <path d="M4 12L12 4M12 4H6M12 4V10"
-              stroke="currentColor"
-              stroke-width="2"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"/>
-      </svg>
-    `;
-
-    item.appendChild(arrowBox);
-    swiperWrapper.appendChild(item);
+  items.forEach(item => {
+    const slide = document.createElement('div');
+    slide.className = 'swiper-slide';
+    slide.appendChild(item);
+    swiperWrapper.appendChild(slide);
   });
 
-  swiperRoot.appendChild(headerRow);
-  swiperRoot.appendChild(swiperWrapper);
+  swiperContainer.appendChild(swiperWrapper);
+
+  container.appendChild(header);
+  container.appendChild(swiperContainer);
+
+  widget.innerHTML = '';
+  widget.appendChild(container);
 
   /* ======================
-     DUPLICATE CONTROLS BELOW
+      INIT SWIPER
   ====================== */
 
-  const bottomControls = controlsGroup.cloneNode(true);
-  bottomControls.classList.add("controls_group--bottom");
-
-  swiperRoot.appendChild(bottomControls);
-
-  const bottomNextBtn = bottomControls.querySelector(".swiper-button-next");
-
-  carouselContainer.appendChild(swiperRoot);
-  widgetContent.parentNode.replaceChild(carouselContainer, widgetContent);
-
-  /* ======================
-        INIT SWIPER
-  ====================== */
-
-  new Swiper(".swiper-events", {
-    slidesPerView: 1.1,
-    spaceBetween: 20,
-    grabCursor: false,
-    loop: true,
-
-    navigation: {
-      nextEl: [nextBtn, bottomNextBtn],
-    },
+  new Swiper('.events-swiper', {
+    slidesPerView: 1.15,
+    centeredSlides: true,
+    spaceBetween: 16,
+    grabCursor: true,
+    loop: false,
 
     pagination: {
-      el: swiperRoot.querySelectorAll(".swiper-pagination"),
+      el: pagination,
       clickable: true,
+    },
+
+    navigation: {
+      nextEl: btnNext,
     },
 
     autoplay: {
@@ -269,9 +245,16 @@ function carouselEvent() {
     },
 
     breakpoints: {
-      1399: { slidesPerView: 3 },
-      575: { slidesPerView: 2 },
-      480: { slidesPerView: 1.1, spaceBetween: 30 },
+      768: {
+        slidesPerView: 2.2,
+        centeredSlides: false,
+        spaceBetween: 20,
+      },
+      1024: {
+        slidesPerView: 3,
+        centeredSlides: false,
+        spaceBetween: 20,
+      },
     },
   });
 }
@@ -285,8 +268,8 @@ const setupHomepage = () => {
 
   updateHeroSection();
   wrapSneakItems();
-  restructureEventCards(); 
-  carouselEvent()
+  restructureEventCards();
+  initEventsCarousel();
 };
 
 document.addEventListener("DOMContentLoaded", setupHomepage);
