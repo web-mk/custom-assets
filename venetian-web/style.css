@@ -1338,6 +1338,87 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   display: none;
 }
 
+
+/* ============ Latest Photos Section ============ */
+.featured_section {
+  padding: 80px 0;
+}
+
+/* Header */
+.featured_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.featured_heading {
+  font-size: 35px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: #064F6A;
+}
+
+.featured_btn {
+  text-transform: none;
+  padding: 10px 15px;
+  border: 1px solid #064F6A;
+  color: #064F6A;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  border-radius: 50px;
+  letter-spacing: -0.01em;
+}
+
+/* Layout */
+.featured_layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 20px;
+}
+
+/* Left & Right big blocks */
+.left_big,
+.right_big {
+  height: 100%;
+}
+
+/* Middle stacked */
+.middle_stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+}
+
+.middle_stack .small {
+  flex: 1;
+}
+
+.featured_layout a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.featured_layout img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.featured_layout img {
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.latest_photos ul li:nth-child(n+5) {
+  display: none;
+}
+
 /* ==================================== */
 
 @media screen and (min-width: 1920px) {
@@ -2206,6 +2287,11 @@ body.sites-article #content {
 .dir_rtl .co_menu_item.multi_level .co_submenu_container.reversed a.item.hover,
 .dir_rtl .co_menu_item.multi_level .co_submenu_container.reversed a.item:hover {
   margin-right: 0;
+}
+
+.chabad_updates .widget_header.widget_header h5,
+[class*=widget-] .widget_header.widget_header h5 {
+  text-transform: none;
 }
 
 /* --------------------- */

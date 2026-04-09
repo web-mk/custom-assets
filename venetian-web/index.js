@@ -303,7 +303,65 @@ function buildSupportSection() {
   wrapper.innerHTML = newHTML;
 }
 
-document.addEventListener('DOMContentLoaded', buildSupportSection);
+
+function buildFeaturedPhotos() {
+  const section = document.querySelector('.hp-row .latest_photos.custom');
+  if (!section) return;
+
+  const wrapper = section.querySelector('.wrapper');
+  const header = section.querySelector('.widget_header h5');
+  const listItems = section.querySelectorAll('.widget_content ul li');
+  const button = section.querySelector('.readMore');
+
+  if (!wrapper || !header || !listItems.length || !button) return;
+
+  const headingText = header.innerText;
+
+  const items = Array.from(listItems).slice(0, 4);
+
+  const getItemHTML = (index) => {
+    return items[index]?.querySelector('a')?.outerHTML || '';
+  };
+
+  const img1 = getItemHTML(0);
+  const img2 = getItemHTML(1);
+  const img3 = getItemHTML(2);
+  const img4 = getItemHTML(3);
+
+  button.classList.add('featured_btn');
+  const buttonHTML = button.outerHTML;
+
+  const newHTML = `
+    <div class="featured_section">
+
+      <div class="featured_header">
+        <h2 class="featured_heading">${headingText}</h2>
+        ${buttonHTML}
+      </div>
+
+      <div class="featured_layout">
+
+        <div class="left_big">
+          ${img1}
+        </div>
+
+        <div class="middle_stack">
+          <div class="small">${img2}</div>
+          <div class="small">${img3}</div>
+        </div>
+
+        <div class="right_big">
+          ${img4}
+        </div>
+
+      </div>
+
+    </div>
+  `;
+
+  wrapper.innerHTML = newHTML;
+}
+
 /* =================================
    HOMEPAGE INIT
 ================================= */
@@ -315,6 +373,7 @@ const setupHomepage = () => {
   restructureEventCards();
   initEventsCarousel();
   buildSupportSection();
+  buildFeaturedPhotos()
 };
 
 document.addEventListener("DOMContentLoaded", setupHomepage);
