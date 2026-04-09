@@ -251,8 +251,7 @@ function carouselEvent() {
   const swiper = new Swiper(".swiper-events", {
     slidesPerView: 1.1,
     spaceBetween: 20,
-    loop: true,
-    loopAdditionalSlides: 3, // ← keeps clones ready outside wrapper
+    loop: false,
     grabCursor: false,
 
     navigation: {
@@ -267,7 +266,7 @@ function carouselEvent() {
     breakpoints: {
       1399: { slidesPerView: 3 },
       575: { slidesPerView: 2 },
-      480: { slidesPerView: 1.1, spaceBetween: 30 },
+      480: { slidesPerView: 1.1, spaceBetween: 20 },
     },
 
     on: {
@@ -355,7 +354,7 @@ const setupHomepage = () => {
 
   updateHeroSection();
   wrapSneakItems();
-  carouselEvent(); // ← restructureEventCards runs inside this now
+  carouselEvent();
 };
 
 document.addEventListener("DOMContentLoaded", setupHomepage);
