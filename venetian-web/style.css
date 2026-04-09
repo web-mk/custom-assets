@@ -634,7 +634,7 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   color: #064F6A;
   line-height: 1.4;
   letter-spacing: -0.01em;
-} 
+}
 
 .hero-inner .hero-image-block {
   flex: 1;
@@ -653,6 +653,7 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
 }
 
 @supports (background-blend-mode: multiply) {
+
   .hp-table .hp-row-first .promo_slider .slider .slides .slide_wrapper a,
   .hp-table .hp-row-first .promo_slider .slider .slides .slide_wrapper img {
     background-color: transparent !important;
@@ -767,15 +768,15 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
 
 .hp-row:nth-child(2)::before {
   content: "";
-    display: block;
-    background: #064F6A;
-    position: absolute;
-    width: 100vw;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    margin-left: -50vw;
-    z-index: -9;
+  display: block;
+  background: #064F6A;
+  position: absolute;
+  width: 100vw;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  margin-left: -50vw;
+  z-index: -9;
 }
 
 .sneak-peek-container {
@@ -859,7 +860,7 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
 .sneak-peek-container .sneak-peek-item:nth-child(8n+6) .sneak_peek .widget_content h6 a,
 .sneak-peek-container .sneak-peek-item:nth-child(8n+7) .sneak_peek .widget_content h6 a,
 .sneak-peek-container .sneak-peek-item:nth-child(8n+8) .sneak_peek .widget_content h6 a {
-    align-items: flex-start;
+  align-items: flex-start;
 }
 
 .sneak-peek-container .sneak_peek .widget_content h6:hover {
@@ -886,10 +887,10 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
 }
 
 @supports (mix-blend-mode:multiply) {
-    .sneak-peek-container .sneak_peek .thumbnail img {
-        will-change: auto;
-        mix-blend-mode: initial;
-    }
+  .sneak-peek-container .sneak_peek .thumbnail img {
+    will-change: auto;
+    mix-blend-mode: initial;
+  }
 }
 
 
@@ -1049,7 +1050,7 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   left: 0;
   height: 100%;
   width: 0%;
-  background: #0f5c6e; 
+  background: #0f5c6e;
   border-radius: inherit;
 }
 
@@ -1098,6 +1099,7 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   object-fit: cover;
   object-position: center;
   border-radius: 0;
+  border: 0;
 }
 
 .hp-row:nth-child(3) .carousel_container .swiper-slide .card_content {
@@ -1140,6 +1142,65 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   line-height: 1.4;
 }
 
+.controls_group .swiper-button-next,
+.controls_group .swiper-pagination {
+  position: static;
+}
+
+.controls_group .swiper-pagination {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.controls_group .swiper-pagination .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  margin: 0;
+  background-color: #ECECEC;
+  opacity: 1;
+}
+
+.controls_group .swiper-pagination .swiper-pagination-bullet-active {
+  width: 40px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.controls_group .swiper-pagination .swiper-pagination-bullet-active::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #0f5c5c;
+  width: 0%;
+  animation: fillProgress 3s linear forwards;
+}
+
+@keyframes fillProgress {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+.controls_group .swiper-button-next {
+  background: none;
+  border: 0;
+  padding: 0;
+  width: auto;
+  height: auto;
+  margin: 0;
+}
+
+.controls_group .swiper-button-next:after {
+  font-size: 14px;
+  margin: 0;
+}
+
 .controls_group--bottom {
   display: none;
   margin-top: 20px;
@@ -1161,20 +1222,6 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
     display: flex;
     justify-content: space-between;
   }
-}
-
-/* ================================
-   OPTIONAL: SMOOTHER FEEL
-================================ */
-
-/* smoother pill expansion */
-.pagination_dot.active {
-  transition: width 0.35s ease;
-}
-
-/* subtle fade on inactive */
-.pagination_dot:not(.active) {
-  opacity: 1;
 }
 
 .controls_group--bottom,
@@ -2282,9 +2329,3 @@ body.sites-article #content {
 }
 
 /* --------------------- */
-
-
-
-
-
- 

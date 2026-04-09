@@ -149,34 +149,34 @@ function restructureEventCards() {
 }
 
 function initEventsCarousel() {
-  const widget = document.querySelector('.widget_content.index_format');
+  const widget = document.querySelector(".widget_content.index_format");
   if (!widget) return;
 
-  const items = Array.from(widget.querySelectorAll('.item'));
+  const items = Array.from(widget.querySelectorAll(".item"));
   if (!items.length) return;
 
-  const container = document.createElement('div');
-  container.className = 'carousel_container';
+  const container = document.createElement("div");
+  container.className = "carousel_container";
 
   /* ======================
       HEADER
   ====================== */
 
-  const header = document.createElement('div');
-  header.className = 'carousel_header';
+  const header = document.createElement("div");
+  header.className = "carousel_header";
 
-  const heading = document.createElement('div');
-  heading.className = 'carousel_heading';
-  heading.textContent = 'Upcoming Events';
+  const heading = document.createElement("div");
+  heading.className = "carousel_heading";
+  heading.textContent = "Upcoming Events";
 
-  const controls = document.createElement('div');
-  controls.className = 'controls_group';
+  const controls = document.createElement("div");
+  controls.className = "controls_group";
 
-  const pagination = document.createElement('div');
-  pagination.className = 'swiper-pagination';
+  const pagination = document.createElement("div");
+  pagination.className = "swiper-pagination";
 
-  const btnNext = document.createElement('button');
-  btnNext.className = 'swiper-button-next';
+  const btnNext = document.createElement("button");
+  btnNext.className = "swiper-button-next";
   btnNext.innerHTML = `
     <svg width="22" height="22" viewBox="0 0 24 24">
       <path d="M8 5L16 12L8 19"
@@ -198,32 +198,39 @@ function initEventsCarousel() {
       SWIPER
   ====================== */
 
-  const swiperContainer = document.createElement('div');
-  swiperContainer.className = 'swiper events-swiper';
+  const swiperContainer = document.createElement("div");
+  swiperContainer.className = "swiper events-swiper";
 
-  const swiperWrapper = document.createElement('div');
-  swiperWrapper.className = 'swiper-wrapper';
+  const swiperWrapper = document.createElement("div");
+  swiperWrapper.className = "swiper-wrapper";
 
-  items.forEach(item => {
-    const slide = document.createElement('div');
-    slide.className = 'swiper-slide';
+  items.forEach((item) => {
+    const slide = document.createElement("div");
+    slide.className = "swiper-slide";
     slide.appendChild(item);
     swiperWrapper.appendChild(slide);
   });
 
   swiperContainer.appendChild(swiperWrapper);
 
+  const bottomControls = controls.cloneNode(true);
+  bottomControls.classList.add("controls_group--bottom");
+
+  const bottomPagination = bottomControls.querySelector(".swiper-pagination");
+  const bottomNextBtn = bottomControls.querySelector(".swiper-button-next");
+
   container.appendChild(header);
   container.appendChild(swiperContainer);
+  container.appendChild(bottomControls);
 
-  widget.innerHTML = '';
+  widget.innerHTML = "";
   widget.appendChild(container);
 
   /* ======================
       INIT SWIPER
   ====================== */
 
-  new Swiper('.events-swiper', {
+  new Swiper(".events-swiper", {
     slidesPerView: 1.15,
     centeredSlides: true,
     spaceBetween: 16,
@@ -231,12 +238,12 @@ function initEventsCarousel() {
     loop: false,
 
     pagination: {
-      el: pagination,
+      el: [pagination, bottomPagination],
       clickable: true,
     },
 
     navigation: {
-      nextEl: btnNext,
+      nextEl: [btnNext, bottomNextBtn],
     },
 
     autoplay: {
@@ -258,7 +265,6 @@ function initEventsCarousel() {
     },
   });
 }
-
 
 /* =================================
    HOMEPAGE INIT
