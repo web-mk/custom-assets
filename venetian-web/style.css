@@ -972,13 +972,6 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   border-radius: 20px;
 }
 
-.hp-row:nth-child(5) {
-  padding-block: 80px;
-  background-color: #f6f6f6;
-  border-radius: 0 0 20px 20px;
-}
-
-
 /* ================== Upcoming Events ==================  */
 
 .hp-row:nth-child(3) {
@@ -1340,8 +1333,13 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
 
 
 /* ============ Latest Photos Section ============ */
-.featured_section {
+.hp-row:nth-child(5) {
   padding: 80px 0;
+  background-color: #fff;
+}
+
+.hp-row:nth-child(5) .wrapper {
+  max-width: 100%;
 }
 
 /* Header */
