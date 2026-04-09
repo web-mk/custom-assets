@@ -149,7 +149,7 @@ function restructureEventCards() {
 }
 
 
-function initEventsCarousel() {
+(function () {
   const widget = document.querySelector('.widget_content.index_format');
   if (!widget) return;
 
@@ -158,10 +158,6 @@ function initEventsCarousel() {
 
   const container = document.createElement('div');
   container.className = 'carousel_container';
-
-  /* ======================
-      HEADER
-  ====================== */
 
   const header = document.createElement('div');
   header.className = 'carousel_header';
@@ -173,9 +169,11 @@ function initEventsCarousel() {
   const controls = document.createElement('div');
   controls.className = 'controls_group';
 
+  /* Pagination */
   const pagination = document.createElement('div');
   pagination.className = 'swiper-pagination';
 
+  /* Next Button */
   const btnNext = document.createElement('button');
   btnNext.className = 'swiper-button-next';
   btnNext.innerHTML = `
@@ -213,6 +211,10 @@ function initEventsCarousel() {
   });
 
   swiperContainer.appendChild(swiperWrapper);
+
+  /* ======================
+      APPEND ALL
+  ====================== */
 
   container.appendChild(header);
   container.appendChild(swiperContainer);
@@ -258,7 +260,8 @@ function initEventsCarousel() {
       },
     },
   });
-}
+})();
+
 
 /* =================================
    HOMEPAGE INIT
@@ -268,8 +271,7 @@ const setupHomepage = () => {
 
   updateHeroSection();
   wrapSneakItems();
-  restructureEventCards();
-  initEventsCarousel();
+  restructureEventCards(); 
 };
 
 document.addEventListener("DOMContentLoaded", setupHomepage);
