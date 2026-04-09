@@ -1343,14 +1343,14 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
 }
 
 /* Header */
-.featured_header {
+.hp-row:nth-child(5) .featured_header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 40px;
 }
 
-.featured_heading {
+.hp-row:nth-child(5) .featured_heading {
   font-size: 35px;
   font-weight: 400;
   line-height: 1.1;
@@ -1358,7 +1358,7 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   color: #064F6A;
 }
 
-.featured_btn {
+.hp-row:nth-child(5) .featured_btn {
   text-transform: none;
   padding: 10px 15px;
   border: 1px solid #064F6A;
@@ -1371,49 +1371,61 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
 }
 
 /* Layout */
-.featured_layout {
+.hp-row:nth-child(5) .featured_layout {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   gap: 20px;
 }
 
 /* Left & Right big blocks */
-.left_big,
-.right_big {
+.hp-row:nth-child(5) .left_big,
+.hp-row:nth-child(5) .right_big {
   height: 100%;
 }
 
-/* Middle stacked */
-.middle_stack {
+.hp-row:nth-child(5) .right_big img,
+.hp-row:nth-child(5) .left_big img {
+  height: 510px !important;
+}
+
+.hp-row:nth-child(5) .middle_stack {
   display: flex;
   flex-direction: column;
   gap: 20px;
   height: 100%;
 }
 
-.middle_stack .small {
+.hp-row:nth-child(5) .middle_stack .small {
   flex: 1;
 }
 
-.featured_layout a {
+.hp-row:nth-child(5) .middle_stack .small:first-child img {
+  height: 280px !important;
+}
+
+.hp-row:nth-child(5) .middle_stack .small:last-child img {
+  height: 206px !important;
+}
+
+.hp-row:nth-child(5) .featured_layout a {
   display: block;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
 
-.featured_layout img {
+.hp-row:nth-child(5) .featured_layout img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.featured_layout img {
+.hp-row:nth-child(5) .featured_layout img {
   background-size: cover !important;
   background-position: center !important;
 }
 
-.latest_photos ul li:nth-child(n+5) {
+.hp-row:nth-child(5) .latest_photos ul li:nth-child(n+5) {
   display: none;
 }
 
