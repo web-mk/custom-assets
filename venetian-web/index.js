@@ -101,7 +101,7 @@ function updateHeroSection() {
    CARD RESTRUCTURE
 ================================= */
 function restructureEventCards() {
-  const cards = document.querySelectorAll(".swiper-events .item");
+  const cards = document.querySelectorAll(".widget_content.index_format .item");
 
   cards.forEach((card) => {
     // skip if already restructured
@@ -148,10 +148,117 @@ function restructureEventCards() {
   });
 }
 
-/* =================================
-   CAROUSEL
-================================= */
 
+function initEventsCarousel() {
+  const widget = document.querySelector('.widget_content.index_format');
+  if (!widget) return;
+
+  const items = Array.from(widget.querySelectorAll('.item'));
+  if (!items.length) return;
+
+  const container = document.createElement('div');
+  container.className = 'carousel_container';
+
+  /* ======================
+      HEADER
+  ====================== */
+
+  const header = document.createElement('div');
+  header.className = 'carousel_header';
+
+  const heading = document.createElement('div');
+  heading.className = 'carousel_heading';
+  heading.textContent = 'Upcoming Events';
+
+  const controls = document.createElement('div');
+  controls.className = 'controls_group';
+
+  const pagination = document.createElement('div');
+  pagination.className = 'swiper-pagination';
+
+  const btnNext = document.createElement('button');
+  btnNext.className = 'swiper-button-next';
+  btnNext.innerHTML = `
+    <svg width="22" height="22" viewBox="0 0 24 24">
+      <path d="M8 5L16 12L8 19"
+            stroke="currentColor"
+            stroke-width="2.5"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"/>
+    </svg>
+  `;
+
+  controls.appendChild(pagination);
+  controls.appendChild(btnNext);
+
+  header.appendChild(heading);
+  header.appendChild(controls);
+
+  /* ======================
+      SWIPER
+  ====================== */
+
+  const swiperContainer = document.createElement('div');
+  swiperContainer.className = 'swiper events-swiper';
+
+  const swiperWrapper = document.createElement('div');
+  swiperWrapper.className = 'swiper-wrapper';
+
+  items.forEach(item => {
+    const slide = document.createElement('div');
+    slide.className = 'swiper-slide';
+    slide.appendChild(item);
+    swiperWrapper.appendChild(slide);
+  });
+
+  swiperContainer.appendChild(swiperWrapper);
+
+  container.appendChild(header);
+  container.appendChild(swiperContainer);
+
+  widget.innerHTML = '';
+  widget.appendChild(container);
+
+  /* ======================
+      INIT SWIPER
+  ====================== */
+
+  new Swiper('.events-swiper', {
+    slidesPerView: 1.15,
+    centeredSlides: true,
+    spaceBetween: 16,
+    grabCursor: true,
+    loop: true,
+
+    pagination: {
+      el: pagination,
+      clickable: true,
+    },
+
+    navigation: {
+      nextEl: btnNext,
+    },
+
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+
+    breakpoints: {
+      768: {
+        slidesPerView: 2.2,
+        centeredSlides: false,
+        spaceBetween: 20,
+      },
+      1024: {
+        slidesPerView: 3,
+        centeredSlides: false,
+        spaceBetween: 20,
+      },
+    },
+  });
+}
 
 /* =================================
    HOMEPAGE INIT
@@ -161,7 +268,8 @@ const setupHomepage = () => {
 
   updateHeroSection();
   wrapSneakItems();
-  restructureEventCards(); 
+  restructureEventCards();
+  initEventsCarousel();
 };
 
 document.addEventListener("DOMContentLoaded", setupHomepage);

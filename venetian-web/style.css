@@ -985,18 +985,18 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   padding-block: 120px;
 }
 
-.carousel_container {
+.hp-row:nth-child(3) .carousel_container {
   width: 100%;
 }
 
-.carousel_header {
+.hp-row:nth-child(3) .carousel_header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 40px;
 }
 
-.carousel_heading {
+.hp-row:nth-child(3) .carousel_heading {
   font-size: 35px;
   line-height: 1.1;
   color: #064F6A;
@@ -1007,7 +1007,7 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
 /* ================================
    CONTROLS
 ================================ */
-.controls_group {
+.hp-row:nth-child(3) .controls_group {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -1016,14 +1016,14 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
 /* ================================
    PAGINATION (DOTS + PILL)
 ================================ */
-.custom_pagination {
+.hp-row:nth-child(3) .custom_pagination {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
 /* default dots */
-.pagination_dot {
+.hp-row:nth-child(3) .pagination_dot {
   width: 10px;
   height: 10px;
   background: #ECECEC;
@@ -1036,27 +1036,23 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
 }
 
 /* ACTIVE = pill */
-.pagination_dot.active {
+.hp-row:nth-child(3) .pagination_dot.active {
   width: 40px;
   height: 10px;
   border-radius: 20px;
   background: #ECECEC;
 }
 
-/* progress fill */
-.pagination_progress {
+.hp-row:nth-child(3) .pagination_progress {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 0%;
-  background: #0f5c6e; /* teal */
+  background: #0f5c6e; 
   border-radius: inherit;
 }
 
-/* ================================
-   NEXT ARROW BUTTON
-================================ */
 .swiper-next {
   border: none;
   background: transparent;
@@ -1072,14 +1068,30 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
    CARD
 ================================ */
 
-/* .hp-row:nth-child(3) .carousel_container .swiper {
+.hp-row:nth-child(3) .carousel_container .swiper {
   overflow: visible;
 }
 
 .hp-row:nth-child(3) .carousel_container .swiper-slide {
   position: relative;
-} */
-/* 
+}
+
+.hp-row:nth-child(3) .carousel_container .swiper-slide .item {
+  margin: 0;
+  padding: 0;
+  background: none;
+  width: 100%;
+  min-height: 400px;
+}
+
+.hp-row:nth-child(3) .carousel_container .swiper-slide .icon {
+  border-radius: 0;
+  width: 100%;
+  position: static;
+  transform: none;
+  height: 100%;
+}
+
 .hp-row:nth-child(3) .carousel_container .swiper-slide .icon img {
   width: 100%;
   height: 400px;
@@ -1125,7 +1137,7 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   font-size: 14px;
   letter-spacing: -0.01em;
   line-height: 1.4;
-} */
+}
 
 .controls_group--bottom {
   display: none;
