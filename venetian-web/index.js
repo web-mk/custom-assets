@@ -271,26 +271,27 @@ function buildSupportSection() {
   const section = document.querySelector('.hp-row .widget-4.message.custom');
   if (!section) return;
 
-  const header = section.querySelector('.widget_header h5');
   const content = section.querySelector('.widget_content .bottom_padding');
   const button = section.querySelector('.readMore');
 
-  if (!header || !content || !button) return;
+  if (!content || !button) return;
 
-  const title = header.innerText;
   const description = content.innerText;
-  const buttonText = button.innerText;
-  const buttonLink = button.getAttribute('href') || '#';
 
-  const formattedTitle = title.replace(/^(\w+)/, '<span class="highlight">$1</span>');
+  const buttonHTML = button.outerHTML;
 
-  // Create new structure
+  const customHeading = `
+    <h2 class="support_heading">
+      <span class="highlight">Support</span> Chabad Of Venetian & Sunset Islands
+    </h2>
+  `;
+
   const newHTML = `
     <div class="support_section">
       <div class="support_left">
         <p class="support_tagline">Your support helps Jewish life thrive.</p>
-        <h2 class="support_heading">${formattedTitle}</h2>
-        <a href="${buttonLink}" class="support_btn">${buttonText}</a>
+        ${customHeading}
+        ${buttonHTML}
       </div>
       <div class="support_right">
         <p class="support_desc">${description}</p>
@@ -302,6 +303,7 @@ function buildSupportSection() {
   wrapper.innerHTML = newHTML;
 }
 
+document.addEventListener('DOMContentLoaded', buildSupportSection);
 /* =================================
    HOMEPAGE INIT
 ================================= */
