@@ -1111,7 +1111,7 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
 .hp-row:nth-child(3) .carousel_container .item:hover .card_content {
   background-color: #F4CDCB;
   max-width: 80%;
-  min-height: 340px;
+  min-height: 200px;
 }
 
 .hp-row:nth-child(3) .carousel_container .swiper-slide .card_title {
