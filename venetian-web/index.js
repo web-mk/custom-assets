@@ -231,9 +231,9 @@ function initEventsCarousel() {
   ====================== */
 
   new Swiper(".events-swiper", {
-    slidesPerView: 1.15,
+    slidesPerView: 1,
     centeredSlides: true,
-    spaceBetween: 16,
+    spaceBetween: 10,
     grabCursor: true,
     loop: false,
 
@@ -257,7 +257,7 @@ function initEventsCarousel() {
         centeredSlides: false,
         spaceBetween: 20,
       },
-      1024: {
+      1025: {
         slidesPerView: 3,
         centeredSlides: false,
         spaceBetween: 20,
