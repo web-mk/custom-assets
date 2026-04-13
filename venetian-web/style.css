@@ -952,9 +952,12 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   font-weight: 300;
 }
 
+
+.hp-row:nth-child(6).hp_subscribe .wrapper #formContainer fieldset input#Email:focus,
 .hp-row:nth-child(6).hp_subscribe .wrapper #formContainer fieldset input:focus {
   background-color: #fff;
   border-color: #fff;
+  outline: none;
 }
 
 .hp-row:nth-child(6).hp_subscribe .wrapper #formContainer fieldset input[type=submit] {
