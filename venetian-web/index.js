@@ -384,7 +384,6 @@ function injectBreadcrumb() {
     <div class="custom-breadcrumb">
       <a href="/">Home</a>
       <span> / </span>
-      <span>Youth And Teens</span>
     </div>
   `;
 
