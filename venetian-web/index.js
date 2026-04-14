@@ -328,7 +328,6 @@ function buildFeaturedPhotos() {
   const img3 = getItemHTML(2);
   const img4 = getItemHTML(3);
 
-  // ✅ Clean button (no span, no readMore class)
   const buttonText = button.textContent.trim();
   const buttonLink = button.getAttribute('href') || '#';
 
@@ -362,6 +361,8 @@ function buildFeaturedPhotos() {
         </div>
 
       </div>
+
+      ${cleanButton}
 
     </div>
   `;

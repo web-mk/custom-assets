@@ -614,6 +614,10 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   display: inline-block;
 }
 
+.hero-inner .hero-content-left .hero-cta:hover {
+  background-color: #49B693;
+}
+
 .hero-inner .hero-content-left .hero-body {
   margin-top: 60px;
 }
@@ -635,6 +639,7 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   color: #064F6A;
   line-height: 1.4;
   letter-spacing: -0.01em;
+  cursor: pointer;
 }
 
 .hero-inner .hero-image-block {
@@ -971,6 +976,11 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   background-color: #064F6A;
   border: 0;
   font-family: "Galderglynn Esquire", sans-serif !important;
+  transition: 0s;
+}
+
+.hp-row:nth-child(6).hp_subscribe .wrapper #formContainer fieldset input[type=submit]:hover {
+  background-color: #053D52;
 }
 
 /* ================== Upcoming Events ==================  */
@@ -1297,6 +1307,10 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   color: #fff;
 }
 
+.hp-row:nth-child(4) .support_section .readMore:hover {
+  background-color: #053D52;
+}
+
 .message .wrapper .widget_content .readMore {
   text-transform: capitalize;
 }
@@ -1361,6 +1375,11 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   line-height: 1.4;
   border-radius: 50px;
   letter-spacing: -0.01em;
+}
+
+.hp-row:nth-child(5) .featured_btn:hover {
+  color: #fff;
+  background-color: #064F6A;
 }
 
 /* Layout */
@@ -1528,6 +1547,16 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
     font-size: 20px;
     padding: 13px 20px;
   }
+
+  body.cco_body #tabContentMain .co_menu_item.donate_link.hover span.parent div a {
+    font-size: 20px !important;
+    padding: 13px 20px;
+    background-color: #49B693;
+}
+
+body.cco_body #tabContentMain .co_menu_item span.parent:hover a {
+  font-size: 20px !important;
+}
 
   .hero-inner .hero-content-left {
     max-width: 790px;
@@ -2172,6 +2201,12 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   #footer .footer_text .footer3 span,
   #footer .footer-address {
     font-size: 16px;
+  }
+
+  #footer .footer-address {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
