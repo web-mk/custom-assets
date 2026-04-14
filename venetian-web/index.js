@@ -370,6 +370,29 @@ function buildFeaturedPhotos() {
   wrapper.innerHTML = newHTML;
 }
 
+
+function injectBreadcrumb() {
+  const header = document.querySelector('.article-header');
+  const title = header?.querySelector('.article-header__title');
+
+  if (!header || !title) return;
+
+  // Prevent duplicate injection
+  if (header.querySelector('.custom-breadcrumb')) return;
+
+  const breadcrumbHTML = `
+    <div class="custom-breadcrumb">
+      <a href="/">Home</a>
+      <span> / </span>
+      <span>Youth And Teens</span>
+    </div>
+  `;
+
+  title.insertAdjacentHTML('beforebegin', breadcrumbHTML);
+}
+
+document.addEventListener('DOMContentLoaded', injectBreadcrumb);
+
 /* =================================
    HOMEPAGE INIT
 ================================= */
@@ -381,7 +404,8 @@ const setupHomepage = () => {
   restructureEventCards();
   initEventsCarousel();
   buildSupportSection();
-  buildFeaturedPhotos()
+  buildFeaturedPhotos();
+  injectBreadcrumb() 
 };
 
 document.addEventListener("DOMContentLoaded", setupHomepage);
