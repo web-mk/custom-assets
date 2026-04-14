@@ -362,7 +362,7 @@ function buildFeaturedPhotos() {
 
       </div>
 
-      ${cleanButton}
+      ${cleanButton} <!-- 👈 duplicated button here -->
 
     </div>
   `;
