@@ -28,6 +28,17 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+
+const addCredit = () => {
+  const credit = document.createElement('span');
+  credit.id = 'd-and-d';
+  credit.style.display = 'block';
+  credit.innerHTML = 'Design+Development: <a href="mailto:mk@webmk.co">WebMK</a>';
+  document.querySelector('.footer_powered').appendChild(credit);
+}
+
+document.addEventListener('DOMContentLoaded', addCredit);
+
 /* =================================
    HERO + CYCLE CAPTION UPDATE (FOR .slider)
 ================================= */
@@ -338,17 +349,17 @@ function carouselEvent() {
 function addProgramLogos() {
   const logoMap = {
     "Hebrew School":
-      "https://webmk.centers.chabad.org/media/images/1357/pxRZ13572238.png",
+      "/media/images/1357/pxRZ13572238.png",
     "Gan Accademia":
-      "https://webmk.centers.chabad.org/media/images/1357/BGYP13572237.png",
+      "/media/images/1357/BGYP13572237.png",
     "Young Professionals":
-      "https://webmk.centers.chabad.org/media/images/1357/ptvM13572241.png",
+      "/media/images/1357/ptvM13572241.png",
     "Shabbat & Holidays":
-      "https://webmk.centers.chabad.org/media/images/1357/JUop13572239.png",
-    "Women’s Circle":
-      "https://webmk.centers.chabad.org/media/images/1357/JiQn13572240.png",
+      "/media/images/1357/JUop13572239.png",
+    "Womenâ€™s Circle":
+      "/media/images/1357/JiQn13572240.png",
     "Adult Education":
-      "https://webmk.centers.chabad.org/media/images/1357/awQn13572236.png",
+      "/media/images/1357/awQn13572236.png",
   };
 
   const cards = document.querySelectorAll(".sneak-peek-item");
