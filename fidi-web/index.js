@@ -1,5 +1,5 @@
 // Menu hamburger JS
-document.addEventListener("DOMContentLoaded", function () {
+const menuHamburger = () => {
   const menuBtn = document.querySelector(".cs-mobile-menu-open");
   if (!menuBtn) return;
 
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }, 0);
   });
-});
+};
 
 
 const addCredit = () => {
@@ -36,8 +36,6 @@ const addCredit = () => {
   credit.innerHTML = 'Design+Development: <a href="mailto:mk@webmk.co">WebMK</a>';
   document.querySelector('.footer_powered').appendChild(credit);
 }
-
-document.addEventListener('DOMContentLoaded', addCredit);
 
 /* =================================
    HERO + CYCLE CAPTION UPDATE (FOR .slider)
@@ -356,7 +354,7 @@ function addProgramLogos() {
       "/media/images/1357/ptvM13572241.png",
     "Shabbat & Holidays":
       "/media/images/1357/JUop13572239.png",
-    "Womenâ€™s Circle":
+    "Women’s Circle":
       "/media/images/1357/JiQn13572240.png",
     "Adult Education":
       "/media/images/1357/awQn13572236.png",
@@ -719,7 +717,6 @@ function updateAboutHeading() {
   heading.dataset.updated = "true";
 }
 
-document.addEventListener("DOMContentLoaded", updateAboutHeading);
 
 /* =================================
    HOMEPAGE INITIALIZER
@@ -740,13 +737,11 @@ const setupHomepage = () => {
   initLatestPhotosSwiper();
 };
 
-document.addEventListener("DOMContentLoaded", setupHomepage);
-
 /* =================================
    Master Content Wrapper Inner
 ================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
+const masterContentWrapperInner = () => {
   const wrapper = document.querySelector(".master-content-wrapper");
   if (!wrapper) return;
 
@@ -774,4 +769,17 @@ document.addEventListener("DOMContentLoaded", function () {
   wrapper.appendChild(imageDiv);
 
   wrapper.classList.add("custom-section");
-});
+};
+
+function init() {
+  menuHamburger();
+  addCredit();
+  updateAboutHeading();
+  setupHomepage();
+  masterContentWrapperInner();
+}
+if (document.readyState !== 'loading'){
+  init();
+} else {
+  document.addEventListener('DOMContentLoaded', init);
+}
