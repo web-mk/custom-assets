@@ -4,6 +4,186 @@ html {
   overflow-x: hidden;
 }
 
+/* CSS from may 8, 2026 // Starts  */
+
+* {
+  letter-spacing: -0.02em;
+  font-family: "Associate Sans", sans-serif !important;
+}
+
+.co_content_container {
+  background-color: #fff;
+  border-radius: 20px;
+}
+
+button {
+  font-weight: 500 !important;
+  text-transform: capitalize !important;
+}
+
+p>span {
+  color: #83929A;
+}
+
+p>span a {
+  color: #42515A;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500 !important;
+}
+
+#BodyContainer #co_content_container>.clearfix>.g960:not(.categorized) .article-header .breadcrumbs {
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.breadcrumbs__crumb {
+  font-size: 16px !important;
+  padding: 0 !important;
+}
+
+label {
+  font-weight: 300 !important;
+}
+
+.form-dropdown,
+.form-textbox {
+  font-weight: 300 !important;
+  color: #42515A !important;
+  padding: 12px !important;
+  border-radius: 6px !important;
+  border: 1px solid #83929A !important;
+  box-shadow: none !important;
+  outline: none !important;
+  height: auto !important;
+}
+
+.form-textbox::placeholder {
+  font-weight: 300 !important;
+  color: #42515A !important;
+}
+
+.form-textbox:focus {
+  border: 1px solid #42515A !important;
+}
+
+.co_body .content .form-all .dir_ltr .form-sub-label-container {
+  margin-bottom: 16px;
+}
+
+table th {
+  font-weight: 400 !important;
+}
+
+.co_body .content .form-all .form-submit-button {
+  font-weight: 400 !important;
+  background-color: #42515A;
+  padding: 10px 15px;
+  border-radius: 10px;
+  letter-spacing: -0.03em;
+  transition: 0.2s;
+
+  &:hover {
+    background-color: #BC9C78;
+  }
+}
+
+.co_local_menu .section_title a {
+  font-weight: 500;
+}
+
+.dir_ltr .co_submenu_container.reversed table {
+  border-left: 0;
+}
+
+.dir_ltr .co_menu_item.multi_level .co_submenu_container .menu_child.selected, .dir_rtl .co_menu_item.multi_level .co_submenu_container.reversed .menu_child.selected {
+  border-left: 0 !important;
+  border-radius: 12px;
+}
+
+@media (min-width:1200px) {
+
+  body.cco_body #tabContentMain .co_menu_item.multi_level .co_submenu_container a.item:not(.empty) {
+    position: relative;
+  }
+
+  body.cco_body #tabContentMain .co_menu_item.multi_level .co_submenu_container a.item:not(.empty)::after {
+    content: "";
+    background-image: url(https://webmk.centers.chabad.org/media/images/1357/EWEI13575838.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 10px;
+    height: 5px;
+    margin-left: 8px;
+    transform: rotate(-90deg);
+    display: block;
+  }
+
+  body.cco_body #tabContentMain .co_menu_item.multi_level .co_submenu_container a.item:not(.empty) .arrow {
+    display: none;
+  }
+
+  body.cco_body #tabContentMain .co_menu_item.multi_level .co_submenu_container {
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 0px 10px 1px;
+  }
+
+  .co_menu_container .co_menu_item.multi_level .co_submenu_container .wrapper .column_wrapper {
+    height: auto !important;
+    padding: 8px;
+  }
+
+  body.cco_body #tabContentMain .co_menu_item.multi_level .co_submenu_container {
+    top: -30px !important;
+    position: relative;
+  }
+
+  body.cco_body #tabContentMain .co_menu_item.multi_level .co_submenu_container::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    height: 10px;
+  }
+
+  .dir_ltr .co_menu_item.multi_level .co_submenu_container.reversed .menu_child,
+  .dir_rtl .co_menu_item.multi_level .co_submenu_container .menu_child {
+    border-top: 0 !important;
+    border-right: 0 !important;
+    border-left: 0 !important;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 0px 10px 1px;
+    height: auto;
+  }
+
+  body.cco_body #tabContentMain .co_menu_item.multi_level .co_submenu_container.reversed .menu_child .co_column:empty {
+    width: auto !important;
+  }
+
+  .dir_ltr .co_menu_item.multi_level .co_submenu_container.reversed .menu_child.selected {
+    width: 100% !important;
+  }
+
+  body.coo_body #tabContentMain .co_submenu_container .co_column .child_item span,
+  body.cco_body #tabContentMain .co_submenu_container .co_column a {
+    padding-block: 8px;
+  }
+
+  .co_menu_item .co_submenu_container .menu_child .co_column {
+    width: 100%;
+  }
+}
+
+/* CSS from may 8, 2026 // Ends  */
+
 .co_body .content .form-all,
 .co_body .content p,
 .co_body h1,
