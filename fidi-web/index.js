@@ -783,29 +783,3 @@ if (document.readyState !== 'loading'){
 } else {
   document.addEventListener('DOMContentLoaded', init);
 }
-
-// Replace Colors JS
-function replaceColor() {
-  const elements = document.querySelectorAll('*');
-
-  const colorMap = [
-    { old: 'rgb(255, 180, 0)',  new: '#BC9C78' },  // #FFB400
-    { old: 'rgb(255, 153, 0)',  new: '#BC9C78' },  // #FF9900
-    { old: 'rgb(49, 124, 184)', new: '#42515A' },  // #317CB8
-  ];
-
-  elements.forEach(el => {
-    const styles = getComputedStyle(el);
-
-    colorMap.forEach(({ old, new: newColor }) => {
-      if (styles.backgroundColor === old) el.style.backgroundColor = newColor;
-      if (styles.color === old)            el.style.color = newColor;
-      if (styles.borderColor === old)      el.style.borderColor = newColor;
-    });
-  });
-}
-
-replaceColor();
-
-const observer = new MutationObserver(replaceColor);
-observer.observe(document.body, { childList: true, subtree: true });
