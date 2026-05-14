@@ -68,7 +68,7 @@ label strong {
   border: 1px solid #83929A !important;
   box-shadow: none !important;
   outline: none !important;
-  height: auto !important;
+  height: 48px !important;
 }
 
 .co_form_input::placeholder,
@@ -88,6 +88,20 @@ label strong {
 
 .content .co_form_input:not(textarea){
   margin-bottom: 16px;
+}
+
+.form-checkbox-item, .form-radio-item {
+  margin-bottom: 12px;
+}
+
+form .billing_address:has(th) {
+  display: block;
+  margin-top: 24px;
+}
+
+form .credit_card:has(th) {
+  display: block;
+  margin-top: 12px;
 }
 
 .content label.regular {
@@ -134,12 +148,14 @@ table th {
 
 .dir_ltr .co_menu_item.multi_level .co_submenu_container .menu_child.selected,
 .dir_rtl .co_menu_item.multi_level .co_submenu_container.reversed .menu_child.selected {
+  top: 0;
   border-left: 0 !important;
   border-radius: 12px;
 }
 
 .form.sites-article .form-all .form-section .form-line {
   padding-block: 16px;
+  margin: 0;
 }
 
 .form.sites-article .form-all .form-section .form-line .form-submit-button {
@@ -152,6 +168,7 @@ table th {
 
 #donate-wrapper main .amounts button {
   color: #fff;
+  background-color: #BC9C78;
   box-shadow: none !important;
 
   &:hover {
@@ -167,25 +184,41 @@ div#confirm-wrapper::after, div#donate-wrapper::after {
   background-color: #fff !important;
 }
 
+#header_container .links .cco_search_header .co_global_input {
+  font-weight: 300;
+}
 
-@media (min-width:1200px) {
+#header_container .links .cco_search_header .co_global_submit {
+  background-color: #42515A !important;
+  height: auto !important;
+}
 
-  body.cco_body #tabContentMain .co_menu_item.multi_level .co_submenu_container a.item:not(.empty) {
-    position: relative;
-  }
+.secondary_navigation .header {
+  color: #BC9C78;
+}
 
-  body.cco_body #tabContentMain .co_menu_item.multi_level .co_submenu_container a.item:not(.empty)::after {
-    content: "";
-    background-image: url(https://webmk.centers.chabad.org/media/images/1357/EWEI13575838.png);
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 10px;
-    height: 5px;
-    margin-left: 8px;
-    transform: rotate(-90deg);
-    display: block;
-  }
+.co_body .content .SCHeading_3, .co_body h3, .form-header-group h3,
+.co_body .content .Content_Large, .co_body .content .SCHeading_2, .co_body h2, .form-header-group h2 {
+    color: #42515A !important;
+}
+
+#BodyContainer #co_content_container>.clearfix>.g960:not(.categorized) .article-header .breadcrumbs .breadcrumbs__crumb, #BodyContainer #co_content_container>.clearfix>.g960:not(.categorized) .article-header .breadcrumbs .breadcrumbs__divider {
+  color: #BC9C78 !important;
+}
+
+.co_body .content .form-all .form-line p span:has(b) {
+  color: #BC9C78 !important;
+}
+
+.Content_Title,
+.co_body .content .Content_Title,
+.co_body .content .SCHeading_1,
+.co_body h1 span,
+.form-header-group h1 span {
+ color: #BC9C78 !important;
+}
+
+@media (min-width:1024px) {
 
   body.cco_body #tabContentMain .co_menu_item.multi_level .co_submenu_container a.item:not(.empty) .arrow {
     display: none;
@@ -197,8 +230,8 @@ div#confirm-wrapper::after, div#donate-wrapper::after {
   }
 
   .co_menu_container .co_menu_item.multi_level .co_submenu_container .wrapper .column_wrapper {
-    height: auto !important;
     padding: 8px;
+    height: max-content !important;
   }
 
   body.cco_body #tabContentMain .co_menu_item.multi_level .co_submenu_container {
@@ -222,10 +255,9 @@ div#confirm-wrapper::after, div#donate-wrapper::after {
     border-left: 0 !important;
     border-radius: 12px;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 0px 10px 1px;
-    height: auto;
   }
 
-  body.cco_body #tabContentMain .co_menu_item.multi_level .co_submenu_container.reversed .menu_child .co_column:empty {
+  body.cco_body #tabContentMain .co_menu_item.multi_level .co_submenu_container .menu_child .co_column:empty {
     width: auto !important;
   }
 
@@ -235,11 +267,7 @@ div#confirm-wrapper::after, div#donate-wrapper::after {
 
   body.coo_body #tabContentMain .co_submenu_container .co_column .child_item span,
   body.cco_body #tabContentMain .co_submenu_container .co_column a {
-    padding-block: 8px;
-  }
-
-  .co_menu_item .co_submenu_container .menu_child .co_column {
-    width: 100%;
+    padding-block: 6px;
   }
 }
 
@@ -477,6 +505,11 @@ body.sites-article #header_container .links .topBarLink a,
   text-transform: uppercase;
   font-weight: 300;
   text-decoration: none;
+  text-underline-offset: 2px;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 #header_container .links .topBarLink a:hover {
@@ -628,6 +661,10 @@ body.cco_body #tabContentMain .co_menu_item.donate_link span.parent a {
   text-transform: uppercase;
   padding: 10px 15px;
   color: #fff;
+
+  &:hover {
+    background-color: #B29B82;
+  }
 }
 
 body.cco_body #tabContentMain .co_menu_item.donate_link span.parent a::after {
@@ -694,6 +731,7 @@ body.cco_body #tabContentMain .co_menu_item.multi_level .co_submenu_container {
 
 .co_menu_item .co_submenu_container .menu_child {
   border-top: 0;
+  display: none !important;
 }
 
 .co_menu_item.multi_level .co_submenu_container a.item.hover span,
@@ -2438,7 +2476,7 @@ body.sites-article #content {
 }
 
 .master-content-wrapper .section-image {
-  margin-bottom: 60px;
+  /* margin-bottom: 60px; */
 }
 
 #BodyContainer #co_content_container>.clearfix>.master-content-wrapper.g960:not(.categorized) .article-header__subtitle {
@@ -2447,6 +2485,7 @@ body.sites-article #content {
   color: #83929a;
   font-weight: 300;
   letter-spacing: -0.02em;
+  margin-bottom: 30px;
 }
 
 /* IMAGE BLOCK */
@@ -2587,6 +2626,7 @@ body.sites-article #content {
   display: flex;
   flex-direction: column;
   height: 100%;
+  gap: 1rem;
 }
 
 .body_wrapper .article_index_container .co_index.article_index.with_icons .row .item .item_contents .title {
@@ -2605,7 +2645,9 @@ body.sites-article #content {
   font-weight: 300;
   line-height: 1.1;
   letter-spacing: -0.03em;
+  align-items: flex-end;
   justify-content: space-between;
+  gap: 1rem;
   text-align: left;
 }
 
@@ -2623,6 +2665,7 @@ body.sites-article #content {
   height: 40px;
   border-radius: 10px;
   background-color: #bc9c78;
+  flex-shrink: 0;
   opacity: 0;
   visibility: hidden;
 }
