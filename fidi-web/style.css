@@ -607,14 +607,19 @@ body.cco_body #tabContentMain .co_menu_item span.parent a:hover {
 
 body.cco_body #tabContentMain .co_menu_item.multi_level span.parent a::after {
   content: "";
-  background-image: url(https://webmk.centers.chabad.org/media/images/1357/EWEI13575838.png);
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 10px;
-  height: 5px;
-  margin-left: 8px;
-  display: block;
+  background-image: url(https://webmk.centers.chabad.org/media/images/1357/EWEI13575838.png) !important;
+  background-position: center !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  width: 10px !important;
+  height: 5px !important;
+  margin-left: 8px !important;
+  display: block !important;
+  position: relative !important;
+  bottom: auto !important;
+  left: auto !important;
+  transform: none !important;
+  background-color: transparent !important;
 }
 
 body.cco_body #tabContentMain .co_menu_item.selected a.parent:after {
@@ -785,7 +790,7 @@ body.cco_body #tabContentMain .co_menu_item.hover span.parent a {
 }
 
 body.cco_body #tabContentMain .co_menu_item.multi_level span.parent a:hover:after {
-  transform: rotate(180deg);
+  transform: rotate(180deg) !important;
 }
 
 body.cco_body.sites-article #tabContentMain .co_menu_item.arrow .co_submenu_container a.item span,
