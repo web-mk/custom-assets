@@ -86,11 +86,12 @@ label strong {
   margin-bottom: 16px;
 }
 
-.content .co_form_input:not(textarea){
+.content .co_form_input:not(textarea) {
   margin-bottom: 16px;
 }
 
-.form-checkbox-item, .form-radio-item {
+.form-checkbox-item,
+.form-radio-item {
   margin-bottom: 12px;
 }
 
@@ -112,7 +113,7 @@ table th {
   font-weight: 400 !important;
 }
 
-.sites-article .co_global_button  {
+.sites-article .co_global_button {
   margin-top: 16px;
   float: none;
 }
@@ -176,11 +177,13 @@ table th {
   }
 }
 
-#confirm-wrapper #confirm, #donate-wrapper #donate {
+#confirm-wrapper #confirm,
+#donate-wrapper #donate {
   box-shadow: none !important;
 }
 
-div#confirm-wrapper::after, div#donate-wrapper::after {
+div#confirm-wrapper::after,
+div#donate-wrapper::after {
   background-color: #fff !important;
 }
 
@@ -197,12 +200,18 @@ div#confirm-wrapper::after, div#donate-wrapper::after {
   color: #BC9C78;
 }
 
-.co_body .content .SCHeading_3, .co_body h3, .form-header-group h3,
-.co_body .content .Content_Large, .co_body .content .SCHeading_2, .co_body h2, .form-header-group h2 {
-    color: #42515A !important;
+.co_body .content .SCHeading_3,
+.co_body h3,
+.form-header-group h3,
+.co_body .content .Content_Large,
+.co_body .content .SCHeading_2,
+.co_body h2,
+.form-header-group h2 {
+  color: #42515A !important;
 }
 
-#BodyContainer #co_content_container>.clearfix>.g960:not(.categorized) .article-header .breadcrumbs .breadcrumbs__crumb, #BodyContainer #co_content_container>.clearfix>.g960:not(.categorized) .article-header .breadcrumbs .breadcrumbs__divider {
+#BodyContainer #co_content_container>.clearfix>.g960:not(.categorized) .article-header .breadcrumbs .breadcrumbs__crumb,
+#BodyContainer #co_content_container>.clearfix>.g960:not(.categorized) .article-header .breadcrumbs .breadcrumbs__divider {
   color: #BC9C78 !important;
 }
 
@@ -215,7 +224,7 @@ div#confirm-wrapper::after, div#donate-wrapper::after {
 .co_body .content .SCHeading_1,
 .co_body h1 span,
 .form-header-group h1 span {
- color: #BC9C78 !important;
+  color: #BC9C78 !important;
 }
 
 @media (min-width:1024px) {
@@ -272,9 +281,9 @@ div#confirm-wrapper::after, div#donate-wrapper::after {
 }
 
 @media (max-width: 1140px) {
-    #co_body_container {
-        width: 100% !important;
-    }
+  #co_body_container {
+    width: 100% !important;
+  }
 }
 
 @media (max-width:1024px) {
@@ -284,7 +293,9 @@ div#confirm-wrapper::after, div#donate-wrapper::after {
 }
 
 @media (max-width: 1000px) {
-    #donate-wrapper #donate {margin: 20px;}
+  #donate-wrapper #donate {
+    margin: 20px;
+  }
 }
 
 @media (max-width:575px) {
@@ -296,9 +307,9 @@ div#confirm-wrapper::after, div#donate-wrapper::after {
     padding-block: 0;
   }
 
-    .form.sites-article .form-all .form-section .form-line .form-address-table {
-      width: 100%;
-    }
+  .form.sites-article .form-all .form-section .form-line .form-address-table {
+    width: 100%;
+  }
 }
 
 /* CSS from may 8, 2026 // Ends  */
@@ -607,23 +618,19 @@ body.cco_body #tabContentMain .co_menu_item span.parent a:hover {
 
 body.cco_body #tabContentMain .co_menu_item.multi_level span.parent a::after {
   content: "";
-  background-image: url(https://webmk.centers.chabad.org/media/images/1357/EWEI13575838.png) !important;
-  background-position: center !important;
-  background-size: contain !important;
-  background-repeat: no-repeat !important;
-  width: 10px !important;
-  height: 5px !important;
-  margin-left: 8px !important;
-  display: block !important;
-  position: relative !important;
-  bottom: auto !important;
-  left: auto !important;
-  transform: none !important;
-  background-color: transparent !important;
-}
-
-body.cco_body #tabContentMain .co_menu_item.selected a.parent:after {
-  display: none !important;
+  background: url(https://webmk.centers.chabad.org/media/images/1357/EWEI13575838.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 10px;
+  height: 5px;
+  margin-left: 8px;
+  display: block;
+  position: relative;
+  bottom: auto;
+  left: auto;
+  transform: none;
+  background-color: transparent;
 }
 
 body.cco_body #tabContentMain .co_menu_item.selected span.parent a {
@@ -789,8 +796,16 @@ body.cco_body #tabContentMain .co_menu_item.hover span.parent a {
   font-weight: 300;
 }
 
+body.cco_body #header.on-scroll #tabContentMain .co_menu_item.selected.hover a.parent:after,
+body.cco_body.sites-article #tabContentMain .co_menu_item.selected.hover a.parent:after {
+  background: url(https://webmk.centers.chabad.org/media/images/1357/EWEI13575838.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 body.cco_body #tabContentMain .co_menu_item.multi_level span.parent a:hover:after {
-  transform: rotate(180deg) !important;
+  transform: rotate(180deg);
 }
 
 body.cco_body.sites-article #tabContentMain .co_menu_item.arrow .co_submenu_container a.item span,
@@ -2007,6 +2022,7 @@ body #footer>.wrapper {
 
   .menu-open #header .wrapper #co_menu_container_wrapper #co_menu_container {
     height: auto;
+    overflow: initial;
   }
 
   .menu-open #header .site-nav-wrapper {
@@ -2108,11 +2124,19 @@ body #footer>.wrapper {
     opacity: 0;
   }
 
+  body.cco_body #tabContentMain .co_menu_item.multi_level span.parent a:hover:after {
+    transform: none;
+  }
+
   body.cco_body #tabContentMain .co_menu_item.multi_level span.parent a::after {
     width: 14px;
     height: 8px;
-    transform: rotate(-90deg);
+    transform: rotate(0);
   }
+
+    body.cco_body #tabContentMain .co_menu_item.multi_level.item-open span.parent a::after {
+      transform: rotate(180deg);
+    }
 
   body.cco_body #header.on-scroll #tabContentMain .co_menu_item:not(.donate_link) span.parent a,
   body.cco_body #tabContentMain .co_menu_item:not(.donate_link) span.parent a,
