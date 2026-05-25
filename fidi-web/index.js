@@ -783,3 +783,10 @@ if (document.readyState !== 'loading'){
 } else {
   document.addEventListener('DOMContentLoaded', init);
 }
+
+
+// Remove Inline Styles for Color and Font-Family
+document.querySelectorAll('[style*="font-family"], [style*="color"]').forEach(el => {
+  el.style.removeProperty('font-family');
+  if (el.style.color) el.style.removeProperty('color');
+});
