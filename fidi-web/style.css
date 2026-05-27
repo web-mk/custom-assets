@@ -911,16 +911,16 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   order: 2;
 }
 
-.slide_wrapper img {
+/* .slide_wrapper img {
   display: none;
-}
+} */
 
 .slide_wrapper a {
   display: block;
   height: 100%;
   width: 100%;
-  border-radius: 20px 20px 0 0;
-  background: url("https://webmk.centers.chabad.org/media/images/1357/dtGz13572060.jpg") center center / cover no-repeat;
+  /* border-radius: 20px 20px 0 0; */
+  /* background: url("https://webmk.centers.chabad.org/media/images/1357/dtGz13572060.jpg") center center / cover no-repeat; */
 }
 
 .hp-table .hp-row-first .promo_slider .slider .cycle-caption {
@@ -935,15 +935,16 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
 .hp-table .hp-row-first .promo_slider .slider .slides .slide_wrapper {
   order: 2;
   border-radius: 20px 20px 0 0;
+  background-color: transparent !important;
 }
 
 .hp-table .hp-row-first .promo_slider .slider .slides .slide_wrapper img {
   mix-blend-mode: normal !important;
-  display: none !important;
+  border-radius: 20px 20px 0 0;
+  /* display: none !important; */
 }
 
 @supports (background-blend-mode: multiply) {
-
   .hp-table .hp-row-first .promo_slider .slider .slides .slide_wrapper a,
   .hp-table .hp-row-first .promo_slider .slider .slides .slide_wrapper img {
     background-color: transparent !important;
@@ -2288,9 +2289,9 @@ body #footer>.wrapper {
     min-height: 350px;
   }
 
-  .slide_wrapper a {
+  /* .slide_wrapper a {
     background: url(https://webmk.centers.chabad.org/media/images/1357/bfNX13576398.jpg) center center / cover no-repeat;
-  }
+  } */
 
   .about_image {
     display: none;
