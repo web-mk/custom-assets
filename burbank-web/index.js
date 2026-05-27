@@ -54,75 +54,10 @@ const addCredit = () => {
 }
 
 /* =================================
-   HERO + CYCLE CAPTION UPDATE (FOR .slider)
-================================= */
-function updateHeroWithCycle() {
-  const slider = document.querySelector(".slider");
-  if (!slider) return;
-
-  const caption = slider.querySelector(".cycle-caption");
-  if (!caption) return;
-
-  const applyHeroUpdates = () => {
-    const span = caption.querySelector("p span");
-    if (!span) return;
-
-    const big = span.querySelector("big");
-    if (!big) return;
-
-    if (big.dataset.updated === "true") return;
-
-    big.innerHTML = `
-      Judaism With 
-      <img 
-        class="styled-text"
-        src="https://webmk.centers.chabad.org/media/images/1357/BZwx13573770.png"
-        alt="Warmth"
-      />
-      in the 
-      <span class="highlighted-text">Heart of FiDi</span>
-    `;
-
-    big.dataset.updated = "true";
-
-    const textNode = Array.from(span.childNodes).find(
-      (node) => node.nodeType === 3 && node.textContent.trim(),
-    );
-
-    if (textNode && !span.querySelector(".cycle-caption-desc")) {
-      const desc = document.createElement("div");
-      desc.className = "cycle-caption-desc";
-      desc.textContent = textNode.textContent.trim();
-      span.appendChild(desc);
-      textNode.remove();
-    }
-  };
-
-  applyHeroUpdates();
-
-  const observer = new MutationObserver(() => {
-    applyHeroUpdates();
-  });
-
-  observer.observe(caption, {
-    childList: true,
-    subtree: true,
-  });
-}
-
-/* =================================
-   WAIT UNTIL SLIDER EXISTS
+   HERO
 ================================= */
 
-function waitForHero() {
-  const interval = setInterval(() => {
-    const slider = document.querySelector(".slider .cycle-caption");
-    if (slider) {
-      clearInterval(interval);
-      updateHeroWithCycle();
-    }
-  }, 200);
-}
+
 
 /* =================================
    ABOUT SECTION RESTRUCTURE
