@@ -32,29 +32,29 @@ if (sneakHeader) {
    HERO
 ================================= */
 
-function updateHeroSection() {
-  const slider = document.querySelector('.slider');
-  if (!slider) return;
+// function updateHeroSection() {
+//   const slider = document.querySelector('.slider');
+//   if (!slider) return;
 
-  // Grab BEFORE wiping innerHTML
-  const cmsTitle = slider.querySelector('h1')?.innerText || 'Chabad of Burbank';
-  const cmsSubtitle = slider.querySelector('p')?.innerText || 'A home for Jewish life in Burbank.';
+//   // Grab BEFORE wiping innerHTML
+//   const cmsTitle = slider.querySelector('h1')?.innerText || 'Chabad of Burbank';
+//   const cmsSubtitle = slider.querySelector('p')?.innerText || 'A home for Jewish life in Burbank.';
 
-  slider.innerHTML = `
-    <div class="hero-inner">
-      <div class="hero-left">
-        <h1 class="hero-title">${cmsTitle}</h1>
-        <p class="hero-subtitle">${cmsSubtitle}</p>
-      </div>
-      <div class="hero-right">
-        <a class="hero-btn hero-btn--outline" href="/about">About Us</a>
-        <a class="hero-btn hero-btn--solid" href="/support">Support Us</a>
-      </div>
-    </div>
-  `;
-}
+//   slider.innerHTML = `
+//     <div class="hero-inner">
+//       <div class="hero-left">
+//         <h1 class="hero-title">${cmsTitle}</h1>
+//         <p class="hero-subtitle">${cmsSubtitle}</p>
+//       </div>
+//       <div class="hero-right">
+//         <a class="hero-btn hero-btn--outline" href="/about">About Us</a>
+//         <a class="hero-btn hero-btn--solid" href="/support">Support Us</a>
+//       </div>
+//     </div>
+//   `;
+// }
 
-updateHeroSection();
+// updateHeroSection();
 
 /* =================================
    SNEAK PEEK GRID WRAP
