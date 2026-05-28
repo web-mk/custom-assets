@@ -13,6 +13,21 @@ document
   .insertAdjacentHTML("afterend", socialHTML);
 
 
+// --------------------------------------------------
+// INSERTED "SEE MORE". BUTTON ALOGN WITH A WRAPPER
+// --------------------------------------------------
+
+var sneakHeader = document.querySelector(".sneak-peek-container .header-title");
+if (sneakHeader) {
+  var seeMoreBtn =
+    '<a href="/programs" class="sneak-peek-see-more">See More</a>';
+  var wrapper = document.createElement("div");
+  wrapper.className = "sneak-peek-header";
+  sneakHeader.parentNode.insertBefore(wrapper, sneakHeader);
+  wrapper.appendChild(sneakHeader);
+  wrapper.insertAdjacentHTML("beforeend", seeMoreBtn);
+}
+
 
   // Menu hamburger JS
 const menuHamburger = () => {
@@ -289,47 +304,6 @@ function carouselEvent() {
       575: { slidesPerView: 2 },
       480: { slidesPerView: 1.1, spaceBetween: 30 },
     },
-  });
-}
-
-/* =================================
-   Program Logos
-================================= */
-function addProgramLogos() {
-  const logoMap = {
-    "Hebrew School":
-      "/media/images/1357/pxRZ13572238.png",
-    "Gan Accademia":
-      "/media/images/1357/BGYP13572237.png",
-    "Young Professionals":
-      "/media/images/1357/ptvM13572241.png",
-    "Shabbat & Holidays":
-      "/media/images/1357/JUop13572239.png",
-    "Women’s Circle":
-      "/media/images/1357/JiQn13572240.png",
-    "Adult Education":
-      "/media/images/1357/awQn13572236.png",
-  };
-
-  const cards = document.querySelectorAll(".sneak-peek-item");
-  if (!cards.length) return;
-
-  cards.forEach((card) => {
-    const titleEl = card.querySelector("h6 a");
-    if (!titleEl) return;
-
-    const title = titleEl.textContent.trim();
-    const logoSrc = logoMap[title];
-    if (!logoSrc) return;
-
-    const logoBox = document.createElement("div");
-    logoBox.className = "program-logo";
-    logoBox.innerHTML = `<img src="${logoSrc}" alt="${title} logo">`;
-
-    const wrapper = card.querySelector(".wrapper");
-    if (!wrapper) return;
-
-    wrapper.appendChild(logoBox);
   });
 }
 
