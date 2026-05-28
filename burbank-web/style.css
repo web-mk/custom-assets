@@ -1,4 +1,4 @@
-@import url("https://cdn.webmk.co/chabadvenetian/font/style.css");
+@import url("https://use.typekit.net/gox0ymo.css");
 
 :root {
     --color-primary: #2C2420;
@@ -13,8 +13,7 @@ html {
 }
 
 * {
-  letter-spacing: -0.02em;
-  font-family: "Associate Sans", sans-serif;
+  font-family: "neue-haas-grotesk-display", sans-serif;
 }
 
 .co_content_container {
@@ -427,12 +426,12 @@ body #tabContentMain .co_menu_item span.parent a,
 body #tabContentMain .co_menu_item.hover span.parent a,
 body.cco_body #tabContentMain .co_menu_item span.parent a,
 body.cco_body #tabContentMain .co_menu_item.hover span.parent a {
-  font-family: "Associate Sans", sans-serif;
+  font-family: "neue-haas-grotesk-display", sans-serif;
 }
 
 *:not(.fa):not(.fas):not(.far):not(.fal):not(.fab):not(.fad):not([class*="fa-"]) {
   letter-spacing: -0.02em;
-  font-family: "Associate Sans", sans-serif;
+  font-family: "neue-haas-grotesk-display", sans-serif;
 }
 
 .home.cco_body #BodyContainer>.body_wrapper.no-hero-image::before {
@@ -442,7 +441,7 @@ body.cco_body #tabContentMain .co_menu_item.hover span.parent a {
 body,
 body.cco_body {
   background: var(--color-bg) !important;
-  font-family: "Associate Sans", sans-serif;
+  font-family: "neue-haas-grotesk-display", sans-serif;
   font-weight: 300;
   color: var(--color-primary);
 }
@@ -753,7 +752,6 @@ body.sites-article #tabContentMain .co_menu_item.arrow .co_submenu_container a.i
 
 body.cco_body #tabContentMain .co_menu_item.multi_level .co_submenu_container a.item {
   border: 0;
-  font-weight: 300;
 }
 
 body.cco_body #tabContentMain .co_menu_item.multi_level .co_submenu_container a.item:hover span {
@@ -766,8 +764,7 @@ body.cco_body #tabContentMain .co_menu_item.multi_level .co_submenu_container a.
 }
 
 body.cco_body #tabContentMain .co_menu_item.multi_level .co_submenu_container a.item span {
-  font-weight: 300;
-  font-family: "Associate Sans", sans-serif;
+  font-family: "neue-haas-grotesk-display", sans-serif;
 }
 
 body.coo_body #tabContentMain .co_submenu_container .co_column .child_item {
@@ -794,6 +791,7 @@ body>#header>.header-wrapper,
 .widget-4.promo_slider.custom.v380.feed.hide_controls {
   padding: 0 60px;
   max-width: 1380px;
+  margin-inline: auto;
 }
 
 /* Hero Section */
@@ -961,7 +959,7 @@ body>#header>.header-wrapper,
 
 /* About Us */
 .hp-row:nth-child(2) {
-  padding-block: 120px;
+  padding-block: 80px;
   background-color: var(--color-bg);
 }
 
@@ -1043,17 +1041,92 @@ body>#header>.header-wrapper,
 
 
 
-
 .hp-row:nth-child(3) {
-  padding-block: 160px;
+  padding-block: 120px;
   background-color: #F0E7DA;
 }
 
+.events-carousel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
 
+.event-card {
+  display: block;
+  padding: 10px;
+}
 
+.events-carousel__heading {
+  color: var(--color-primary);
+  font-size: 45px;
+  letter-spacing: -0.2em;
+  line-height: 0.9;
+}
 
+.event-card__img img {
+  width: 100%;
+  height: 350px;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
 
+.event-card__body {
+  padding-top: 20px;
+}
 
+.events-carousel__controls {
+  display: flex;
+  border: 1px solid var(--color-tertiary);
+}
+
+.events-carousel__controls>button {
+  width: 48px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary);
+  box-shadow: none;
+  border: none;
+}
+
+.events-carousel__controls>button svg {
+  fill: var(--color-white);
+}
+
+.events-carousel__controls .swiper-button-disabled {
+  cursor: default;
+  background-color: transparent;
+}
+
+.events-carousel__controls .swiper-button-disabled svg {
+  fill: var(--color-secondary);
+}
+
+.event-card .event-card__date {
+  color: var(--color-secondary);
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.event-card .event-card__title {
+  color: var(--color-primary);
+  font-size: 28px;
+  margin: 10px 0;
+  line-height: 1.2;
+}
+
+.event-card .event-card__desc {
+  margin: 0;
+  padding: 0;
+  color: var(--color-secondary);
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.3;
+}
 
 .message .wrapper .widget_content .readMore {
   border: 0;
@@ -1347,6 +1420,8 @@ body>#header>.header-wrapper,
   gap: 60px;
   max-width: 100%;
 }
+
+
 
 .wrapper .donate_header {
   flex: 1;

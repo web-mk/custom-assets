@@ -134,7 +134,7 @@ function carouselEvents() {
   const headerRow = document.createElement('div');
   headerRow.className = 'events-carousel__header';
 
-  const heading = document.createElement('div');
+  const heading = document.createElement('h2');
   heading.className = 'events-carousel__heading';
   heading.textContent = 'Upcoming Programs';
 
@@ -143,11 +143,11 @@ function carouselEvents() {
 
   const prevBtn = document.createElement('button');
   prevBtn.className = 'events-prev';
-  prevBtn.innerHTML = `<svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.05912 18.1198L-0.000815788 9.0599L9.05912 -5.76898e-08L10.3789 1.31979L2.63884 9.0599L10.3789 16.8L9.05912 18.1198Z" fill="#6B5C54"/></svg>`;
+  prevBtn.innerHTML = `<svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.05912 18.1198L-0.000815788 9.0599L9.05912 -5.76898e-08L10.3789 1.31979L2.63884 9.0599L10.3789 16.8L9.05912 18.1198Z" fill=""/></svg>`;
 
   const nextBtn = document.createElement('button');
   nextBtn.className = 'events-next';
-  nextBtn.innerHTML = `<svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.31979 0.00133105L10.3797 9.0612L1.31979 18.1211L-5.76898e-08 16.8013L7.74007 9.0612L-7.34353e-07 1.32107L1.31979 0.00133105Z" fill="#6B5C54"/></svg>`;
+  nextBtn.innerHTML = `<svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.31979 0.00133105L10.3797 9.0612L1.31979 18.1211L-5.76898e-08 16.8013L7.74007 9.0612L-7.34353e-07 1.32107L1.31979 0.00133105Z" fill=""/></svg>`;
 
   controlsGroup.appendChild(prevBtn);
   controlsGroup.appendChild(nextBtn);
@@ -205,13 +205,14 @@ function carouselEvents() {
       prevEl: prevBtn,
     },
     breakpoints: {
-      768: { slidesPerView: 2, spaceBetween: 24 },
-      1024: { slidesPerView: 3, spaceBetween: 32 },
+      768: { slidesPerView: 2, spaceBetween: 10 },
+      1024: { slidesPerView: 3, spaceBetween: 10 },
+      1024: { slidesPerView: 3, spaceBetween: 13 },
     },
   });
 }
 
-carouselEvents();
+// carouselEvents();
 
 
 // Remove Inline Styles for Color and Font-Family
