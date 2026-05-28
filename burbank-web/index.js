@@ -72,89 +72,29 @@ const addCredit = () => {
    HERO
 ================================= */
 
+function updateHeroSection() {
+  const slider = document.querySelector('.slider');
+  if (!slider) return;
 
+  const cmsTitle = document.querySelector('.slider h1')?.innerText || 'Chabad of Burbank';
+  const cmsSubtitle = document.querySelector('.slider p')?.innerText || 'A home for Jewish life in Burbank.';
 
-/* =================================
-   ABOUT SECTION RESTRUCTURE
-================================= */
-function addSection() {
-  const wrapperTwo = document.querySelector(".hp-row:nth-child(2) .wrapper");
-  if (!wrapperTwo) return;
-
-  const widgetHeader = wrapperTwo.querySelector(".widget_header");
-  const widgetContent = wrapperTwo.querySelector(
-    ".widget_content.message_format",
-  );
-
-  if (!widgetHeader || !widgetContent) return;
-
-  const futureImage = document.createElement("div");
-  futureImage.className = "about_image";
-
-  const futureImageContainer = document.createElement("div");
-  futureImageContainer.className = "about_image_container";
-  futureImage.appendChild(futureImageContainer);
-
-  const futureItems = document.createElement("div");
-  futureItems.className = "about_items";
-
-  const sectionHeadline = document.createElement("div");
-  sectionHeadline.className = "section_headline";
-  sectionHeadline.textContent = "About us";
-
-  wrapperTwo.insertBefore(futureImage, widgetHeader);
-  wrapperTwo.insertBefore(futureItems, widgetHeader);
-
-  futureItems.appendChild(sectionHeadline);
-  futureItems.appendChild(widgetHeader);
-  futureItems.appendChild(widgetContent);
+  slider.innerHTML = `
+    <div class="hero-inner">
+      <div class="hero-left">
+        <h1 class="hero-title">${cmsTitle}</h1>
+        <p class="hero-subtitle">${cmsSubtitle}</p>
+      </div>
+      <div class="hero-right">
+        <a class="hero-btn hero-btn--outline" href="/about">About Us</a>
+        <a class="hero-btn hero-btn--solid" href="/support">Support Us</a>
+      </div>
+    </div>
+  `;
 }
 
-/* =================================
-   CHAI SECTION UPDATE
-================================= */
-function updateChaiSection() {
-  const wrapper = document.querySelector(".hp-row:nth-child(3) .wrapper");
-  if (!wrapper) return;
+updateHeroSection();
 
-  const widgetHeader = wrapper.querySelector(".widget_header");
-  const widgetContent = wrapper.querySelector(".widget_content.message_format");
-  const h5 = wrapper.querySelector("h5");
-
-  if (!widgetHeader || !widgetContent || !h5) return;
-
-  const chaiImage = document.createElement("div");
-  chaiImage.className = "chai_image";
-
-  const chaiImageContainer = document.createElement("div");
-  chaiImageContainer.className = "chai_image_container";
-  chaiImage.appendChild(chaiImageContainer);
-
-  const headingItems = document.createElement("div");
-  headingItems.className = "chai_club_heading_items";
-
-  const chaiTitle = document.createElement("div");
-  chaiTitle.className = "chai_club_title";
-  chaiTitle.textContent = h5.textContent;
-
-  const chaiSubtitle = document.createElement("div");
-  chaiSubtitle.className = "chai_club_subtitle";
-  chaiSubtitle.textContent =
-    "Your ongoing support sustains programs and services all year long, making a lasting difference.";
-
-  headingItems.appendChild(chaiTitle);
-  headingItems.appendChild(chaiSubtitle);
-
-  const chaiHeader = document.createElement("div");
-  chaiHeader.className = "chai_header";
-
-  wrapper.insertBefore(chaiImage, widgetHeader);
-  wrapper.insertBefore(headingItems, widgetHeader);
-  wrapper.insertBefore(chaiHeader, widgetHeader);
-
-  chaiHeader.appendChild(widgetHeader);
-  chaiHeader.appendChild(widgetContent);
-}
 
 /* =================================
    SNEAK PEEK GRID WRAP
