@@ -33,23 +33,18 @@ if (sneakHeader) {
 ================================= */
 
 function updateHeroSection() {
-  const slider = document.querySelector('.slider');
-  if (!slider) return;
+  const sliderWrapper = document.querySelector('.promo_slider .wrapper');
+  if (!sliderWrapper) return;
 
-  const captionSpan = document.querySelector('.cycle-caption span');
-  const bigEl = captionSpan?.querySelector('big');
+  const bigEl = document.querySelector('.cycle-caption big') || document.querySelector('.slider big');
+  const spanEl = document.querySelector('.cycle-caption span') || document.querySelector('.slider span');
 
   const cmsTitle = bigEl?.innerText.trim() || 'Chabad of Burbank';
-
-  // Remove the big tag text to get only subtitle text
   if (bigEl) bigEl.remove();
-  const cmsSubtitle = captionSpan?.innerText.trim() || 'A home for Jewish life in Burbank.';
+  const cmsSubtitle = spanEl?.innerText.trim() || 'A home for Jewish life in Burbank.';
 
-  const bgImg = document.querySelector('.slide_wrapper img')?.style.background || '';
-  const bgUrl = bgImg.match(/url\(["']?(.*?)["']?\)/)?.[1] || '';
-
-  slider.innerHTML = `
-    <div class="hero-inner"">
+  const heroHTML = `
+    <div class="hero-inner">
       <div class="hero-left">
         <h1 class="hero-title">${cmsTitle}</h1>
         <p class="hero-subtitle">${cmsSubtitle}</p>
@@ -60,8 +55,9 @@ function updateHeroSection() {
       </div>
     </div>
   `;
-}
 
+  sliderWrapper.insertAdjacentHTML('beforebegin', heroHTML);
+}
 updateHeroSection();
 
 /* =================================
