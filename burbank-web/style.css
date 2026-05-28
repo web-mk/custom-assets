@@ -585,6 +585,7 @@ body.cco_body #tabContentMain .co_menu_item.donate_link span.parent a {
 
     &:hover {
         text-decoration: underline;
+        text-underline-offset: 4px;
     }
 }
 
@@ -748,7 +749,6 @@ body.sites-article #tabContentMain .co_menu_item.arrow .co_submenu_container a.i
 .hp-row {
   padding: 0;
   margin-inline: auto;
-  background-color: #fff;
 }
 
 body.cco_body #tabContentMain .co_menu_item.multi_level .co_submenu_container a.item {
@@ -860,6 +860,11 @@ body>#header>.header-wrapper,
   margin: 0 auto;
 }
 
+/* Hiding Existing Wrapper for new hero */
+.promo_slider .wrapper {
+  display: none;
+}
+
 /* Hero NEW */
 .hero-inner {
     display: flex;
@@ -956,8 +961,8 @@ body>#header>.header-wrapper,
 
 /* About Us */
 .hp-row:nth-child(2) {
-  padding-block: 80px;
-  background-color: #fff;
+  padding-block: 120px;
+  background-color: var(--color-bg);
 }
 
 .hp-table> :nth-child(2) .wrapper {
@@ -1035,6 +1040,21 @@ body>#header>.header-wrapper,
   letter-spacing: -0.02em;
 }
 
+
+
+
+
+.hp-row:nth-child(3) {
+  padding-block: 160px;
+  background-color: #F0E7DA;
+}
+
+
+
+
+
+
+
 .message .wrapper .widget_content .readMore {
   border: 0;
   font-size: 16px;
@@ -1051,27 +1071,6 @@ body>#header>.header-wrapper,
 
 .message .wrapper .widget_content .readMore:hover {
   background-color: #bc9c78;
-}
-
-/* Let's Get Connected */
-.hp-row:nth-child(3) {
-  padding: 0;
-}
-
-.hp-row:nth-child(3)>* {
-  padding: 0;
-  max-width: 100%;
-}
-
-.hp-table> :nth-child(3) .wrapper {
-  max-width: 100%;
-  display: flex;
-  justify-content: space-between;
-  border: 6px solid #bc9c78;
-  background: #fff;
-  padding: 50px 60px;
-  border-radius: 20px;
-  gap: 25px;
 }
 
 .chai_club_heading_items {
@@ -1184,6 +1183,7 @@ body>#header>.header-wrapper,
 
     &:hover {
         text-decoration: underline;
+        text-underline-offset: 4px;
     }
 }
 
@@ -1206,30 +1206,55 @@ body>#header>.header-wrapper,
 
 .sneak-peek-container .flexbox-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
+  grid-template-columns: repeat(5, 1fr);
 }
 
 .sneak-peek-container .sneak-peek-item {
   width: 100%;
-  min-height: 268px;
-  border-radius: 20px;
   overflow: hidden;
   position: relative;
+  padding: 10px;
   margin: 0;
 }
 
-.sneak-peek-container .sneak-peek-item:before {
+.sneak-card {
+  display: block;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.sneak-card__img {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.sneak-card__title {
+  max-width: max-content;
+  position: relative;
+  font-size: 18px;
+  text-align: left;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.sneak-card__title::after {
   content: "";
   position: absolute;
   left: 0;
-  top: 0;
-  width: 1000%;
-  height: 100%;
-  background: linear-gradient(180deg,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.4) 76.97%);
+  bottom: -10px;
+  background-color: var(--color-primary);
+  width: 0;
+  opacity: 50%;
+  height: 1.5px;
+  transition: 0.2s;
 }
+
+.sneak-card:hover .sneak-card__title:after {
+  width: 100%;
+  opacity: 1;
+} 
 
 .sneak-peek-container .sneak-peek-item .wrapper {
   position: relative;
@@ -1774,73 +1799,6 @@ body #footer>.wrapper {
 
 /* ==================================== */
 
-@media screen and (min-width: 1800px) {
-  #header {
-    max-width: 1600px;
-    margin-inline: auto;
-    background: #f7f2ed;
-  }
-
-  .hp-row {
-    padding: 0;
-    max-width: 1600px;
-    margin-inline: auto;
-    background-color: #fff;
-  }
-
-  .hp-row>* {
-    padding: 0 60px;
-    max-width: 1600px;
-  }
-
-  .widget-4.promo_slider.custom.v380.feed.hide_controls {
-    max-width: 1600px;
-  }
-
-  body #footer>.wrapper {
-    padding-inline: 60px;
-    max-width: 1600px;
-    margin: auto;
-  }
-
-  #BodyContainer #co_content_container .master-content-wrapper {
-    background: #ffffff;
-    padding: 60px;
-    border-radius: 20px 20px 0 0;
-    max-width: 1600px;
-  }
-
-  .cco_body .body_wrapper.co_body {
-    max-width: 1600px;
-    width: 100%;
-    padding: 0;
-    margin: 0 auto;
-    border-radius: 0 0 20px 20px;
-    background-color: #fff;
-  }
-
-  #BodyContainer .body_wrapper {
-    margin: 0 auto;
-    max-width: 1600px;
-  }
-
-  .hp-table> :nth-child(2) .wrapper {
-    max-width: 1300px;
-  }
-
-  .wrapper .donate_header {
-    max-width: 650px;
-  }
-
-  .hp-row:nth-child(6) {
-    padding-inline: 30px;
-  }
-
-  .sneak-peek-container .sneak-peek-item {
-    min-height: 300px;
-  }
-}
-
 @media screen and (max-width: 1199px) {
 
   body,
@@ -1883,10 +1841,6 @@ body #footer>.wrapper {
 
   .message .wrapper .about_items .message_format div {
     font-size: 20px;
-  }
-
-  .hp-table> :nth-child(3) .wrapper {
-    padding: 30px 40px;
   }
 
   .chai_club_title {
@@ -2119,12 +2073,6 @@ body #footer>.wrapper {
     font-size: 55px;
   }
 
-  .hp-table> :nth-child(3) .wrapper {
-    flex-direction: column;
-    padding: 50px 40px;
-    gap: 20px;
-  }
-
   .chai_club_subtitle {
     margin-top: 20px;
   }
@@ -2242,10 +2190,6 @@ body #footer>.wrapper {
 
   .message .wrapper .about_items .message_format div {
     font-size: 18px;
-  }
-
-  .hp-table> :nth-child(3) .wrapper {
-    padding: 50px 20px;
   }
 
   .chai_club_title {
