@@ -36,8 +36,9 @@ function updateHeroSection() {
   const slider = document.querySelector('.slider');
   if (!slider) return;
 
-  const cmsTitle = document.querySelector('.slider h1')?.innerText || 'Chabad of Burbank';
-  const cmsSubtitle = document.querySelector('.slider p')?.innerText || 'A home for Jewish life in Burbank.';
+  // Grab BEFORE wiping innerHTML
+  const cmsTitle = slider.querySelector('h1')?.innerText || 'Chabad of Burbank';
+  const cmsSubtitle = slider.querySelector('p')?.innerText || 'A home for Jewish life in Burbank.';
 
   slider.innerHTML = `
     <div class="hero-inner">
