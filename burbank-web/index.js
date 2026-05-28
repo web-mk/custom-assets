@@ -32,29 +32,37 @@ if (sneakHeader) {
    HERO
 ================================= */
 
-// function updateHeroSection() {
-//   const slider = document.querySelector('.slider');
-//   if (!slider) return;
+function updateHeroSection() {
+  const slider = document.querySelector('.slider');
+  if (!slider) return;
 
-//   // Grab BEFORE wiping innerHTML
-//   const cmsTitle = slider.querySelector('h1')?.innerText || 'Chabad of Burbank';
-//   const cmsSubtitle = slider.querySelector('p')?.innerText || 'A home for Jewish life in Burbank.';
+  const captionSpan = document.querySelector('.cycle-caption span');
+  const bigEl = captionSpan?.querySelector('big');
 
-//   slider.innerHTML = `
-//     <div class="hero-inner">
-//       <div class="hero-left">
-//         <h1 class="hero-title">${cmsTitle}</h1>
-//         <p class="hero-subtitle">${cmsSubtitle}</p>
-//       </div>
-//       <div class="hero-right">
-//         <a class="hero-btn hero-btn--outline" href="/about">About Us</a>
-//         <a class="hero-btn hero-btn--solid" href="/support">Support Us</a>
-//       </div>
-//     </div>
-//   `;
-// }
+  const cmsTitle = bigEl?.innerText.trim() || 'Chabad of Burbank';
 
-// updateHeroSection();
+  // Remove the big tag text to get only subtitle text
+  if (bigEl) bigEl.remove();
+  const cmsSubtitle = captionSpan?.innerText.trim() || 'A home for Jewish life in Burbank.';
+
+  const bgImg = document.querySelector('.slide_wrapper img')?.style.background || '';
+  const bgUrl = bgImg.match(/url\(["']?(.*?)["']?\)/)?.[1] || '';
+
+  slider.innerHTML = `
+    <div class="hero-inner"">
+      <div class="hero-left">
+        <h1 class="hero-title">${cmsTitle}</h1>
+        <p class="hero-subtitle">${cmsSubtitle}</p>
+      </div>
+      <div class="hero-right">
+        <a class="hero-btn hero-btn--outline" href="/about">About Us</a>
+        <a class="hero-btn hero-btn--solid" href="/support">Support Us</a>
+      </div>
+    </div>
+  `;
+}
+
+updateHeroSection();
 
 /* =================================
    SNEAK PEEK GRID WRAP
@@ -77,6 +85,41 @@ function wrapSneakItems() {
 }
 
 wrapSneakItems();
+
+
+// ------------------------------------
+// restructureSneakCards
+// ------------------------------------
+
+function restructureSneakCards() {
+  const items = document.querySelectorAll(".sneak-peek-item");
+  if (!items.length) return;
+
+  items.forEach((item) => {
+    const titleEl = item.querySelector("h6.title_only a");
+    const thumbEl = item.querySelector("a.thumbnail img");
+
+    // Skip empty cards
+    if (!titleEl || !titleEl.innerText.trim()) {
+      item.remove();
+      return;
+    }
+
+    const title = titleEl.innerText.trim();
+    const href = titleEl.getAttribute("href") || "#";
+    const bgImage = thumbEl ? thumbEl.style.backgroundImage : "";
+    const imgUrl = bgImage.replace(/url\(["']?/, "").replace(/["']?\)/, "");
+
+    item.innerHTML = `
+      <a href="${href}" class="sneak-card">
+      <img class="sneak-card__img" src="${imgUrl}" alt="${title}">
+      <h3 class="sneak-card__title">${title}</h3>
+      </a>
+    `;
+  });
+}
+
+restructureSneakCards();
 
 // Remove Inline Styles for Color and Font-Family
 document.querySelectorAll('[style*="font-family"], [style*="color"]').forEach(el => {

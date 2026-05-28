@@ -871,6 +871,10 @@ body>#header>.header-wrapper,
     max-width: 866px;
 }
 
+.hp-table .hp-row-first .promo_slider .slider .cycle-caption big {
+  text-transform: unset;
+}
+
 .hero-inner h1 {
     color: var(--color-primary);
     font-size: 100px;
@@ -878,6 +882,7 @@ body>#header>.header-wrapper,
     letter-spacing: -0.02em;
     max-width: 450px;
     margin-bottom: 20px;
+    text-transform: unset;
 }
 
 .hero-inner p {
