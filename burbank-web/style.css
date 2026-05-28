@@ -1112,6 +1112,11 @@ body>#header>.header-wrapper,
   font-weight: 300;
 }
 
+.banner .widget_content.index_format .item .title, .banner .widget_content.index_format .item .title a {
+  text-transform: unset
+  ;
+}
+
 .event-card .event-card__title {
   color: var(--color-primary);
   font-size: 28px;

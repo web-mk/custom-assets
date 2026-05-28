@@ -212,7 +212,7 @@ function carouselEvents() {
   });
 }
 
-// carouselEvents();
+carouselEvents();
 
 
 // Remove Inline Styles for Color and Font-Family
