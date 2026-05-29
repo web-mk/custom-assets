@@ -249,6 +249,35 @@ function buildChaiClubSection() {
 buildChaiClubSection();
 
 
+
+// ------------------------------------
+// LETS MEET SECTION
+// ------------------------------------
+
+function buildLetsMeetSection() {
+  const row = document.querySelector('.hp-table .hp-row:nth-child(5)');
+  if (!row) return;
+
+  const title = row.querySelector('.widget_header h5')?.innerText.trim() || "Let's Meet";
+  const desc = row.querySelector('.widget_content .bottom_padding')?.innerText.trim() || '';
+  const btnEl = row.querySelector('.widget_content .readMore');
+  const btnText = btnEl?.innerText.trim() || 'Drop Us a Message';
+  const btnHref = btnEl?.getAttribute('href') || '#';
+
+  const wrapper = row.querySelector('.wrapper');
+  wrapper.innerHTML = `
+    <div class="lets-meet__image">
+      <img src="https://webmk.centers.chabad.org/media/images/1372/mnrW13726981.jpg" alt="Let's Meet">
+    </div>
+    <div class="lets-meet__content">
+      <h2 class="lets-meet__title"><em>Let's</em> Meet</h2>
+      <p class="lets-meet__desc">${desc}</p>
+      <a href="${btnHref}" class="lets-meet__btn">${btnText}</a>
+    </div>
+  `;
+}
+
+
 // Remove Inline Styles for Color and Font-Family
 document.querySelectorAll('[style*="font-family"], [style*="color"]').forEach(el => {
   el.style.removeProperty('font-family');

@@ -1282,6 +1282,100 @@ body>#header>.header-wrapper,
   margin-top: 30px;
 }
 
+
+
+
+
+
+/* Let's Meet Section */
+.hp-row:nth-child(5) {
+  padding: 0;
+  background-color: var(--color-bg);
+  overflow: hidden;
+}
+
+.hp-row:nth-child(5)>* {
+  max-width: 100%;
+  padding: 0;
+}
+
+.hp-row:nth-child(5) .wrapper {
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+
+.lets-meet__image {
+  width: 55%;
+  flex-shrink: 0;
+  margin-left: -60px;
+}
+
+.lets-meet__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.lets-meet__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 60px;
+}
+
+.widget-4 .lets-meet__title {
+  font-size: 52px;
+  font-weight: 300;
+  color: var(--color-primary);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+}
+
+.widget-4 .lets-meet__title em {
+  font-style: italic;
+  font-weight: 300;
+}
+
+.widget-4 .lets-meet__desc {
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--color-secondary);
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  margin-bottom: 30px;
+  max-width: 380px;
+}
+
+.lets-meet__btn {
+  display: inline-block;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: 400;
+  padding: 16px 32px;
+  letter-spacing: -0.02em;
+  max-width: max-content;
+  transition: 0.2s;
+
+  &:hover {
+    background-color: var(--color-secondary);
+    text-decoration: none;
+  }
+}
+
+
+
+
+
+
 .chai_image {
   width: 100%;
   max-width: 282px;
