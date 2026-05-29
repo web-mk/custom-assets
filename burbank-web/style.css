@@ -13,6 +13,7 @@ html {
 }
 
 * {
+  letter-spacing: normal;
   font-family: "neue-haas-grotesk-display", sans-serif;
 }
 
@@ -904,6 +905,7 @@ body>#header>.header-wrapper,
     gap: 10px;
 }
 
+.chai-club__btn,
 .hero-btn {
     font-size: 18px;
     padding: 15px 30px;
@@ -914,6 +916,7 @@ body>#header>.header-wrapper,
     z-index: 9
 }
 
+.chai-club__btn::after,
 .hero-btn::after {
     content: "";
     position: absolute;
@@ -925,6 +928,7 @@ body>#header>.header-wrapper,
     z-index: -2;
 }
 
+.chai-club__btn:hover:after,
 .hero-btn:hover:after {
     height: 100%;
 }
@@ -933,6 +937,7 @@ body>#header>.header-wrapper,
     background-color: var(--color-primary);
 }
 
+.chai-club__btn::after,
 .hero-btn--solid:after {
     background-color: var(--color-secondary);
 }
@@ -947,6 +952,7 @@ body>#header>.header-wrapper,
     }
 }
 
+.chai-club__btn,
 .hero-btn--solid {
     color: var(--color-white);
     border-color: var(--color-primary);
@@ -1058,19 +1064,30 @@ body>#header>.header-wrapper,
   padding: 10px;
 }
 
-.events-carousel__heading {
+.widget-4 .events-carousel__heading {
   color: var(--color-primary);
   font-size: 45px;
   letter-spacing: -0.2em;
   line-height: 0.9;
+  margin-bottom: 0;
+}
+
+.event-card__img {
+  overflow: hidden;
 }
 
 .event-card__img img {
   width: 100%;
-  height: 350px;
+  height: 354px;
   max-width: 100%;
   object-fit: cover;
   object-position: center;
+  overflow: hidden;
+  transition: 0.2s;
+}
+
+.event-card:hover .event-card__img img {
+  transform: scale(1.08);
 }
 
 .event-card__body {
@@ -1088,6 +1105,7 @@ body>#header>.header-wrapper,
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   background-color: var(--color-primary);
   box-shadow: none;
   border: none;
@@ -1113,8 +1131,7 @@ body>#header>.header-wrapper,
 }
 
 .banner .widget_content.index_format .item .title, .banner .widget_content.index_format .item .title a {
-  text-transform: unset
-  ;
+  text-transform: unset  ;
 }
 
 .event-card .event-card__title {
@@ -1122,7 +1139,26 @@ body>#header>.header-wrapper,
   font-size: 28px;
   margin: 10px 0;
   line-height: 1.2;
+  position: relative;
+  max-width: max-content;
 }
+
+.event-card .event-card__title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  background-color: var(--color-primary);
+  width: 0;
+  opacity: 50%;
+  height: 1.5px;
+  transition: 0.2s;
+}
+
+.event-card:hover .event-card__title::after {
+  width: 100%;
+  opacity: 1;
+} 
 
 .event-card .event-card__desc {
   margin: 0;
@@ -1133,22 +1169,89 @@ body>#header>.header-wrapper,
   line-height: 1.3;
 }
 
-.message .wrapper .widget_content .readMore {
-  border: 0;
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: -0.03em;
-  background-color: #42515a;
-  border-radius: 10px;
-  text-transform: uppercase;
-  padding: 10px 15px;
-  line-height: 1.3;
-  color: #fff;
-  margin-top: 20px;
+
+
+
+
+
+
+
+
+
+/* ======= Join Club Burbank ======== */
+
+.message .wrapper .widget_content .readMore,
+.chabad_updates .widget_header.widget_header h5, [class*=widget-] .widget_header.widget_header h5 {
+  text-transform: unset;
 }
 
-.message .wrapper .widget_content .readMore:hover {
-  background-color: #bc9c78;
+
+/* Chai Club Section */
+.hp-row:nth-child(4) {
+  padding-block: 0 80px;
+  background-color: #E0D2C9;
+}
+
+.hp-row:nth-child(4) .wrapper {
+  max-width: 100%;
+  padding: 0;
+}
+
+.chai-club__image {
+  width: 100vw;
+  height: 450px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.chai-club__body {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-top: 60px;
+  gap: 40px;
+}
+
+.chai-club__left {
+  max-width: 440px;
+  text-align: left;
+}
+
+.widget-4 .chai-club__title {
+  font-size: 45px;
+  color: var(--color-primary);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+.widget-4 .chai-club__title em {
+  font-style: italic;
+}
+
+.widget-4 .chai-club__desc {
+  font-size: 20px;
+  color: var(--color-secondary);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin-bottom: 30px;
+  padding: 0;
+}
+
+.widget-4 .chai-club__right {
+  flex-shrink: 0;
+}
+
+.widget-4 .chai-club__tagline {
+  font-size: 45px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-primary);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  padding: 0;
+  margin: 0;
 }
 
 .chai_club_heading_items {
@@ -1228,10 +1331,6 @@ body>#header>.header-wrapper,
   max-height: 100%;
   min-height: 282px;
   background-size: contain;
-}
-
-.hp-row:nth-child(4) {
-  padding-block: 80px;
 }
 
 .sneak-peek-container .sneak-peek-header {

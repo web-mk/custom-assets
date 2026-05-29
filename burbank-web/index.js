@@ -215,6 +215,40 @@ function carouselEvents() {
 carouselEvents();
 
 
+
+// ------------------------------------
+// CHAI CLUB SECTION
+// ------------------------------------
+
+function buildChaiClubSection() {
+  const section = document.querySelector('.widget-4.message.custom.v420');
+  if (!section) return;
+
+  const title = section.querySelector('.widget_header h5')?.innerText.trim() || 'Join the Chai Club';
+  const desc = section.querySelector('.widget_content .bottom_padding')?.innerText.trim() || '';
+  const btnEl = section.querySelector('.widget_content .readMore');
+  const btnText = btnEl?.innerText.trim() || 'Join the Chai Club';
+  const btnHref = btnEl?.getAttribute('href') || '#';
+
+  const wrapper = section.querySelector('.wrapper');
+  wrapper.innerHTML = `
+    <img class="chai-club__image" src="https://webmk.centers.chabad.org/media/images/1372/gjWb13726539.jpg" alt="Chai Club">
+    <div class="chai-club__body">
+      <div class="chai-club__left">
+        <h2 class="chai-club__title">${title}</h2>
+        <p class="chai-club__desc">${desc}</p>
+        <a href="${btnHref}" class="chai-club__btn">${btnText}</a>
+      </div>
+      <div class="chai-club__right">
+        <p class="chai-club__tagline"><em>Small gifts.<br>Big impact.</em></p>
+      </div>
+    </div>
+  `;
+}
+
+buildChaiClubSection();
+
+
 // Remove Inline Styles for Color and Font-Family
 document.querySelectorAll('[style*="font-family"], [style*="color"]').forEach(el => {
   el.style.removeProperty('font-family');
