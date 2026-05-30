@@ -270,12 +270,35 @@ function buildLetsMeetSection() {
       <img src="https://webmk.centers.chabad.org/media/images/1372/mnrW13726981.jpg" alt="Let's Meet">
     </div>
     <div class="lets-meet__content">
-      <h2 class="lets-meet__title"><em>Let's</em> Meet</h2>
+      <h2 class="lets-meet__title">${title}</h2>
       <p class="lets-meet__desc">${desc}</p>
-      <a href="${btnHref}" class="lets-meet__btn">${btnText}</a>
+      <a href="${btnHref}" class="lets-meet__btn hero-btn hero-btn--solid">${btnText}</a>
     </div>
   `;
 }
+
+buildLetsMeetSection();
+
+
+
+// ------------------------------------
+// SHIFTED THE DESC BELOW HEADING
+// ------------------------------------
+
+function buildSubscribeSection() {
+  const row = document.querySelector('.hp-row.hp_subscribe');
+  if (!row) return;
+
+  const small = row.querySelector('fieldset small');
+  const heading = row.querySelector('.widget_header h5');
+
+  if (small && heading) {
+    heading.insertAdjacentElement('afterend', small);
+  }
+}
+
+buildSubscribeSection();
+
 
 
 // Remove Inline Styles for Color and Font-Family
