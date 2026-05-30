@@ -300,6 +300,38 @@ function buildSubscribeSection() {
 buildSubscribeSection();
 
 
+
+// ------------------------------------
+// MOBILE MENU LOGIC
+// ------------------------------------
+
+function initMobileMenu() {
+  const menuBtn = document.querySelector('.cs-mobile-menu-open');
+  if (!menuBtn) return;
+
+  const icon = menuBtn.querySelector('i');
+  if (icon) icon.remove();
+
+  if (!menuBtn.querySelector('.bar')) {
+    for (let i = 0; i < 2; i++) {
+      const bar = document.createElement('span');
+      bar.className = 'bar';
+      menuBtn.appendChild(bar);
+    }
+  }
+
+  const navWrapper = document.querySelector('.site-nav-wrapper');
+
+  menuBtn.addEventListener('click', function () {
+    menuBtn.classList.toggle('active');
+    navWrapper.classList.toggle('is-open');
+  });
+}
+
+initMobileMenu();
+
+
+
 // Remove Inline Styles for Color and Font-Family
 document.querySelectorAll('[style*="font-family"], [style*="color"]').forEach(el => {
   el.style.removeProperty('font-family');
