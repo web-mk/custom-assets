@@ -508,13 +508,12 @@ body>#header>.header-wrapper {
 
 #header .site-nav-wrapper {
   margin-left: 90px;
-  opacity: 0;
-  visibility: hidden;
 }
 
 #header .site-nav-wrapper.is-open {
   opacity: 1;
   visibility: visible;
+  display: block
 }
 
 .co_menu_container {
@@ -1908,8 +1907,9 @@ body>#header>.header-wrapper,
     border-top: 2px solid var(--color-secondary);
     opacity: 0;
     visibility: hidden;
-    padding: 30px 50px;
+    padding: 30px;
     height: auto;
+    display: none;
   }
 
   .branding-search #header_branding.logo img {
