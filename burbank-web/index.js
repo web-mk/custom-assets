@@ -300,6 +300,46 @@ function buildSubscribeSection() {
 buildSubscribeSection();
 
 
+// ------------------------------------
+// FOOTER BUILDUP
+// ------------------------------------
+
+function buildFooter() {
+  const footer = document.querySelector('#footer');
+  if (!footer) return;
+
+  const title = footer.querySelector('.footer-title')?.innerText.trim() || '';
+  const street = footer.querySelector('.footer-street')?.innerText.trim() || '';
+  const cityState = footer.querySelector('.footer-city-state')?.innerText.trim() || '';
+  const phone = footer.querySelector('.footer3 span:not(.footer-title)')?.innerText.trim() || '';
+  const poweredEl = footer.querySelector('.copyright_text .bottom_padding');
+  const socialLinks = Array.from(footer.querySelectorAll('.cs-f-social-icons a'));
+
+  const socialsHTML = socialLinks.map(a => `
+    <a href="${a.getAttribute('href')}" target="_blank" class="footer-social__link">
+      <i class="${a.className}"></i>
+    </a>
+  `).join('');
+
+  const poweredText = poweredEl?.querySelector('br')?.nextSibling?.textContent?.trim() || '';
+  const privacyLink = poweredEl?.querySelector('.privacy-link')?.outerHTML || '';
+  const chabad_link = poweredEl?.querySelector('a:not(.privacy-link)')?.outerHTML || '';
+
+  footer.innerHTML = `
+    <div class="footer-inner">
+      <div class="footer-left">
+        <h2 class="footer-title__big">Chabad<br><em>of</em> Burbank</h2>
+        <p class="footer-address">${street}, ${cityState}</p>
+        <p class="footer-phone">${phone}</p>
+        <p class="footer-powered">Powered by ${chabad_link} © 1993-2026 ${privacyLink}</p>
+      </div>
+      <div class="footer-right">
+        <div class="footer-social">${socialsHTML}</div>
+      </div>
+    </div>
+  `;
+}
+
 
 // Remove Inline Styles for Color and Font-Family
 document.querySelectorAll('[style*="font-family"], [style*="color"]').forEach(el => {
