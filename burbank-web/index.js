@@ -4,8 +4,8 @@
 
 var socialHTML =
   '<div class="cs-social-icons">' +
-  '<a href="#" target="_blank"><img src="media/images/1372/fWLY13721708.png" alt="Instagram"></a>' +
-  '<a href="#" target="_blank"><img src="media/images/1372/mdqb13721707.png" alt="Facebook"></a>' +
+  '<a href="#" target="_blank"><img src="/media/images/1372/fWLY13721708.png" alt="Instagram"></a>' +
+  '<a href="#" target="_blank"><img src="/media/images/1372/mdqb13721707.png" alt="Facebook"></a>' +
   "</div>";
 
 document
@@ -131,6 +131,7 @@ function carouselEvents() {
 
   widgetContent.querySelectorAll('.separator').forEach((sep) => sep.remove());
 
+  // --- Header row (top controls) ---
   const headerRow = document.createElement('div');
   headerRow.className = 'events-carousel__header';
 
@@ -154,6 +155,26 @@ function carouselEvents() {
   headerRow.appendChild(heading);
   headerRow.appendChild(controlsGroup);
 
+  // --- Footer row (bottom controls — duplicate) ---
+  const footerRow = document.createElement('div');
+  footerRow.className = 'events-carousel__header events-carousel__footer';
+
+  const controlsGroupBottom = document.createElement('div');
+  controlsGroupBottom.className = 'events-carousel__controls';
+
+  const prevBtnBottom = document.createElement('button');
+  prevBtnBottom.className = 'events-prev';
+  prevBtnBottom.innerHTML = `<svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.05912 18.1198L-0.000815788 9.0599L9.05912 -5.76898e-08L10.3789 1.31979L2.63884 9.0599L10.3789 16.8L9.05912 18.1198Z" fill=""/></svg>`;
+
+  const nextBtnBottom = document.createElement('button');
+  nextBtnBottom.className = 'events-next';
+  nextBtnBottom.innerHTML = `<svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.31979 0.00133105L10.3797 9.0612L1.31979 18.1211L-5.76898e-08 16.8013L7.74007 9.0612L-7.34353e-07 1.32107L1.31979 0.00133105Z" fill=""/></svg>`;
+
+  controlsGroupBottom.appendChild(prevBtnBottom);
+  controlsGroupBottom.appendChild(nextBtnBottom);
+  footerRow.appendChild(controlsGroupBottom);
+
+  // --- Swiper ---
   const swiperRoot = document.createElement('div');
   swiperRoot.className = 'swiper swiper-events';
 
@@ -188,32 +209,31 @@ function carouselEvents() {
 
   swiperRoot.appendChild(swiperWrapper);
 
+  // --- Assemble: header + swiper + footer ---
   const container = document.createElement('div');
   container.className = 'events-carousel';
   container.appendChild(headerRow);
   container.appendChild(swiperRoot);
+  container.appendChild(footerRow); 
 
   widgetContent.parentNode.replaceChild(container, widgetContent);
 
-
   new Swiper('.swiper-events', {
     slidesPerView: 1.1,
-    spaceBetween: 24,
+    spaceBetween: 10,
     grabCursor: true,
     navigation: {
-      nextEl: nextBtn,
-      prevEl: prevBtn,
+      nextEl: [nextBtn, nextBtnBottom],
+      prevEl: [prevBtn, prevBtnBottom],
     },
     breakpoints: {
       768: { slidesPerView: 2, spaceBetween: 10 },
-      1024: { slidesPerView: 3, spaceBetween: 10 },
       1024: { slidesPerView: 3, spaceBetween: 13 },
     },
   });
 }
 
 carouselEvents();
-
 
 
 // ------------------------------------
@@ -232,7 +252,7 @@ function buildChaiClubSection() {
 
   const wrapper = section.querySelector('.wrapper');
   wrapper.innerHTML = `
-    <img class="chai-club__image" src="https://webmk.centers.chabad.org/media/images/1372/gjWb13726539.jpg" alt="Chai Club">
+    <img class="chai-club__image" src="/media/images/1372/euIQ13729689.jpg" alt="Chai Club">
     <div class="chai-club__body">
       <div class="chai-club__left">
         <h2 class="chai-club__title">${title}</h2>
@@ -267,7 +287,7 @@ function buildLetsMeetSection() {
   const wrapper = row.querySelector('.wrapper');
   wrapper.innerHTML = `
     <div class="lets-meet__image">
-      <img src="https://webmk.centers.chabad.org/media/images/1372/mnrW13726981.jpg" alt="Let's Meet">
+      <img src="/media/images/1372/mnrW13726981.jpg" alt="Let's Meet">
     </div>
     <div class="lets-meet__content">
       <h2 class="lets-meet__title">${title}</h2>
