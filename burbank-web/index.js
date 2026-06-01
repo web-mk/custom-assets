@@ -155,9 +155,8 @@ function carouselEvents() {
   headerRow.appendChild(heading);
   headerRow.appendChild(controlsGroup);
 
-  // --- Footer row (bottom controls — duplicate) ---
   const footerRow = document.createElement('div');
-  footerRow.className = 'events-carousel__header events-carousel__footer';
+  footerRow.className = 'events-carousel__footer';
 
   const controlsGroupBottom = document.createElement('div');
   controlsGroupBottom.className = 'events-carousel__controls';
