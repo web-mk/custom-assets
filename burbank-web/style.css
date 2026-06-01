@@ -716,6 +716,10 @@ body.cco_body #tabContentMain .co_menu_item:not(.donate_link) span.parent a:befo
 	background-color: var(--color-primary);
 }
 
+body.cco_body #tabContentMain .co_menu_item.selected a.parent:after {
+  display: none;
+}
+
 body.cco_body #tabContentMain .co_menu_item span.parent a:hover:before {
 	width: 100%;
 	opacity: 1;
