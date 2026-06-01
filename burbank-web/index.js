@@ -350,9 +350,15 @@ function initMobileMenu() {
 initMobileMenu();
 
 
-
 // Remove Inline Styles for Color and Font-Family
 document.querySelectorAll('[style*="font-family"], [style*="color"]').forEach(el => {
   el.style.removeProperty('font-family');
   if (el.style.color) el.style.removeProperty('color');
+});
+
+// Remove Empty Div inside Inner pages heros
+document.querySelectorAll('header.article-header div').forEach(div => {
+  if (div.innerHTML.trim() === '') {
+    div.style.display = 'none';
+  }
 });
