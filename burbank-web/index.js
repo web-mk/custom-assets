@@ -122,118 +122,177 @@ restructureSneakCards();
 // EVENTS CAROUSEL CARDS
 // ------------------------------------
 
-function carouselEvents() {
-  const widgetContent = document.querySelector('.widget-4.banner .widget_content.index_format');
-  if (!widgetContent) return;
+async function carouselEvents() {
 
-  const items = Array.from(widgetContent.querySelectorAll('.item'));
-  if (!items.length) return;
+  // --- Fetch events from /upcoming page ---
+  async function fetchUpcomingEvents() {
+    const cacheKey = 'brightforge_upcoming_events';
+    const cacheTime = 'brightforge_upcoming_events_time';
+    const TTL = 5 * 60 * 1000;
 
-  widgetContent.querySelectorAll('.separator').forEach((sep) => sep.remove());
+    const cachedData = sessionStorage.getItem(cacheKey);
+    const cachedTime = sessionStorage.getItem(cacheTime);
 
-  // --- Header row (top controls) ---
-  const headerRow = document.createElement('div');
-  headerRow.className = 'events-carousel__header';
+    if (cachedData && cachedTime && (Date.now() - parseInt(cachedTime)) < TTL) {
+      return JSON.parse(cachedData);
+    }
 
-  const heading = document.createElement('h2');
-  heading.className = 'events-carousel__heading';
-  heading.textContent = 'Upcoming Programs';
+    const res = await fetch('/templates/articlecco_cdo/aid/7372620/jewish/Upcoming.htm');
+    const html = await res.text();
+    const doc = new DOMParser().parseFromString(html, 'text/html');
 
-  const controlsGroup = document.createElement('div');
-  controlsGroup.className = 'events-carousel__controls';
+    const items = Array.from(doc.querySelectorAll('.article_index_container .item'));
 
-  const prevBtn = document.createElement('button');
-  prevBtn.className = 'events-prev';
-  prevBtn.innerHTML = `<svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.05912 18.1198L-0.000815788 9.0599L9.05912 -5.76898e-08L10.3789 1.31979L2.63884 9.0599L10.3789 16.8L9.05912 18.1198Z" fill=""/></svg>`;
+    const events = items.map(item => ({
+      imgSrc: item.querySelector('.synopsis_icon img')?.getAttribute('src') || '',
+      title:  item.querySelector('.title a')?.innerText?.trim() || item.querySelector('.title a')?.textContent?.trim() || '',
+      href:   item.querySelector('.title a')?.getAttribute('href') || '#',
+      date:   item.querySelector('.subtitle')?.textContent?.trim() || '',
+      desc:   item.querySelector('.synopsis')?.textContent?.trim() || '',
+    }));
 
-  const nextBtn = document.createElement('button');
-  nextBtn.className = 'events-next';
-  nextBtn.innerHTML = `<svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.31979 0.00133105L10.3797 9.0612L1.31979 18.1211L-5.76898e-08 16.8013L7.74007 9.0612L-7.34353e-07 1.32107L1.31979 0.00133105Z" fill=""/></svg>`;
+    sessionStorage.setItem(cacheKey, JSON.stringify(events));
+    sessionStorage.setItem(cacheTime, Date.now().toString());
 
-  controlsGroup.appendChild(prevBtn);
-  controlsGroup.appendChild(nextBtn);
-  headerRow.appendChild(heading);
-  headerRow.appendChild(controlsGroup);
+    return events;
+  }
 
-  const footerRow = document.createElement('div');
-  footerRow.className = 'events-carousel__footer';
+  // --- Build the carousel with events array ---
+  function buildCarousel(items) {
+    const widgetContent = document.querySelector('.widget-4.banner .widget_content.index_format');
+    if (!widgetContent) return;
 
-  const controlsGroupBottom = document.createElement('div');
-  controlsGroupBottom.className = 'events-carousel__controls';
+    if (!items.length) return;
 
-  const prevBtnBottom = document.createElement('button');
-  prevBtnBottom.className = 'events-prev';
-  prevBtnBottom.innerHTML = `<svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.05912 18.1198L-0.000815788 9.0599L9.05912 -5.76898e-08L10.3789 1.31979L2.63884 9.0599L10.3789 16.8L9.05912 18.1198Z" fill=""/></svg>`;
+    // --- Header row ---
+    const headerRow = document.createElement('div');
+    headerRow.className = 'events-carousel__header';
 
-  const nextBtnBottom = document.createElement('button');
-  nextBtnBottom.className = 'events-next';
-  nextBtnBottom.innerHTML = `<svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.31979 0.00133105L10.3797 9.0612L1.31979 18.1211L-5.76898e-08 16.8013L7.74007 9.0612L-7.34353e-07 1.32107L1.31979 0.00133105Z" fill=""/></svg>`;
+    const heading = document.createElement('h2');
+    heading.className = 'events-carousel__heading';
+    heading.textContent = 'Upcoming Programs';
 
-  controlsGroupBottom.appendChild(prevBtnBottom);
-  controlsGroupBottom.appendChild(nextBtnBottom);
-  footerRow.appendChild(controlsGroupBottom);
+    const controlsGroup = document.createElement('div');
+    controlsGroup.className = 'events-carousel__controls';
 
-  // --- Swiper ---
-  const swiperRoot = document.createElement('div');
-  swiperRoot.className = 'swiper swiper-events';
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'events-prev';
+    prevBtn.innerHTML = `<svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.05912 18.1198L-0.000815788 9.0599L9.05912 -5.76898e-08L10.3789 1.31979L2.63884 9.0599L10.3789 16.8L9.05912 18.1198Z" fill=""/></svg>`;
 
-  const swiperWrapper = document.createElement('div');
-  swiperWrapper.className = 'swiper-wrapper';
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'events-next';
+    nextBtn.innerHTML = `<svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.31979 0.00133105L10.3797 9.0612L1.31979 18.1211L-5.76898e-08 16.8013L7.74007 9.0612L-7.34353e-07 1.32107L1.31979 0.00133105Z" fill=""/></svg>`;
 
-  items.forEach((item) => {
-    const imgSrc = item.querySelector('.icon img')?.getAttribute('src') || '';
-    const titleEl = item.querySelector('.title a');
-    const title = titleEl?.innerText.trim() || '';
-    const href = titleEl?.getAttribute('href') || '#';
-    const date = item.querySelector('.readMore')?.innerText.trim() || '';
-    const desc = item.querySelector('.subtitle')?.innerText.trim() || '';
+    controlsGroup.appendChild(prevBtn);
+    controlsGroup.appendChild(nextBtn);
+    headerRow.appendChild(heading);
+    headerRow.appendChild(controlsGroup);
 
-    const slide = document.createElement('div');
-    slide.className = 'swiper-slide';
-    slide.innerHTML = `
-      <a href="${href}" class="event-card">
-        <div class="event-card__img">
-          <img src="${imgSrc}" alt="${title}">
-        </div>
-        <div class="event-card__body">
-          <span class="event-card__date">${date}</span>
-          <h3 class="event-card__title">${title}</h3>
-          <p class="event-card__desc">${desc}</p>
-        </div>
-      </a>
-    `;
+    // --- Footer row ---
+    const footerRow = document.createElement('div');
+    footerRow.className = 'events-carousel__footer';
 
-    swiperWrapper.appendChild(slide);
-  });
+    const controlsGroupBottom = document.createElement('div');
+    controlsGroupBottom.className = 'events-carousel__controls';
 
-  swiperRoot.appendChild(swiperWrapper);
+    const prevBtnBottom = document.createElement('button');
+    prevBtnBottom.className = 'events-prev';
+    prevBtnBottom.innerHTML = `<svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.05912 18.1198L-0.000815788 9.0599L9.05912 -5.76898e-08L10.3789 1.31979L2.63884 9.0599L10.3789 16.8L9.05912 18.1198Z" fill=""/></svg>`;
 
-  // --- Assemble: header + swiper + footer ---
-  const container = document.createElement('div');
-  container.className = 'events-carousel';
-  container.appendChild(headerRow);
-  container.appendChild(swiperRoot);
-  container.appendChild(footerRow); 
+    const nextBtnBottom = document.createElement('button');
+    nextBtnBottom.className = 'events-next';
+    nextBtnBottom.innerHTML = `<svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.31979 0.00133105L10.3797 9.0612L1.31979 18.1211L-5.76898e-08 16.8013L7.74007 9.0612L-7.34353e-07 1.32107L1.31979 0.00133105Z" fill=""/></svg>`;
 
-  widgetContent.parentNode.replaceChild(container, widgetContent);
+    controlsGroupBottom.appendChild(prevBtnBottom);
+    controlsGroupBottom.appendChild(nextBtnBottom);
+    footerRow.appendChild(controlsGroupBottom);
 
-  new Swiper('.swiper-events', {
-    slidesPerView: 1.1,
-    spaceBetween: 10,
-    grabCursor: true,
-    navigation: {
-      nextEl: [nextBtn, nextBtnBottom],
-      prevEl: [prevBtn, prevBtnBottom],
-    },
-    breakpoints: {
-      768: { slidesPerView: 2, spaceBetween: 10 },
-      1024: { slidesPerView: 3, spaceBetween: 13 },
-    },
-  });
+    // --- Swiper ---
+    const swiperRoot = document.createElement('div');
+    swiperRoot.className = 'swiper swiper-events';
+
+    const swiperWrapper = document.createElement('div');
+    swiperWrapper.className = 'swiper-wrapper';
+
+    items.forEach(({ imgSrc, title, href, date, desc }) => {
+      const slide = document.createElement('div');
+      slide.className = 'swiper-slide';
+      slide.innerHTML = `
+        <a href="${href}" class="event-card">
+          <div class="event-card__img">
+            <img src="${imgSrc}" alt="${title}">
+          </div>
+          <div class="event-card__body">
+            <span class="event-card__date">${date}</span>
+            <h3 class="event-card__title">${title}</h3>
+            <p class="event-card__desc">${desc}</p>
+          </div>
+        </a>
+      `;
+      swiperWrapper.appendChild(slide);
+    });
+
+    swiperRoot.appendChild(swiperWrapper);
+
+    // --- Assemble ---
+    const container = document.createElement('div');
+    container.className = 'events-carousel';
+    container.appendChild(headerRow);
+    container.appendChild(swiperRoot);
+    container.appendChild(footerRow);
+
+    widgetContent.querySelectorAll('.separator').forEach(sep => sep.remove());
+    widgetContent.parentNode.replaceChild(container, widgetContent);
+
+    new Swiper('.swiper-events', {
+      slidesPerView: 1.1,
+      spaceBetween: 10,
+      grabCursor: true,
+      navigation: {
+        nextEl: [nextBtn, nextBtnBottom],
+        prevEl: [prevBtn, prevBtnBottom],
+      },
+      breakpoints: {
+        768: { slidesPerView: 2, spaceBetween: 10 },
+        1024: { slidesPerView: 3, spaceBetween: 13 },
+      },
+    });
+  }
+
+  // --- Fallback: read from existing CMS banners on the page ---
+  function buildFromBanners() {
+    const widgetContent = document.querySelector('.widget-4.banner .widget_content.index_format');
+    if (!widgetContent) return;
+
+    const items = Array.from(widgetContent.querySelectorAll('.item'));
+    if (!items.length) return;
+
+    const events = items.map(item => ({
+      imgSrc: item.querySelector('.icon img')?.getAttribute('src') || '',
+      title:  item.querySelector('.title a')?.innerText.trim() || '',
+      href:   item.querySelector('.title a')?.getAttribute('href') || '#',
+      date:   item.querySelector('.readMore')?.innerText.trim() || '',
+      desc:   item.querySelector('.subtitle')?.innerText.trim() || '',
+    }));
+
+    buildCarousel(events);
+  }
+
+  // --- Run ---
+  try {
+    const events = await fetchUpcomingEvents();
+    if (events.length) {
+      buildCarousel(events);
+    } else {
+      buildFromBanners(); // fallback if /upcoming page has no events
+    }
+  } catch (err) {
+    console.warn('Could not fetch /upcoming events, falling back to banners.', err);
+    buildFromBanners();
+  }
 }
 
 carouselEvents();
-
 
 // ------------------------------------
 // CHAI CLUB SECTION
