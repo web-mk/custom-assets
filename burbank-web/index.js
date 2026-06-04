@@ -126,8 +126,8 @@ async function carouselEvents() {
 
   // --- Fetch events from /upcoming page ---
   async function fetchUpcomingEvents() {
-    const cacheKey = 'brightforge_upcoming_events';
-    const cacheTime = 'brightforge_upcoming_events_time';
+    const cacheKey = 'chabad_upcoming_events';
+    const cacheTime = 'chabad_upcoming_events_time';
     const TTL = 5 * 60 * 1000;
 
     const cachedData = sessionStorage.getItem(cacheKey);
