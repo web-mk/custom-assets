@@ -445,6 +445,7 @@ body.cco_body {
 	position: sticky;
 	top: 0;
 	background: var(--color-bg);
+	z-index: 999
 	/* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
 }
 
@@ -2595,9 +2596,13 @@ body.sites-article #content {
 	border-bottom: 0;
 }
 
-.co_local_menu:not(:has(.secondary_navigation)) .item {
+.co_local_menu .item {
 	padding-block: 13px;
 }
+
+.co_local_menu .secondary_navigation .item {
+	padding-block: 0;
+} 
 
 .co_local_menu>.body>.item a,
 .co_local_menu .item a {
