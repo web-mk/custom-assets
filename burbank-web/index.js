@@ -400,9 +400,16 @@ function initMobileMenu() {
 
   const navWrapper = document.querySelector('.site-nav-wrapper');
 
+  // Create overlay
+  const overlay = document.createElement('div');
+  overlay.className = 'mobile-nav-overlay';
+  document.body.appendChild(overlay);
+
   menuBtn.addEventListener('click', function () {
     menuBtn.classList.toggle('active');
     navWrapper.classList.toggle('is-open');
+    document.body.classList.toggle('menu-open');
+    overlay.classList.toggle('is-active');
   });
 }
 

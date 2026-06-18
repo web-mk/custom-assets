@@ -783,6 +783,31 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
 	margin-left: 0;
 }
 
+body.menu-open {
+  overflow: hidden;
+}
+
+.mobile-nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 998;
+}
+
+.mobile-nav-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#header,
+.site-nav-wrapper,
+.cs-mobile-menu-open {
+  position: relative;
+  z-index: 999;
+}
+
 @media (max-width:1024px) {
 	.header-wrapper .cs-social-icons {
 		display: none;
@@ -2506,6 +2531,7 @@ body.sites-article #content {
 
   #BodyContainer #co_content_container>.clearfix>.master-content-wrapper.g960:not(.categorized) .article-header {
     flex-direction: column;
+	align-items: start;
     gap: 20px;
   }
 
