@@ -783,7 +783,7 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
 	margin-left: 0;
 }
 
-body.menu-open {
+body.menu-opened {
   overflow: hidden;
 }
 

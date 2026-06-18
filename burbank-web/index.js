@@ -408,7 +408,7 @@ function initMobileMenu() {
   menuBtn.addEventListener('click', function () {
     menuBtn.classList.toggle('active');
     navWrapper.classList.toggle('is-open');
-    document.body.classList.toggle('menu-open');
+    document.body.classList.toggle('menu-opened');
     overlay.classList.toggle('is-active');
   });
 }
