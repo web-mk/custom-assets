@@ -2384,8 +2384,12 @@ body.sites-article #content {
 	padding: 0 60px;
 	margin: 0 auto;
 	background-color: var(--color-bg);
+}
+
+.cco_body #BodyContainer .body_wrapper.co_body:has(#co_ads_container) {
 	padding-bottom: 60px;
 }
+
 
 .cco_body .body_wrapper.co_body .g960 {
 	padding-block: 30px;
@@ -2604,6 +2608,7 @@ body.sites-article #content {
 	border-bottom: 0;
 }
 
+.co_local_menu .item.selected,
 .co_local_menu .item {
 	padding-block: 13px;
 }
@@ -2623,7 +2628,7 @@ body.sites-article #content {
 
 /* Article CSS */
 
-.sites-article .body_wrapper #co_body_container {
+.sites-article .body_wrapper #co_body_container:not(.g960) {
 	padding: 60px;
 	background-color: #fff;
 	border: 1px solid #D8DCE0;
@@ -2659,13 +2664,13 @@ body.sites-article #content {
 		padding-top: 32px;
 	}
 
-	.sites-article .body_wrapper #co_body_container {
+	.sites-article .body_wrapper #co_body_container:not(.g960) {
 		padding: 40px;
 	}
 }
 
 @media (max-width:767px) {
-	.sites-article .body_wrapper #co_body_container {
+	.sites-article .body_wrapper #co_body_container:not(.g960) {
 		padding: 25px 15px;
 	}
 
