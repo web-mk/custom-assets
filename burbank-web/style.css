@@ -801,7 +801,6 @@ body.menu-opened {
   visibility: visible;
 }
 
-#header,
 .site-nav-wrapper,
 .cs-mobile-menu-open {
   position: relative;
