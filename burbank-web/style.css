@@ -2559,7 +2559,7 @@ body.sites-article #content {
 		min-height: 300px;
 	}
 
-	#BodyContainer #co_content_container>.clearfix>.master-content-wrapper.g960:not(:has(.article-article-header__subtitle)) {
+	#BodyContainer #co_content_container>.clearfix>.master-content-wrapper.g960:not(:has(.article-header__subtitle)) {
 		min-height: 150px;
 		padding-bottom: 40px;
 	}
