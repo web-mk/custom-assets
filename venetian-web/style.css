@@ -178,7 +178,7 @@ body>#header>.wrapper {
 .branding-search #header_branding.logo img {
   width: 85px;
   height: 50px;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   filter: none;
 }
@@ -627,7 +627,8 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
 }
 
 .hero-inner .hero-content-left .hero-body {
-  margin-top: 60px;
+    /* margin-top: 60px; */
+    margin-bottom: 15px;
 }
 
 .hero-inner .hero-content-left .hero-body p {
@@ -1375,7 +1376,7 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
 /* ============ Latest Photos Section ============ */
 .hp-row:nth-child(5) {
   padding: 80px 0;
-  background-color: #fff;
+  background: #fff;
 }
 
 .hp-row:nth-child(5) .wrapper {
@@ -1502,7 +1503,7 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   font-size: 25px;
   font-weight: 400;
   color: #064F6A;
-  text-transform: capitalize;
+  text-transform: none;
   line-height: 1.1;
   letter-spacing: 0.01em;
   margin-bottom: 15px;
@@ -1523,7 +1524,7 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
 }
 
 .footer_inner_container {
-  font-size: 16px;
+  /* font-size: 16px; */
   font-weight: 300;
   line-height: 1.3;
   letter-spacing: normal;
@@ -2468,8 +2469,9 @@ body.sites-article #content {
 .body_wrapper .article_index_container .co_index.article_index .row .item .synopsis_icon a.synopsis_icon img {
   position: static;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  filter: brightness(0) saturate(100%) invert(7%) sepia(7%) saturate(1192%) hue-rotate(295deg) brightness(88%) contrast(85%);
 }
 
 .body_wrapper .article_index_container .co_index.article_index.with_icons .row .item .item_contents {

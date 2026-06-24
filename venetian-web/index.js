@@ -1,3 +1,83 @@
+const PAGE_RULES = [
+  {
+    aid: '7258329',
+    href: 'https://assets.webmk.co/chabadvenetian/siyum.css',
+    type: 'style',
+  },
+  {
+    aid: '22750',
+    href: 'https://assets.webmk.co/chabadvenetian/events/funday-may-2026.js',
+    type: 'script',
+  },
+];
+
+const SECTION_RULES = [
+  {
+    sectionId: 1037505,
+    href: 'https://cdn.webmk.co/general/cdo-gallery-icons.js?v3=true',
+    type: 'script',
+    aidExclusions: ['1037505'],
+  },
+  {
+    sectionId: 1037505,
+    href: 'https://assets.webmk.co/chabadvenetian/photo-galleries.css',
+    type: 'style',
+    aidExclusions: ['1037505'],
+  },
+];
+
+const pageSpecificStyling = (url) => {
+  const styles = document.createElement('link');
+  styles.rel = 'stylesheet';
+  styles.type = 'text/css';
+  styles.media = 'screen';
+  styles.href = url;
+  document.head.appendChild(styles);
+};
+
+const pageSpecificJs = (url) => {
+  const script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = url;
+  document.head.appendChild(script);
+};
+
+const injectAsset = (rule) => {
+  if (rule.type === 'script') {
+    pageSpecificJs(rule.href);
+  } else if (rule.type === 'style') {
+    pageSpecificStyling(rule.href);
+  } else if (rule.type === 'redirect') {
+    window.location.href = rule.href;
+  }
+};
+
+const ruleCheck = (rule) => {
+  if (Array.isArray(rule.aid)) {
+    return rule.aid.some((aid) => window.location.href.includes(aid));
+  } else {
+    return window.location.href.includes(rule.aid);
+  }
+};
+
+PAGE_RULES.forEach((rule) => {
+  if (ruleCheck(rule)) {
+    injectAsset(rule);
+  }
+});
+
+const sectionRuleInjection = () => {
+  const scopeAids = document.querySelector("meta[name='scope-aids']")?.content;
+  SECTION_RULES.forEach((rule) => {
+    const isInSection = scopeAids?.includes(rule.sectionId.toString());
+    const isAidExcluded = rule.aidExclusions?.some((aid) => window.location.href.includes(aid));
+    if (isInSection && !isAidExcluded) {
+      injectAsset(rule);
+    }
+  });
+};
+
+
 // Menu hamburger JS
 document.addEventListener("DOMContentLoaded", function () {
   const menuBtn = document.querySelector(".cs-mobile-menu-open");
@@ -60,24 +140,24 @@ function updateHeroSection() {
 
       <div class="hero-content-left">
         <h1 class="hero-heading">
-          <span class="hero-title-teal">Chabad Of</span> The Venetian &amp; Sunset Islands
+          <span class="hero-title-teal">Chabad of the</span> Venetian &amp; Sunset Islands
         </h1>
         <p class="hero-subtitle">A welcoming home for Jewish life, learning, and connection on the Venetian &amp; Sunset Islands.</p>
-        <a class="hero-cta" href="/about">Learn More About Us</a>
         <div class="hero-body">
           <p>
-            Chabad of the Venetian & Sunset Islands is a vibrant Jewish center offering meaningful experiences for individuals and families of all ages. From prayer and education to holidays, programs, and community gatherings, Chabad provides a warm, inclusive space where Jewish life is lived with purpose and joy
-            <span class="hero-body-more"> Guided by Rabbi Shmuel and Tzippy Mann, together with Rabbi Menachem and Mushka Rapoport, Chabad blends timeless Jewish values with a modern, approachable spirit. Every Jew is welcomed with respect — regardless of background, affiliation, or level of observance — creating a place where tradition feels relevant, alive, and deeply personal.</span>
+            Chabad of the Venetian & Sunset Islands is a vibrant Jewish center offering meaningful experiences for individuals and families of all ages. From prayer and education to holidays, programs, and community gatherings, Chabad provides a warm, inclusive space where Jewish life is lived with purpose and joy.
+            <!--<span class="hero-body-more"> Guided by Rabbi Shmuel and Tzippy Mann, together with Rabbi Menachem and Mushka Rapoport, Chabad blends timeless Jewish values with a modern, approachable spirit. Every Jew is welcomed with respect — regardless of background, affiliation, or level of observance — creating a place where tradition feels relevant, alive, and deeply personal.</span>-->
           </p>
-          <button class="hero-see-more-btn">... see more</button>
+          <!--<button class="hero-see-more-btn">... see more</button>-->
         </div>
+        <a class="hero-cta" href="/about">Learn More</a>
       </div>
 
       <div class="hero-image-block">
         <img
           class="hero-building-img"
           src="/media/images/1365/nuVu13654947.png"
-          alt="Chabad of The Venetian & Sunset Islands"
+          alt="Chabad of the Venetian & Sunset Islands"
         />
       </div>
 
@@ -305,7 +385,9 @@ function buildSupportSection() {
 
 
 function buildFeaturedPhotos() {
+  let attempts = 0;
   const section = document.querySelector('.hp-row .latest_photos.custom');
+  console.log('section', section);
   if (!section) return;
 
   const wrapper = section.querySelector('.wrapper');
@@ -313,8 +395,15 @@ function buildFeaturedPhotos() {
   const listItems = section.querySelectorAll('.widget_content ul li');
   const button = section.querySelector('.readMore');
 
-  if (!wrapper || !header || !listItems.length || !button) return;
-
+  console.log({wrapper, header, listItems, button});
+  if (!wrapper || !header || !listItems.length || !button) {
+    if (attempts < 5) {
+      attempts += 1;
+      setTimeout(buildFeaturedPhotos, 500);
+    }
+    return;
+  }
+  console.log('did not return early');
   const headingText = header.innerText;
 
   const items = Array.from(listItems).slice(0, 4);
@@ -322,6 +411,7 @@ function buildFeaturedPhotos() {
   const getItemHTML = (index) => {
     return items[index]?.querySelector('a')?.outerHTML || '';
   };
+  console.log('secure');
 
   const img1 = getItemHTML(0);
   const img2 = getItemHTML(1);
@@ -370,7 +460,6 @@ function buildFeaturedPhotos() {
   wrapper.innerHTML = newHTML;
 }
 
-
 function injectBreadcrumb() {
   const header = document.querySelector('.article-header');
   const title = header?.querySelector('.article-header__title');
@@ -380,31 +469,64 @@ function injectBreadcrumb() {
   // Prevent duplicate injection
   if (header.querySelector('.custom-breadcrumb')) return;
 
+  const breadcrumbs = [
+    '<a href="/">Home</a>',
+  ];
+
+  const existingBreadcrumbContainer = document.querySelector('.breadcrumbs');
+
+  if (existingBreadcrumbContainer) {
+    const existingBreadcrumbs = existingBreadcrumbContainer.querySelectorAll('a');
+    console.log(existingBreadcrumbs);
+    existingBreadcrumbs.forEach(el => {
+      breadcrumbs.push(el.outerHTML);
+      console.log(el.outerHTML);
+    });
+    existingBreadcrumbContainer.style.display = 'none';
+  }
+
+
   const breadcrumbHTML = `
     <div class="custom-breadcrumb">
-      <a href="/">Home</a>
-      <span> / </span>
+      ${breadcrumbs.join('<span> / </span>')}
     </div>
   `;
 
   title.insertAdjacentHTML('beforebegin', breadcrumbHTML);
 }
 
-document.addEventListener('DOMContentLoaded', injectBreadcrumb);
-
-/* =================================
-   HOMEPAGE INIT
-================================= */
 const setupHomepage = () => {
   if (window.location.pathname !== "/") return;
-
+  console.log('init');
   updateHeroSection();
   wrapSneakItems();
   restructureEventCards();
   initEventsCarousel();
   buildSupportSection();
+  console.log('build photos');
   buildFeaturedPhotos();
   injectBreadcrumb() 
 };
 
-document.addEventListener("DOMContentLoaded", setupHomepage);
+const addCredit = () => {
+  jQuery('.footer3').append('<div style="font-size: 13px;margin-top: 20px; font-style: italic;">100% of all donations benefit Chabad of Venetian & Sunset Islands - EIN 65-0860163.</div>')
+  const credit = document.createElement('p');
+  credit.id = 'd-and-d';
+  credit.innerHTML = 'Design+Development: <a href="mailto:mk@webmk.co">WebMK</a>';
+  document.querySelector('.footer_container').appendChild(credit);
+}
+
+
+
+const init = () => {
+  setupHomepage();
+  sectionRuleInjection();
+  injectBreadcrumb();
+  addCredit();
+}
+
+if (document.readyState !== 'loading') {
+  init();
+} else {
+  document.addEventListener('DOMContentLoaded', init);
+};
