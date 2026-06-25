@@ -7,10 +7,10 @@ const facebookLink = existingSocialIcons?.querySelector(".facebook_homepage")?.g
 const instagramLink = existingSocialIcons?.querySelector(".instagram_homepage")?.getAttribute("href");
 
 var socialHTML =
-  '<div class="cs-social-icons">' +
-  `<a href="${instagramLink}" target="_blank"><img src="/media/images/1372/fWLY13721708.png" alt="Instagram"></a>` +
-  `<a href="${facebookLink}" target="_blank"><img src="/media/images/1372/mdqb13721707.png" alt="Facebook"></a>` +
-  "</div>";
+  `<div class="cs-social-icons">
+    <a href="${instagramLink}" target="_blank"><img src="/media/images/1372/fWLY13721708.png" alt="Instagram"></a>
+    <a href="${facebookLink}" target="_blank"><img src="/media/images/1372/mdqb13721707.png" alt="Facebook"></a>
+  </div>`;
 
 document
   .querySelector(".site-nav-wrapper")
