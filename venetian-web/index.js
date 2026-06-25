@@ -310,7 +310,7 @@ function initEventsCarousel() {
       INIT SWIPER
   ====================== */
 
-  new Swiper(".events-swiper", {
+  const swiper = new Swiper(".events-swiper", {
     slidesPerView: 1,
     centeredSlides: true,
     spaceBetween: 10,
@@ -344,6 +344,21 @@ function initEventsCarousel() {
       },
     },
   });
+
+  // Don't autoplay while the carousel is below the fold — only start once it
+  // scrolls into view, so visitors don't arrive mid-rotation.
+  swiper.autoplay.stop();
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        swiper.autoplay.start();
+        io.disconnect(); // start once; don't restart on every scroll-by
+      }
+    });
+  }, { threshold: 0.3 });
+
+  io.observe(swiperContainer);
 }
 
 
@@ -495,13 +510,83 @@ function injectBreadcrumb() {
   title.insertAdjacentHTML('beforebegin', breadcrumbHTML);
 }
 
+/* =================================
+   DYNAMIC UPCOMING EVENTS FETCH
+================================= */
+
+// Fetch the full upcoming-events list from the ChabadOne template page so
+// events never need to be hardcoded as homepage banners.
+async function fetchUpcomingEvents() {
+  const cacheKey = 'venetian_upcoming_events';
+  const cacheTime = 'venetian_upcoming_events_time';
+  const TTL = 5 * 60 * 1000;
+
+  const cachedData = sessionStorage.getItem(cacheKey);
+  const cachedTime = sessionStorage.getItem(cacheTime);
+
+  if (cachedData && cachedTime && (Date.now() - parseInt(cachedTime)) < TTL) {
+    return JSON.parse(cachedData);
+  }
+
+  const res = await fetch('/templates/articlecco_cdo/aid/7409502/jewish/Upcoming.htm');
+  const html = await res.text();
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+
+  const items = Array.from(doc.querySelectorAll('.article_index_container .item'));
+
+  const events = items.map((item) => ({
+    imgSrc: item.querySelector('.synopsis_icon img')?.getAttribute('src') || '',
+    title:  item.querySelector('.title a')?.textContent?.trim() || '',
+    href:   item.querySelector('.title a')?.getAttribute('href') || '#',
+    date:   item.querySelector('.subtitle')?.textContent?.trim() || '',
+    desc:   item.querySelector('.synopsis')?.textContent?.trim() || '',
+  }));
+
+  sessionStorage.setItem(cacheKey, JSON.stringify(events));
+  sessionStorage.setItem(cacheTime, Date.now().toString());
+
+  return events;
+}
+
+// Emit a homepage-shaped raw .item so the existing restructureEventCards()
+// consumes it unchanged (date -> .readMore, desc -> .subtitle).
+function buildEventItemHTML({ imgSrc, title, href, date, desc }) {
+  return `
+    <div class="item">
+      <div class="icon"><a href="${href}"><img src="${imgSrc}" alt="${title}"></a></div>
+      <div class="title"><a href="${href}">${title}</a></div>
+      <div class="readMore">${date}</div>
+      <div class="subtitle">${desc}</div>
+    </div>
+  `;
+}
+
+// Replace the homepage widget's items with the fetched events, then run the
+// existing restructure + carousel pipeline. Falls back to the on-page CMS
+// banners if the fetch fails or returns nothing.
+async function loadEvents() {
+  const widget = document.querySelector(".widget_content.index_format");
+  if (!widget) return;
+
+  try {
+    const events = await fetchUpcomingEvents();
+    if (events.length) {
+      widget.innerHTML = events.map(buildEventItemHTML).join('');
+    }
+  } catch (err) {
+    console.warn('Could not fetch upcoming events, falling back to banners.', err);
+  }
+
+  restructureEventCards();
+  initEventsCarousel();
+}
+
 const setupHomepage = () => {
   if (window.location.pathname !== "/") return;
   console.log('init');
   updateHeroSection();
   wrapSneakItems();
-  restructureEventCards();
-  initEventsCarousel();
+  loadEvents();
   buildSupportSection();
   console.log('build photos');
   buildFeaturedPhotos();
