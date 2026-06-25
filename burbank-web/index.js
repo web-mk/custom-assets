@@ -2,10 +2,14 @@
 // INSERTED THE HTML FOR SOCIAL ICONS
 // ------------------------------------
 
+const existingSocialIcons = document.querySelector(".cs-f-social-icons");
+const facebookLink = existingSocialIcons?.querySelector(".facebook_homepage")?.getAttribute("href");
+const instagramLink = existingSocialIcons?.querySelector(".instagram_homepage")?.getAttribute("href");
+
 var socialHTML =
   '<div class="cs-social-icons">' +
-  '<a href="#" target="_blank"><img src="/media/images/1372/fWLY13721708.png" alt="Instagram"></a>' +
-  '<a href="#" target="_blank"><img src="/media/images/1372/mdqb13721707.png" alt="Facebook"></a>' +
+  `<a href="${instagramLink}" target="_blank"><img src="/media/images/1372/fWLY13721708.png" alt="Instagram"></a>` +
+  `<a href="${facebookLink}" target="_blank"><img src="/media/images/1372/mdqb13721707.png" alt="Facebook"></a>` +
   "</div>";
 
 document
@@ -14,7 +18,7 @@ document
 
 
 // --------------------------------------------------
-// INSERTED "SEE MORE". BUTTON ALOGN WITH A WRAPPER
+// INSERTED "SEE MORE". BUTTON ALIGN WITH A WRAPPER
 // --------------------------------------------------
 
 var sneakHeader = document.querySelector(".sneak-peek-container .header-title");
@@ -137,7 +141,7 @@ async function carouselEvents() {
       return JSON.parse(cachedData);
     }
 
-    const res = await fetch('/templates/articlecco_cdo/aid/7372620/jewish/Upcoming.htm');
+    const res = await fetch('/templates/articlecco_cdo/aid/2840537/jewish/Upcoming.htm');
     const html = await res.text();
     const doc = new DOMParser().parseFromString(html, 'text/html');
 
@@ -299,7 +303,7 @@ carouselEvents();
 // ------------------------------------
 
 function buildChaiClubSection() {
-  const section = document.querySelector('.widget-4.message.custom.v420');
+  const section = document.querySelector('.hp-row:nth-child(4)');
   if (!section) return;
 
   const title = section.querySelector('.widget_header h5')?.innerText.trim() || 'Join the Chai Club';
@@ -428,3 +432,12 @@ document.querySelectorAll('header.article-header div').forEach(div => {
     div.style.display = 'none';
   }
 });
+
+const addCredit = () => {
+  const credit = document.createElement('p');
+  credit.id = 'd-and-d';
+  credit.innerHTML = 'Design+Development: <a href="mailto:mk@webmk.co">WebMK</a>';
+  document.querySelector('.footer_container').appendChild(credit);
+}
+
+addCredit();
