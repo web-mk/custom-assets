@@ -1179,6 +1179,11 @@ body > #header > .header-wrapper,
     font-size: 24px;
     padding: 20px 40px;
   }
+
+  body.cco_body #tabContentMain .co_menu_item.hover span.parent a {
+	color: var(--color-primary);
+	font-size: 20px !important;
+  }
 }
 
 @media (max-width: 1024px) {
