@@ -26,6 +26,7 @@ body {
 }
 
 * {
+line-height: 1.5;
   letter-spacing: -0.02em;
   font-family: "neue-haas-grotesk-display", sans-serif;
 }
@@ -48,11 +49,8 @@ h2,
 h3,
 h4,
 h5,
-h6,
-strong,
-b,
-.bold {
-  font-weight: 500;
+h6 {
+    line-height: 0.9;
 }
 
 .Content_Title,
@@ -199,7 +197,7 @@ body.cco_body table th {
   padding: 10px 15px;
   border-radius: 10px;
   letter-spacing: -0.03em;
-  transition: 0.2s;
+  transition: all 0.3s ease;
 
   &:hover {
     color: var(--color-white);
@@ -523,9 +521,12 @@ body.cco_body {
 }
 
 #header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   background: var(--color-white);
+  border-bottom-right-radius: 20px;
   z-index: 999;
 }
 
@@ -667,6 +668,7 @@ body.cco_body #tabContentMain .co_menu_item.donate_link span.parent a {
   padding: 9px 20px;
   border-radius: 50px;
   margin-left: 10px;
+  transition: all 0.3s ease;
 
   &:hover {
     background-color: color-mix(in srgb, var(--color-tertiary) 85%, black);
@@ -780,12 +782,12 @@ body.cco_body
   content: "";
   position: absolute;
   bottom: 0;
-  right: 0;
+  left: 0;
   height: 3px;
   border-radius: 100px;
   width: 0;
   opacity: 50%;
-  transition: 0.2s;
+  transition: all 0.3s ease;
   background-color: var(--color-primary);
 }
 
@@ -796,8 +798,6 @@ body.cco_body #tabContentMain .co_menu_item.selected a.parent:after {
 body.cco_body #tabContentMain .co_menu_item span.parent a:hover:before {
   width: 100%;
   opacity: 1;
-  left: 0;
-  right: auto
 }
 
 body.cco_body
@@ -956,11 +956,12 @@ body > #header > .header-wrapper,
   background: url(https://w2.chabad.org/media/images/1376/yvxD13765106.jpg) !important;
   background-size: cover !important;
   background-position: center;
-  min-height: 740px;
+  min-height: 800px;
   border-radius: 0;
   display: flex;
   align-items: end;
   position: relative;
+  z-index: 2;
 }
 
 .hp-table .hp-row-first::after {
@@ -971,6 +972,7 @@ body > #header > .header-wrapper,
     width: 100%;
     height: 100%;
     background: linear-gradient(0.34deg, #F2F8F7 25.19%, rgba(242, 248, 247, 0) 99.62%);
+    z-index: -2;
 }
 
 .hp-row .hp-row-first [class^="widget-"] div.wrapper {
@@ -1043,12 +1045,29 @@ body > #header > .header-wrapper,
 
 .hero-inner h1 {
   color: var(--color-primary);
-  font-size: 100px;
-  line-height: 0.9;
-  letter-spacing: -0.02em;
-  max-width: 450px;
-  margin-bottom: 20px;
+  font-size: 78px;
+  font-weight: 700;
+  line-height: 0.9; 
+  max-width: 600px;
+  margin-bottom: 30px;
   text-transform: unset;
+}
+
+.hero-inner .hero-tagline {
+    color: var(--color-primary);
+    font-size: 36px;
+    line-height: 0.9;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.hero-inner .hero-tagline strong {
+    color: var(--color-secondary);
+}
+
+.hero-inner .hero-tagline svg {
+    max-width: 32px;
 }
 
 .hero-inner p {
@@ -1062,52 +1081,75 @@ body > #header > .header-wrapper,
 }
 
 .hero-inner .hero-right {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  gap: 10px;
+    display: flex;
+    flex-shrink: 0;
+    max-width: 470px;
+    flex-direction: column;
+    align-items: start;
+    gap: 30px;
+}
+
+.hero-inner .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.hero-inner .hero-right p {
+    font-size: 16px;
 }
 
 .hp_subscribe .wrapper #formContainer fieldset input[type="submit"],
 .chai-club__btn,
 .hero-btn {
-  font-size: 18px;
-  padding: 15px 30px;
+  font-size: 20px;
+  padding: 12px 29px;
+  line-height: 1;
   border: 1px solid;
+  border-radius: 50px;
   display: inline-block;
   position: relative;
   max-width: max-content;
   text-transform: unset;
-  transition: 0.2s;
+  transition: all 0.3s ease;
+  overflow: hidden;
   z-index: 9;
 }
 
-.hp_subscribe .wrapper #formContainer fieldset input[type="submit"]::after,
+/* .hp_subscribe .wrapper #formContainer fieldset input[type="submit"]::after,
 .chai-club__btn::after,
 .hero-btn::after {
   content: "";
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 100%;
-  height: 0;
-  transition: 0.2s;
+  border-radius: 100px;
+  width: 250px;
+  height: 250px;
+  transform: scale(0.5);
+  opacity: 0;
+  transition: all 0.5s ease; 
   z-index: -2;
 }
 
 .hp_subscribe .wrapper #formContainer fieldset input[type="submit"]:hover:after,
 .chai-club__btn:hover:after,
 .hero-btn:hover:after {
-  height: 100%;
+    opacity: 1;
+  transform: scale(1.4);
+    right: 0;
+    left: auto;
+    bottom: auto;
+    top: 0;
+} */
+
+.hero-btn--outline:hover {
+  background-color: var(--color-secondary);
 }
 
-.hero-btn--outline:after {
-  background-color: var(--color-primary);
-}
-
-.hp_subscribe .wrapper #formContainer fieldset input[type="submit"]::after,
-.chai-club__btn::after,
-.hero-btn--solid:after {
+.hp_subscribe .wrapper #formContainer fieldset input[type="submit"]:hover,
+.chai-club__btn:hover,
+.hero-btn--solid:hover {
   background-color: var(--color-secondary);
 }
 
@@ -1199,7 +1241,7 @@ body > #header > .header-wrapper,
 /* About Us */
 .hp-row:nth-child(2) {
   padding-block: 80px;
-  background-color: var(--color-bg);
+  background-color: var(--color-section-bg);
 }
 
 .hp-table > :nth-child(2) .wrapper {
@@ -1269,7 +1311,7 @@ body > #header > .header-wrapper,
 
 .hp-row:nth-child(3) {
   padding-block: 80px;
-  background-color: #f0e7da;
+  background: linear-gradient(180deg, #CBE6EA 42.05%, #F2F8F7 102.36%);
 }
 
 .events-carousel .swiper,
@@ -1316,11 +1358,8 @@ body > #header > .header-wrapper,
   object-fit: cover;
   object-position: center;
   overflow: hidden;
-  transition: 0.2s;
-}
-
-.event-card:hover .event-card__img img {
-  transform: scale(1.08);
+  border-radius: 20px 0 20px 0;
+  transition: all 0.3s ease;
 }
 
 .event-card__body {
@@ -1329,12 +1368,12 @@ body > #header > .header-wrapper,
 
 .events-carousel__controls {
   display: flex;
-  border: 1px solid var(--color-tertiary);
   max-width: max-content;
+  gap: 8px;
 }
 
 .events-carousel__controls > button {
-  width: 48px;
+  width: 42px;
   height: 36px;
   display: flex;
   align-items: center;
@@ -1343,6 +1382,7 @@ body > #header > .header-wrapper,
   background-color: var(--color-secondary);
   box-shadow: none;
   border: none;
+  border-radius: 30px;
 }
 
 .events-carousel__controls > button svg {
@@ -1356,7 +1396,7 @@ body > #header > .header-wrapper,
 .events-carousel__footer .events-carousel__controls .swiper-button-disabled,
 .events-carousel__controls .swiper-button-disabled {
   cursor: default;
-  background-color: transparent;
+    opacity: 30%;
 }
 
 .events-carousel__controls .swiper-button-disabled svg {
@@ -1377,6 +1417,7 @@ body > #header > .header-wrapper,
 .event-card .event-card__title {
   color: var(--color-primary);
   font-size: 28px;
+  font-weight: 500;
   margin: 10px 0;
   line-height: 1.2;
   position: relative;
@@ -1391,8 +1432,8 @@ body > #header > .header-wrapper,
   background-color: var(--color-primary);
   width: 0;
   opacity: 50%;
-  height: 1.5px;
-  transition: 0.2s;
+  height: 2px;
+  transition: all 0.3s ease;
 }
 
 .event-card:hover .event-card__title::after {
@@ -1403,10 +1444,15 @@ body > #header > .header-wrapper,
 .event-card .event-card__desc {
   margin: 0;
   padding: 0;
-  color: var(--color-secondary);
-  font-size: 18px;
+  color: #4A4A52;
+  font-size: 16px;
   font-weight: 400;
   line-height: 1.3;
+   display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+  line-clamp: 2; 
 }
 
 @media (max-width: 1199px) {
@@ -1612,47 +1658,13 @@ body > #header > .header-wrapper,
   letter-spacing: -0.02em;
   text-align: left;
   text-transform: capitalize;
-  margin-bottom: 0;
-}
-
-.sneak-peek-container .sneak-peek-see-more {
-  font-size: 16px;
-  font-weight: 400;
-  color: var(--color-primary);
-  display: flex;
-  align-items: center;
-
-  &:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
-  }
-}
-
-.sneak-peek-container .sneak-peek-see-more::after {
-  content: "";
-  background-image: url(https://w3.chabad.org/media/images/1372/kCKz13721877.png);
-  background-position: center;
-  background-size: 14px;
-  width: 14px;
-  height: 14px;
-  background-repeat: no-repeat;
-  display: inline-block;
-  margin-left: 4px;
-  transition: 0.2s;
-}
-
-.sneak-peek-container .sneak-peek-see-more:hover:after {
-  transform: translateX(2px);
-}
-
-.sneak-peek-item.item-6 {
-  display: none;
+  margin-bottom: 30px;
 }
 
 .sneak-peek-container .flexbox-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  row-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 .sneak-peek-container .sneak-peek-item {
@@ -1661,6 +1673,13 @@ body > #header > .header-wrapper,
   position: relative;
   padding: 10px;
   margin: 0;
+  border-radius: 20px 0 20px 0;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: var(--color-page-bg);
+  }
+
 }
 
 .sneak-card {
@@ -1673,35 +1692,21 @@ body > #header > .header-wrapper,
 
 .sneak-card__img {
   margin-bottom: 10px;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 2;
   width: 100%;
   object-fit: cover;
+  border-radius: 20px 0 20px 0;
 }
 
 .sneak-card__title {
   max-width: max-content;
   position: relative;
-  font-size: 18px;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.5;
   text-align: left;
-  color: var(--color-primary);
+  color:#1c1c1c;
   margin: 0;
-}
-
-.sneak-card__title::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -10px;
-  background-color: var(--color-primary);
-  width: 0;
-  opacity: 50%;
-  height: 1.5px;
-  transition: 0.2s;
-}
-
-.sneak-card:hover .sneak-card__title:after {
-  width: 100%;
-  opacity: 1;
 }
 
 .sneak-peek-container .sneak-peek-item .wrapper {
@@ -1799,7 +1804,7 @@ body > #header > .header-wrapper,
   background-size: 32px;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url(https://webmk.centers.chabad.org/media/images/1372/eFdQ13729255.png);
+  background-image: url(https://webmk.centers.chabad.org/media/images/1376/pVmI13765583.png);
   width: 32px;
   height: 32px;
   margin-right: 10px;
@@ -1824,7 +1829,7 @@ body > #header > .header-wrapper,
 }
 
 .hp-row:nth-child(6) .post-card img {
-  transition: 0.2s;
+  transition: all 0.3s ease;
 }
 
 .hp-row:nth-child(6) .post-card:hover img {
@@ -1971,7 +1976,7 @@ body > #header > .header-wrapper,
   font-weight: 400;
   text-align: right;
   font-size: 30px;
-  transition: 0.2s;
+  transition: all 0.3s ease;
 }
 
 #footer .cs-f-social-icons a:hover {

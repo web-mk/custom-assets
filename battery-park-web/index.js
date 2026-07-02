@@ -25,9 +25,11 @@ function initHeroSection() {
       <h1 class="hero-title">${cmsTitle}</h1>
       <p class="hero-tagline">
         For every Jew. <strong>with love</strong>
-        <svg class="hero-heart" width="20" height="18" viewBox="0 0 20 18" fill="none" aria-hidden="true">
-          <path d="M10 17s-8-5.5-8-11.2C2 2.6 4.4 0 7.3 0 8.9 0 10 .8 10 .8S11.1 0 12.7 0C15.6 0 18 2.6 18 5.8 18 11.5 10 17 10 17z" fill="#16305c"/>
-        </svg>
+        <svg width="48" height="46" viewBox="0 0 48 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.2109 0C21.0069 0.0554398 23.4169 0.734495 25.3975 2.79971C27.0497 4.52255 27.3828 5.85236 28.1252 7.99142C27.0506 8.61949 26.4603 9.13783 25.5555 9.97999C25.132 5.62541 22.7575 1.1286 18.2109 0Z" fill="#164E75"/>
+            <path d="M36.883 6.9033C39.8459 6.8604 42.5077 8.26784 44.5723 10.2893C50.6894 16.3013 47.635 24.4849 42.3906 29.8861C36.0813 36.3838 28.3202 39.3979 20.0054 42.4833C19.5632 42.6473 19.0957 42.8133 18.733 42.4471C18.6614 42.3733 18.5915 42.2977 18.5234 42.2206C18.8224 42.0307 20.4317 41.4506 20.8446 41.2921C22.0787 40.8211 23.3032 40.325 24.5172 39.8041C31.3829 36.8887 37.9232 32.9473 42.2619 26.6937C46.514 20.5643 46.269 12.5934 39.563 8.40545C38.6927 7.8617 37.7186 7.45044 36.883 6.9033Z" fill="#164E75"/>
+            <path d="M14.4328 0.333018C16.5122 0.315528 18.3243 0.522437 20.1524 1.60261C23.4221 3.5345 24.9133 7.43649 24.9409 11.1151C24.942 11.3116 24.9397 11.508 24.9339 11.7044C25.9152 10.5864 26.9055 9.43769 28.2405 8.72266C29.1058 7.95071 31.5911 7.35663 32.7706 7.23387C33.9593 6.84868 36.9279 7.68432 38.0596 8.30232C40.5589 9.59773 43.1555 12.137 43.9466 14.9096C46.6447 24.3638 37.0277 32.6535 29.576 36.684C26.2394 38.4889 21.4447 40.5036 17.8236 41.7194L16.0326 42.3887C9.20558 36.4303 0.733186 28.2285 0.0394842 18.5803C-0.281301 13.6687 1.36247 8.83098 4.60884 5.13178C7.34372 1.98384 10.3374 0.613517 14.4328 0.333018Z" fill="#164E75"/>
+        </svg>          
       </p>
     </div>
     <div class="hero-right">
@@ -181,7 +183,7 @@ async function carouselEvents() {
 
     const prevBtnBottom = document.createElement('button');
     prevBtnBottom.className = 'events-prev';
-    prevBtnBottom.innerHTML = `<svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.05912 18.1198L-0.000815788 9.0599L9.05912 -5.76898e-08L10.3789 1.31979L2.63884 9.0599L10.3789 16.8L9.05912 18.1198Z" fill=""/></svg>`;
+    prevBtnBottom.innerHTML = `<svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.31979 0.00133105L10.3797 9.0612L1.31979 18.1211L-5.76898e-08 16.8013L7.74007 9.0612L-7.34353e-07 1.32107L1.31979 0.00133105Z" fill=""/></svg>`;
 
     const nextBtnBottom = document.createElement('button');
     nextBtnBottom.className = 'events-next';
@@ -277,70 +279,6 @@ async function carouselEvents() {
 }
 
 carouselEvents();
-
-// ------------------------------------
-// CHAI CLUB SECTION
-// ------------------------------------
-
-function buildChaiClubSection() {
-  const section = document.querySelector('.hp-row:nth-child(4)');
-  if (!section) return;
-
-  const title = section.querySelector('.widget_header h5')?.innerText.trim() || 'Join the Chai Club';
-  const desc = section.querySelector('.widget_content .bottom_padding')?.innerText.trim() || '';
-  const btnEl = section.querySelector('.widget_content .readMore');
-  const btnText = btnEl?.innerText.trim() || 'Join the Chai Club';
-  const btnHref = btnEl?.getAttribute('href') || '#';
-
-  const wrapper = section.querySelector('.wrapper');
-  wrapper.innerHTML = `
-    <img class="chai-club__image" src="/media/images/1372/euIQ13729689.jpg" alt="Chai Club">
-    <div class="chai-club__body">
-      <div class="chai-club__left">
-        <h2 class="chai-club__title">${title}</h2>
-        <p class="chai-club__desc">${desc}</p>
-        <a href="${btnHref}" class="chai-club__btn">${btnText}</a>
-      </div>
-      <div class="chai-club__right">
-        <p class="chai-club__tagline"><em>Small gifts.<br>Big impact.</em></p>
-      </div>
-    </div>
-  `;
-}
-
-buildChaiClubSection();
-
-
-
-// ------------------------------------
-// LETS MEET SECTION
-// ------------------------------------
-
-function buildLetsMeetSection() {
-  const row = document.querySelector('.hp-table .hp-row:nth-child(5)');
-  if (!row) return;
-
-  const title = row.querySelector('.widget_header h5')?.innerText.trim() || "Let's Meet";
-  const desc = row.querySelector('.widget_content .bottom_padding')?.innerText.trim() || '';
-  const btnEl = row.querySelector('.widget_content .readMore');
-  const btnText = btnEl?.innerText.trim() || 'Drop Us a Message';
-  const btnHref = btnEl?.getAttribute('href') || '#';
-
-  const wrapper = row.querySelector('.wrapper');
-  wrapper.innerHTML = `
-    <div class="lets-meet__image">
-      <img src="/media/images/1372/mnrW13726981.jpg" alt="Let's Meet">
-    </div>
-    <div class="lets-meet__content">
-      <h2 class="lets-meet__title">${title}</h2>
-      <p class="lets-meet__desc">${desc}</p>
-      <a href="${btnHref}" class="lets-meet__btn hero-btn hero-btn--solid">${btnText}</a>
-    </div>
-  `;
-}
-
-buildLetsMeetSection();
-
 
 
 // ------------------------------------
