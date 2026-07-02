@@ -906,6 +906,7 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   font-weight: 400;
   letter-spacing: -0.01em;
   color: #FFFFFF;
+  text-shadow: 1px -1px 7px rgb(6 79 106 / 60%), 3px 4px 20px rgb(6 79 106), 3px 4px 7px rgb(6 79 106 / 60%);
   line-height: 1.4;
   text-decoration: none;
   margin: 0;
@@ -1174,7 +1175,7 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   margin-top: auto;
   display: none;
   pointer-events: none;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
   max-height: 0;
@@ -2701,3 +2702,12 @@ body.sites-article #content {
 }
 
 /* -------------------------- */
+
+div#confirm-wrapper::after, div#donate-wrapper::after {
+  background: white;
+}
+
+#confirm-wrapper #confirm, #donate-wrapper #donate {
+  margin-top: 0;
+  margin-bottom: 0;
+}
