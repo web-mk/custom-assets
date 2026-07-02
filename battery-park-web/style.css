@@ -1,16 +1,17 @@
 @import url("https://use.typekit.net/gox0ymo.css");
 
 :root {
-  --color-primary: #2c2420;
-  --color-secondary: #6b5c54;
-  --color-tertiary: #a89890;
-  --color-bg: #f9f3ec;
+  --color-primary: #0D2340;
+  --color-secondary: #164E75;
+  --color-tertiary: #B8881A;
+  --color-section-bg: #F2F8F7;
+  --color-page-bg: #D0E4F5;
   --color-white: #ffffff;
 }
 
 html {
   overflow-x: hidden;
-  background-color: #ebe4db;
+  background-color: #fff;
 }
 
 body {
@@ -25,7 +26,7 @@ body {
 }
 
 * {
-  letter-spacing: normal;
+  letter-spacing: -0.02em;
   font-family: "neue-haas-grotesk-display", sans-serif;
 }
 
@@ -524,7 +525,7 @@ body.cco_body {
 #header {
   position: sticky;
   top: 0;
-  background: var(--color-bg);
+  background: var(--color-white);
   z-index: 999;
 }
 
@@ -540,7 +541,7 @@ body.cco_body {
 
 #header.on-scroll,
 body.sites-article #header {
-  background: var(--color-bg);
+  background: var(--color-white);
   border-bottom: 0;
 }
 
@@ -551,8 +552,9 @@ body.sites-article #header {
 body > #header > .header-wrapper {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin: auto;
-  height: 64px;
+  height: 80px;
 }
 
 #header_branding .site-logo-wrapper {
@@ -566,9 +568,9 @@ body > #header > .header-wrapper {
 }
 
 .branding-search #header_branding.logo img {
-  width: 46px;
-  height: 46px;
-  object-fit: contain;
+  width: 118px;
+  height: 42px;
+  object-fit: cover;
   object-position: center;
 }
 
@@ -617,6 +619,7 @@ body.cco_body #tabContentMain .co_menu_item span.parent a:hover {
   display: flex;
   align-items: center;
   padding-inline: 10px;
+  padding-block: 32px;
 }
 
 body.cco_body #tabContentMain .co_menu_item.multi_level span.parent a::after {
@@ -659,57 +662,20 @@ body.cco_body #tabContentMain .co_menu_item.donate_link span.parent a {
   border: 0;
   font-size: 16px;
   font-weight: 400;
-  color: var(--color-primary);
-  background: none;
-  padding: 0 10px;
+  color: var(--color-white);
+  background-color: var(--color-tertiary);
+  padding: 9px 20px;
+  border-radius: 50px;
+  margin-left: 10px;
 
   &:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
+    background-color: color-mix(in srgb, var(--color-tertiary) 85%, black);
   }
-}
-
-body.cco_body #tabContentMain .co_menu_item.donate_link span.parent a::after {
-  content: "";
-  background-image: url(https://webmk.centers.chabad.org/media/images/1372/kCKz13721877.png);
-  background-position: center;
-  background-size: 14px;
-  width: 14px;
-  height: 14px;
-  background-repeat: no-repeat;
-  margin-left: 6px;
-  transition: 0.2s;
-}
-
-body.cco_body
-  #tabContentMain
-  .co_menu_item.donate_link
-  span.parent
-  a:hover:after {
-  transform: translateX(2px);
 }
 
 .branding-search #header_branding .site_title,
 body.sites-article .branding-search #header_branding .site_title {
   display: none;
-}
-
-.header-wrapper .cs-social-icons {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.header-wrapper .cs-social-icons img {
-  display: block;
-  max-width: 22px;
-  height: auto;
-  transition: 0.1s;
-
-  &:hover {
-    transform: scale(1.1);
-  }
 }
 
 /* Menu Dropdown */
@@ -813,9 +779,10 @@ body.cco_body
   a:before {
   content: "";
   position: absolute;
-  bottom: -21px;
-  left: 0;
-  height: 2px;
+  bottom: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 100px;
   width: 0;
   opacity: 50%;
   transition: 0.2s;
@@ -829,6 +796,8 @@ body.cco_body #tabContentMain .co_menu_item.selected a.parent:after {
 body.cco_body #tabContentMain .co_menu_item span.parent a:hover:before {
   width: 100%;
   opacity: 1;
+  left: 0;
+  right: auto
 }
 
 body.cco_body
@@ -984,13 +953,24 @@ body > #header > .header-wrapper,
   height: auto;
   width: 100%;
   background-color: var(--color-bg) !important;
-  background: url(https://webmk.centers.clhosting.org/media/images/1372/bJOO13721704.jpg) !important;
+  background: url(https://w2.chabad.org/media/images/1376/yvxD13765106.jpg) !important;
   background-size: cover !important;
   background-position: center;
   min-height: 740px;
   border-radius: 0;
   display: flex;
   align-items: end;
+  position: relative;
+}
+
+.hp-table .hp-row-first::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0.34deg, #F2F8F7 25.19%, rgba(242, 248, 247, 0) 99.62%);
 }
 
 .hp-row .hp-row-first [class^="widget-"] div.wrapper {
@@ -1919,7 +1899,6 @@ body > #header > .header-wrapper,
 }
 
 .hp_subscribe .wrapper #formContainer fieldset input[type="submit"] {
-  font-size: 18px;
   width: 100%;
   max-width: 280px;
   letter-spacing: normal;
