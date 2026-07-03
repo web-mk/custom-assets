@@ -170,7 +170,7 @@ async function carouselEvents() {
     nextBtn.innerHTML = `<svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.31979 0.00133105L10.3797 9.0612L1.31979 18.1211L-5.76898e-08 16.8013L7.74007 9.0612L-7.34353e-07 1.32107L1.31979 0.00133105Z" fill=""/></svg>`;
 
     controlsGroup.appendChild(prevBtn);
-    controlsGroup.appendChild(nextBtn);
+    controlsGroup.appendChild(nextBtn); 
     headerRow.appendChild(heading);
     headerRow.appendChild(controlsGroup);
 
@@ -279,26 +279,6 @@ async function carouselEvents() {
 }
 
 carouselEvents();
-
-
-// ------------------------------------
-// SHIFTED THE DESC BELOW HEADING
-// ------------------------------------
-
-function buildSubscribeSection() {
-  const row = document.querySelector('.hp-row.hp_subscribe');
-  if (!row) return;
-
-  const small = row.querySelector('fieldset small');
-  const heading = row.querySelector('.widget_header h5');
-
-  if (small && heading) {
-    heading.insertAdjacentElement('afterend', small);
-  }
-}
-
-buildSubscribeSection();
-
 
 
 // ------------------------------------
