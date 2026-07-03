@@ -173,7 +173,8 @@ async function carouselEvents() {
     controlsGroup.appendChild(nextBtn); 
     headerRow.appendChild(heading);
     headerRow.appendChild(controlsGroup);
-
+    
+    
     // --- Footer row ---
     const footerRow = document.createElement('div');
     footerRow.className = 'events-carousel__footer';
