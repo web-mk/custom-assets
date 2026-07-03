@@ -174,7 +174,7 @@ async function carouselEvents() {
     headerRow.appendChild(heading);
     headerRow.appendChild(controlsGroup);
     
-    
+
     // --- Footer row ---
     const footerRow = document.createElement('div');
     footerRow.className = 'events-carousel__footer';
@@ -317,6 +317,98 @@ function initMobileMenu() {
 }
 
 initMobileMenu();
+
+
+
+function restructureLegacySection() {
+  const wrapper = document.querySelector('.hp-row:nth-child(5) .wrapper');
+  if (!wrapper) return;
+
+  const header = wrapper.querySelector('.widget_header');
+  const content = wrapper.querySelector('.widget_content.message_format');
+  const readMore = content?.querySelector('.readMore');
+  if (!header || !content || !readMore) return;
+
+  const textWrap = document.createElement('div');
+  textWrap.className = 'legacy-text';
+  textWrap.appendChild(header);
+  textWrap.appendChild(content);
+
+  wrapper.appendChild(textWrap);
+  wrapper.appendChild(readMore);
+}
+
+document.addEventListener('DOMContentLoaded', restructureLegacySection);
+
+
+
+/**
+ * Merges two separate .hp-row widgets ("Join the Chai Club" and "Let's Meet")
+ * into a single two-column section.
+ * Left card: adds a static badge ("Small gifts. Big impact.") next to the heading.
+ * Right card: wraps text in a panel and adds an image container up front
+ * (background image needs to be set separately, see CSS placeholder).
+ */
+function combineChaiAndMeetSection() {
+  const allHpRows = document.querySelectorAll('.hp-row');
+  const chaiRow = allHpRows[5]; // 6th .hp-row (0-indexed)
+  const meetRow = allHpRows[6]; // 7th .hp-row (0-indexed)
+
+  if (!chaiRow || !meetRow) return;
+
+  // Debug check, remove once confirmed working:
+  console.log('chaiRow heading:', chaiRow.querySelector('.widget_header h5')?.textContent.trim());
+  console.log('meetRow heading:', meetRow.querySelector('.widget_header h5')?.textContent.trim());
+
+  const chaiWrapper = chaiRow.querySelector('.wrapper');
+  const meetWrapper = meetRow.querySelector('.wrapper');
+  if (!chaiWrapper || !meetWrapper) return;
+
+  chaiWrapper.classList.add('chai-card');
+  meetWrapper.classList.add('meet-card');
+
+  // --- Left card: group heading + badge into one row ---
+  const chaiHeader = chaiWrapper.querySelector('.widget_header');
+  const topRow = document.createElement('div');
+  topRow.className = 'chai-top-row';
+
+  const badge = document.createElement('div');
+  badge.className = 'chai-badge';
+  badge.innerHTML = 'Small gifts.<br>Big impact.';
+
+  chaiHeader.insertAdjacentElement('beforebegin', topRow);
+  topRow.appendChild(chaiHeader);
+  topRow.appendChild(badge);
+
+  // --- Right card: add image block + wrap text content in a panel ---
+  const meetHeader = meetWrapper.querySelector('.widget_header');
+  const meetContent = meetWrapper.querySelector('.widget_content.message_format');
+
+  const meetImage = document.createElement('div');
+  meetImage.className = 'meet-image';
+  // Hardcoded, not CMS-editable, replace URL with the actual asset before shipping
+  meetImage.style.backgroundImage = 'url("REPLACE_WITH_IMAGE_URL")';
+
+  const meetText = document.createElement('div');
+  meetText.className = 'meet-text';
+  meetText.appendChild(meetHeader);
+  meetText.appendChild(meetContent);
+
+  meetWrapper.appendChild(meetImage);
+  meetWrapper.appendChild(meetText);
+  meetWrapper.insertBefore(meetImage, meetText);
+
+  // --- Combine both cards into one section ---
+  const section = document.createElement('div');
+  section.className = 'chai-meet-section';
+  section.appendChild(chaiWrapper);
+  section.appendChild(meetWrapper);
+
+  chaiRow.replaceWith(section);
+  meetRow.remove();
+}
+
+document.addEventListener('DOMContentLoaded', combineChaiAndMeetSection);
 
 
 // Remove Inline Styles for Color and Font-Family

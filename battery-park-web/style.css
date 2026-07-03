@@ -49,6 +49,7 @@ h3,
 h4,
 h5,
 h6 {
+    font-weight: 500;
     font-family: "roc-grotesk", sans-serif;
     line-height: 0.9;
 }
@@ -378,22 +379,9 @@ body.cco_body #tabContentMain .co_menu_item.multi_level .co_submenu_container {
   }
 }
 
+/* Base font: applies to everything except icon fonts */
 .co_body .content .form-all,
 .co_body .content p,
-.co_body h1,
-.co_body h1 a,
-.co_body h2,
-.co_body h2 a,
-.co_body h3,
-.co_body h3 a,
-.co_body h4,
-.co_body h4 a,
-.co_body h5,
-.co_body h5 a,
-.co_body h6,
-.co_body h6 a,
-.cps-container h1,
-.cps-container h2,
 .cps-container p,
 .form-all,
 a,
@@ -427,12 +415,6 @@ figcaption,
 figure,
 footer,
 form,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
 header,
 hgroup,
 html,
@@ -486,23 +468,43 @@ body.cco_body
 body.cco_body .message .wrapper .widget_content.message_format div,
 body.cco_body .message .wrapper .widget_content.message_format div *,
 body.cco_body .message .wrapper .widget_content .readMore,
-body.cco_body .message .wrapper .donate_header .widget_header h5,
 body #tabContentMain .co_menu_item span.parent a,
 body.cco_body #tabContentMain .co_menu_item span.parent a,
-body.cco_body .header-title,
-body.cco_body .article-header h1,
-body.cco_body .article-header__titl,
-body #tabContentMain .co_menu_item span.parent a,
 body #tabContentMain .co_menu_item.hover span.parent a,
-body.cco_body #tabContentMain .co_menu_item span.parent a,
 body.cco_body #tabContentMain .co_menu_item.hover span.parent a {
-  font-family: "neue-haas-grotesk-display", sans-serif;
+  font-family: "elza-text", sans-serif;
 }
 
-*:not(.fa):not(.fas):not(.far):not(.fal):not(.fab):not(.fad):not(
-    [class*="fa-"]
-  ) {
-  font-family: "neue-haas-grotesk-display", sans-serif;
+/* Headings: overrides the base rule above */
+.co_body h1,
+.co_body h1 a,
+.co_body h2,
+.co_body h2 a,
+.co_body h3,
+.co_body h3 a,
+.co_body h4,
+.co_body h4 a,
+.co_body h5,
+.co_body h5 a,
+.co_body h6,
+.co_body h6 a,
+.cps-container h1,
+.cps-container h2,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+body.cco_body .header-title,
+body.cco_body .article-header h1,
+body.cco_body .article-header__title,
+body.cco_body .message .wrapper .donate_header .widget_header h5 {
+  font-family: "roc-grotesk", sans-serif !important;
+}
+
+body.cco_body *:not(.fa):not(.fas):not(.far):not(.fal):not(.fab):not(.fad):not([class*="fa-"]):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
+  font-family: "elza-text", sans-serif;
 }
 
 .home.cco_body #BodyContainer > .body_wrapper.no-hero-image::before {
@@ -511,8 +513,8 @@ body.cco_body #tabContentMain .co_menu_item.hover span.parent a {
 
 body,
 body.cco_body {
-  background: var(--color-bg) !important;
-  font-family: "neue-haas-grotesk-display", sans-serif;
+  background: var(--color-section-bg) !important;
+  font-family: "elza-text", sans-serif;
   font-weight: 400;
   color: var(--color-primary);
 }
@@ -876,7 +878,7 @@ body.cco_body
   .co_submenu_container
   a.item
   span {
-  font-family: "neue-haas-grotesk-display", sans-serif;
+  font-family: "elza-text", sans-serif;
 }
 
 body.coo_body #tabContentMain .co_submenu_container .co_column .child_item {
@@ -938,6 +940,7 @@ body.menu-opened {
   }
 }
 
+.chai-meet-section,
 .hp-row > *,
 body > #footer > .wrapper,
 body > #header > .header-wrapper,
@@ -1033,7 +1036,7 @@ body > #header > .header-wrapper,
   display: flex;
   align-items: end;
   justify-content: space-between;
-  gap: 20px;
+  gap: 60px;
 }
 
 .hero-inner .hero-left {
@@ -1047,9 +1050,8 @@ body > #header > .header-wrapper,
 .hero-inner h1 {
   color: var(--color-primary);
   font-size: 78px;
-  font-weight: 700;
   line-height: 0.9; 
-  max-width: 700px;
+  max-width: 640px;
   margin-bottom: 30px;
   text-transform: unset;
 }
@@ -1101,9 +1103,12 @@ body > #header > .header-wrapper,
     font-size: 16px;
 }
 
+
+.readMore,
 .hp_subscribe .wrapper #formContainer fieldset input[type="submit"],
 .chai-club__btn,
 .hero-btn {
+    text-decoration: none;
   font-size: 20px;
   padding: 12px 29px;
   line-height: 1;
@@ -1116,45 +1121,27 @@ body > #header > .header-wrapper,
   transition: all 0.3s ease;
   overflow: hidden;
   z-index: 9;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
-/* .hp_subscribe .wrapper #formContainer fieldset input[type="submit"]::after,
-.chai-club__btn::after,
-.hero-btn::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  border-radius: 100px;
-  width: 250px;
-  height: 250px;
-  transform: scale(0.5);
-  opacity: 0;
-  transition: all 0.5s ease; 
-  z-index: -2;
-}
-
-.hp_subscribe .wrapper #formContainer fieldset input[type="submit"]:hover:after,
-.chai-club__btn:hover:after,
-.hero-btn:hover:after {
-    opacity: 1;
-  transform: scale(1.4);
-    right: 0;
-    left: auto;
-    bottom: auto;
-    top: 0;
-} */
-
+.meet-card .readMore:hover,
+.hp-row:nth-child(5) .readMore:hover,
 .hero-btn--outline:hover {
   background-color: var(--color-secondary);
 }
 
+.chai-card .readMore:hover,
 .hp_subscribe .wrapper #formContainer fieldset input[type="submit"]:hover,
 .chai-club__btn:hover,
 .hero-btn--solid:hover {
   background-color: var(--color-secondary);
 }
 
+.meet-card .readMore,
+.hp-row:nth-child(5) .readMore,
 .hero-btn--outline {
   color: var(--color-primary);
   border-color: var(--color-secondary);
@@ -1165,19 +1152,22 @@ body > #header > .header-wrapper,
   }
 }
 
+.chai-card .readMore,
 .hp_subscribe .wrapper #formContainer fieldset input[type="submit"],
 .chai-club__btn,
 .hero-btn--solid {
   color: var(--color-white);
-  border-color: var(--color-primary);
-  background-color: var(--color-primary);
+  border-color: var(--color-secondary);
+  background-color: var(--color-secondary);
 
   &:hover {
-    border-color: var(--color-secondary);
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
   }
 }
 
 @media (min-width: 1600px) {
+    .chai-meet-section,
   .hp-row > *,
   body > #footer > .wrapper,
   body > #header > .header-wrapper,
@@ -1401,10 +1391,6 @@ body > #header > .header-wrapper,
     opacity: 30%;
 }
 
-.events-carousel__controls .swiper-button-disabled svg {
-  fill: var(--color-secondary);
-}
-
 .event-card .event-card__date {
   color: var(--color-secondary);
   font-size: 16px;
@@ -1463,25 +1449,17 @@ body > #header > .header-wrapper,
   }
 }
 
-/* ======= Join Club Burbank ======== */
-
 .message .wrapper .widget_content .readMore,
 .chabad_updates .widget_header.widget_header h5,
 [class*="widget-"] .widget_header.widget_header h5 {
   text-transform: unset;
 }
 
-/* ======== Let's Meet Section Burbank ======== */
-
 .hp-row:nth-child(5) {
-  padding: 0;
-  background-color: #f0e7da;
-  overflow: hidden;
-}
-
-.hp-row:nth-child(5) > * {
-  max-width: 100%;
-  padding: 0;
+    padding-block: 80px;
+  background-color: var(--color-section-bg);
+  border-top: 1px solid var(--color-page-bg);
+    border-bottom: 1px solid var(--color-page-bg);
 }
 
 .hp-row:nth-child(5) .wrapper {
@@ -1489,64 +1467,43 @@ body > #header > .header-wrapper,
   margin-inline: auto;
   padding: 0;
   display: flex;
-  align-items: stretch;
-  gap: 120px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
 }
 
-.lets-meet__image {
-  width: 55%;
-  flex-shrink: 0;
+.hp-row:nth-child(5) .wrapper::before {
+    content: "";
+    background-image: url(https://webmk.centers.chabad.org/media/images/1376/lRqE13767294.png);
+    background-size: cover;
+    background-position: center;
+    width: 76px;
+    height: 65px;
+    display: block
 }
 
-.lets-meet__image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
+.hp-row:nth-child(5) .wrapper .legacy-text {
+    width: 100%;
+    max-width: 570px;
 }
 
-.lets-meet__content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 80px 0;
-  padding-right: 32px;
-  text-align: left;
+.hp-row:nth-child(5) .widget_header.widget_header h5 {
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+    text-align: left;
 }
 
-.widget-4 .lets-meet__title {
-  font-size: 45px;
-  font-weight: 400;
-  color: var(--color-primary);
-  line-height: 0.9;
-  letter-spacing: -0.02em;
-  margin-bottom: 20px;
-  font-style: italic;
+.hp-row:nth-child(5) .message .wrapper .widget_content.message_format div {
+    color: #4A4A52;
+    font-size: 22px;
+    text-align: left;
+    padding: 0;
 }
 
-.widget-4 .lets-meet__desc {
-  font-size: 20px;
-  color: var(--color-secondary);
-  line-height: 1.3;
-  letter-spacing: -0.02em;
-  margin-bottom: 30px;
-  padding: 0;
-  max-width: 380px;
-}
 
-@media (max-width: 1199px) {
-  .hp-row:nth-child(5) .wrapper {
-    gap: 80px;
-  }
-}
 
-@media (max-width: 1024px) {
-  .hp-row:nth-child(5) .wrapper {
-    gap: 50px;
-  }
-}
 
 .sneak-peek-container .sneak-peek-header {
   display: flex;
@@ -1717,14 +1674,14 @@ body > #header > .header-wrapper,
 
 .hp-row:nth-child(4) .latest_photos ul {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 20px;
 }
 
 .latest_photos .widget_content>ul li, .latest_photos .widget_content>ul li:first-child {
     margin: 0;
     display: block;
-    height: 240px;
+    height: 200px;
     padding-top: 0;
     width: 100%;
 }
@@ -1733,6 +1690,11 @@ body > #header > .header-wrapper,
     display: inline-block;
 }
 
+.latest_photos .widget_content>ul li:first-child:nth-of-type(1n+13), .latest_photos .widget_content>ul li:nth-of-type(1n+13) {
+    display: none;
+}
+
+
 .hp-row:nth-child(4) .latest_photos ul li img {
     border-radius: 20px 0 20px 0;
 }
@@ -1740,6 +1702,59 @@ body > #header > .header-wrapper,
 .hp-row:nth-child(4) a.readMore {
   display: none;
 }
+
+
+.chai-meet-section {
+    background: transparent;
+    padding-block: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.chai-meet-section .meet-card .widget_header,
+.chai-meet-section .chai-card .chai-top-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.chai-meet-section .meet-card h5,
+.chai-meet-section .chai-card .chai-top-row h5 {
+    color: var(--color-primary);
+    font-size: 45px;
+    line-height: 1.1;
+    padding: 0;
+    max-width: 200px;
+}
+
+.chai-meet-section .meet-card h5 {
+    max-width: 100%;
+}
+
+.chai-meet-section .chai-card .chai-badge {
+    padding: 20px 30px;
+    border-radius: 20px 0 20px 0;
+    background-color: var(--color-page-bg);
+    color: var(--color-primary);
+    font-size: 26px;
+    line-height: 1.1;
+    font-family: "roc-grotesk", sans-serif !important; 
+}
+
+.chai-meet-section .meet-card .widget_content,
+.chai-meet-section .chai-card .widget_content {
+    padding: 0;
+}
+
+.chai-meet-section .chai-card .widget_content .bottom_padding {
+    font-size: 16px;
+    color: #4A4A52;
+    max-width: 450px;
+}
+
 
 /* ======== Subscribe Section Burbank ========= */
 
@@ -1829,6 +1844,8 @@ body > #header > .header-wrapper,
 
 #footer .footer_text .footer3 .footer-title {
   font-size: 72px;
+  font-weight: 500;
+  font-family: "roc-grotesk", sans-serif;
   text-transform: unset;
   line-height: 0.9;
   letter-spacing: -0.02em;
@@ -1885,7 +1902,7 @@ body > #header > .header-wrapper,
 }
 
 /* Removed Extra Sections */
-.hp-row:nth-child(9) {
+.hp-row:nth-child(8) {
   display: none;
 }
 
@@ -2154,6 +2171,7 @@ body > #header > .header-wrapper,
 }
 
 @media screen and (max-width: 1024px) {
+    .chai-meet-section,
   .hp-row > * {
     padding: 0 32px;
   }
@@ -2398,6 +2416,7 @@ body > #header > .header-wrapper,
     padding: 20px;
   }
 
+  .chai-meet-section,
   .hp-row > *,
   body > #footer > .wrapper,
   body > #header > .header-wrapper,
