@@ -240,8 +240,8 @@ async function carouselEvents() {
         prevEl: [prevBtn, prevBtnBottom],
       },
       breakpoints: {
-        768: { slidesPerView: 2, spaceBetween: 10 },
-        1024: { slidesPerView: 3, spaceBetween: 13 },
+        768: { slidesPerView: 2.2, spaceBetween: 10 },
+        1024: { slidesPerView: 3.6, spaceBetween: 13 },
       },
     });
   }
@@ -387,7 +387,7 @@ function combineChaiAndMeetSection() {
   const meetImage = document.createElement('div');
   meetImage.className = 'meet-image';
   // Hardcoded, not CMS-editable, replace URL with the actual asset before shipping
-  meetImage.style.backgroundImage = 'url("REPLACE_WITH_IMAGE_URL")';
+  meetImage.style.backgroundImage = 'url("https://w2.chabad.org/media/images/1376/juJJ13765114.jpg")';
 
   const meetText = document.createElement('div');
   meetText.className = 'meet-text';
