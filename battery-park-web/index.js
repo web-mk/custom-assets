@@ -11,8 +11,8 @@ function initHeroSection() {
   const descEl = document.querySelector('.cycle-caption span') || document.querySelector('.slider span');
 
   const cmsTitle = titleEl?.innerText.trim() || 'Chabad of Battery Park City';
-  const cmsDescription = descEl?.innerText.trim() ||
-    'Chabad of Battery Park City is a vibrant Jewish center offering meaningful experiences for individuals and families of all ages.';
+  console.log({inner: descEl?.innerText});
+  const cmsDescription = descEl?.innerText.trim().replace(cmsTitle, '');
 
   titleEl?.remove();
   descEl?.remove();
@@ -433,4 +433,4 @@ const addCredit = () => {
 
 addCredit();
 
-/* ------------- FILE LAST UPDATED JULY 8, 2026 ------------- */
+/* ------------- FILE LAST UPDATED JULY 10, 2026 ------------- */
