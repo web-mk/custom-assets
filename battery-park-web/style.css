@@ -588,7 +588,7 @@ body > #header > .header-wrapper {
 .branding-search #header_branding.logo img {
   width: 118px;
   height: 42px;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
 }
 
@@ -1272,6 +1272,7 @@ body > #header > .header-wrapper,
 @media (max-width: 1024px) {
   .hp-table .hp-row-first {
     min-height: 700px;
+    background-position-x: left !important;
   }
 
   .hero-inner {
@@ -1321,6 +1322,7 @@ body > #header > .header-wrapper,
 
   .hero-inner h1 {
     font-size: 50px;
+    font-size: 43px;
     margin-bottom: 20px;
   }
 
@@ -1438,7 +1440,7 @@ body > #header > .header-wrapper,
   padding: 10px;
 }
 
-.widget-4 .events-carousel__heading {
+.widget-1 .events-carousel__heading {
   color: var(--color-primary);
   font-size: 45px;
   letter-spacing: -0.02em;
@@ -2518,7 +2520,7 @@ body > #header > .header-wrapper,
   .chai-meet-section .chai-card .chai-top-row h5,
   .hp-row:nth-child(4) .widget_header h5,
   .sneak-peek-container .header-title,
-  .widget-4 .events-carousel__heading {
+  .widget-1 .events-carousel__heading {
     font-size: 40px;
   }
 
@@ -2712,6 +2714,7 @@ body > #header > .header-wrapper,
   .chai-meet-section .meet-card .meet-image {
     width: 100%;
     height: 167px;
+    background-position-y: 10%;
   }
 
   .chai-meet-section .meet-card .meet-text {
@@ -3442,4 +3445,4 @@ p#d-and-d {
   }
 }
 
-/* ------------- FILE LAST UPDATED JULY 8, 2026 ------------- */
+/* ------------- FILE LAST UPDATED JULY 10, 2026 ------------- */

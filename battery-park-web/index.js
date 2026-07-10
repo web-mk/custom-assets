@@ -10,8 +10,7 @@ function initHeroSection() {
   const titleEl = document.querySelector('.cycle-caption big') || document.querySelector('.slider big');
   const descEl = document.querySelector('.cycle-caption span') || document.querySelector('.slider span');
 
-  const cmsTitle = titleEl?.innerText.trim() || 'Chabad of Battery Park City';
-  console.log({inner: descEl?.innerText});
+  const cmsTitle = titleEl?.innerText.trim();
   const cmsDescription = descEl?.innerText.trim().replace(cmsTitle, '');
 
   titleEl?.remove();
@@ -22,7 +21,7 @@ function initHeroSection() {
 
   hero.innerHTML = `
     <div class="hero-left">
-      <h1 class="hero-title">${cmsTitle}</h1>
+      <h1 class="hero-title">${cmsTitle.replace('of', 'of<br>')}</h1>
       <p class="hero-tagline">
         For every Jew. <strong>with love</strong>
         <svg width="48" height="46" viewBox="0 0 48 46" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -112,8 +111,8 @@ async function carouselEvents() {
 
   // --- Fetch events from /upcoming page ---
   async function fetchUpcomingEvents() {
-    const cacheKey = 'chabad_upcoming_events';
-    const cacheTime = 'chabad_upcoming_events_time';
+    const cacheKey = 'bpc_upcoming_events';
+    const cacheTime = 'bpc_upcoming_events_time';
     const TTL = 5 * 60 * 1000;
 
     const cachedData = sessionStorage.getItem(cacheKey);
@@ -123,7 +122,7 @@ async function carouselEvents() {
       return JSON.parse(cachedData);
     }
 
-    const res = await fetch('/templates/articlecco_cdo/aid/2840537/jewish/Upcoming.htm');
+    const res = await fetch('/templates/articlecco_cdo/aid/7428686/jewish/Upcoming.htm');
     const html = await res.text();
     const doc = new DOMParser().parseFromString(html, 'text/html');
 
@@ -145,7 +144,7 @@ async function carouselEvents() {
 
   // --- Build the carousel with events array ---
   function buildCarousel(items) {
-    const widgetContent = document.querySelector('.widget-4.banner .widget_content.index_format');
+    const widgetContent = document.querySelector('.banner-updates .widget_content.index_format');
     if (!widgetContent) return;
 
     if (!items.length) return;
@@ -386,8 +385,8 @@ function combineChaiAndMeetSection() {
 
   const meetImage = document.createElement('div');
   meetImage.className = 'meet-image';
-  // Hardcoded, not CMS-editable, replace URL with the actual asset before shipping
-  meetImage.style.backgroundImage = 'url("https://w2.chabad.org/media/images/1376/juJJ13765114.jpg")';
+  // Hardcoded, not CMS-editable
+  meetImage.style.backgroundImage = 'url("https://f002.backblazeb2.com/file/webmksites/chabad-battery-pc/img/lets-meet.jpg")';
 
   const meetText = document.createElement('div');
   meetText.className = 'meet-text';
@@ -432,5 +431,13 @@ const addCredit = () => {
 }
 
 addCredit();
+
+const updateLogo = () => {
+  const logo = document.querySelector('#header_branding .site-logo-wrapper img');
+  if (logo) {
+    logo.src = 'https://cdn.webmk.co/chabad-battery-pc/img/horizontal-logo.png';
+  }
+};
+updateLogo();
 
 /* ------------- FILE LAST UPDATED JULY 10, 2026 ------------- */
