@@ -169,12 +169,12 @@ label strong,
   margin-bottom: 12px;
 }
 
-form .billing_address:has(th) {
+form .billing_address:has(th):not(.hide) {
   display: block;
   margin-top: 24px;
 }
 
-form .credit_card:has(th) {
+form .credit_card:has(th):not(.hide) {
   display: block;
   margin-top: 12px;
 }
@@ -3445,4 +3445,4 @@ p#d-and-d {
   }
 }
 
-/* ------------- FILE LAST UPDATED JULY 10, 2026 ------------- */
+/* ------------- FILE LAST UPDATED JULY 14, 2026 ------------- */
