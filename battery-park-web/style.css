@@ -11,14 +11,13 @@
 
 html {
   overflow-x: hidden;
-  background-color: #e9ebeb;
+  background-color: #fff;
 }
 
 body {
   overflow-x: hidden;
   max-width: 100%;
   margin-inline: auto;
-  box-shadow: 0px 490px 250px 0px #a3a3a317;
 }
 
 .hp-table {
@@ -82,8 +81,6 @@ h6,
   .article-header
   .breadcrumbs {
   text-align: left;
-  margin-bottom: 16px;
-  display: none;
 }
 
 #BodyContainer
@@ -378,7 +375,7 @@ body.cco_body
     bottom: 100%;
     left: 0;
     width: 100%;
-    height: 10px;
+    height: 17px;
   }
 
   body.coo_body
@@ -555,7 +552,7 @@ body.cco_body
 
 body,
 body.cco_body {
-  background: var(--color-section-bg) !important;
+  background: var(--color-white) !important;
   font-family: "elza-text", sans-serif;
   font-weight: 400;
   color: var(--color-primary);
@@ -639,13 +636,9 @@ body > #header > .header-wrapper {
 }
 
 #header #tabContentMain {
-  display: flex;
+  display: flex !important;
   align-items: center;
   gap: 40px;
-}
-
-.header-wrapper .co_menu_content {
-  /* display: none; */
 }
 
 body #tabContentMain .co_menu_item_divider,
@@ -701,7 +694,10 @@ body.cco_body #tabContentMain .co_menu_item.hover span.parent a {
 }
 
 body.cco_body #tabContentMain .co_menu_item span.parent a,
-body.cco_body #tabContentMain .co_menu_item.hover span.parent a {
+body.cco_body #tabContentMain .co_menu_item.hover span.parent a{
+  border: 0;
+  padding-bottom: 0;
+  padding-top: 0;
 }
 
 body.cco_body
@@ -788,7 +784,11 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
 
 .co_menu_item.multi_level .co_submenu_container a.item.hover span,
 .co_menu_item.multi_level .co_submenu_container a.item:hover span {
-  color: var(--color-primary) !important;
+  color: #4A4A52;
+}
+
+.co_menu_item.multi_level .co_submenu_container a.item.hover span, .co_menu_item.multi_level .co_submenu_container a.item:hover span {
+    color: #1C1C1E !important;
 }
 
 body.cco_body
@@ -1271,7 +1271,7 @@ body > #header > .header-wrapper,
   body > #footer > .wrapper,
   body > #header > .header-wrapper,
   .widget-4.promo_slider.custom.v380.feed.hide_controls {
-    max-width: 100%;
+    max-width: 1920px;
     padding: 0 120px;
   }
 
@@ -1481,7 +1481,7 @@ body > #header > .header-wrapper,
   padding: 10px;
 }
 
-.widget-1 .events-carousel__heading {
+.events-carousel__header .events-carousel__heading {
   color: var(--color-primary);
   font-size: 45px;
   letter-spacing: -0.02em;
@@ -2102,7 +2102,7 @@ body > #header > .header-wrapper,
   .chai-meet-section .chai-card .chai-top-row h5,
   .hp-row:nth-child(4) .widget_header h5,
   .sneak-peek-container .header-title,
-  .widget-4 .events-carousel__heading {
+  .events-carousel__header .events-carousel__heading {
     font-size: 60px;
   }
 
@@ -2431,7 +2431,7 @@ body > #header > .header-wrapper,
     margin-bottom: 0;
     display: flex;
     justify-content: space-between;
-    padding-block: 0;
+    padding-block: 12px;
   }
 
   body.cco_body
@@ -2473,6 +2473,7 @@ body > #header > .header-wrapper,
     width: 20px;
     height: 20px;
     opacity: 0;
+    display: none;
   }
 
   body.cco_body
@@ -2551,7 +2552,7 @@ body > #header > .header-wrapper,
   .chai-meet-section .chai-card .chai-top-row h5,
   .hp-row:nth-child(4) .widget_header h5,
   .sneak-peek-container .header-title,
-  .widget-1 .events-carousel__heading {
+  .events-carousel__header .events-carousel__heading {
     font-size: 40px;
   }
 
@@ -2646,7 +2647,7 @@ body > #header > .header-wrapper,
   .widget-4 .lets-meet__title,
   .widget-4 .chai-club__tagline,
   .widget-4 .chai-club__title,
-  .widget-4 .events-carousel__heading,
+  .events-carousel__header .events-carousel__heading,
   .sneak-peek-container .header-title {
     font-size: 35px;
   }
@@ -2898,8 +2899,8 @@ body.sites-article #content {
   margin-inline: auto;
   width: 100%;
   display: flex;
-  align-items: end;
-  justify-content: space-between;
+  align-items: start;
+  flex-direction: column;
   margin-top: 80px;
   gap: 30px;
 }
@@ -3158,7 +3159,7 @@ body.sites-article #content {
     > .clearfix
     > .master-content-wrapper.g960:not(.categorized)
     .article-header {
-    max-width: 100%;
+    max-width: 1920px;
     padding: 0 120px;
   }
 

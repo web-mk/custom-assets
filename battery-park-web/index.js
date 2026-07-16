@@ -247,7 +247,7 @@ async function carouselEvents() {
 
   // --- Fallback: read from existing CMS banners on the page ---
   function buildFromBanners() {
-    const widgetContent = document.querySelector('.widget-4.banner .widget_content.index_format');
+    const widgetContent = document.querySelector('.banner .widget_content.index_format');
     if (!widgetContent) return;
 
     const items = Array.from(widgetContent.querySelectorAll('.item'));
