@@ -16,7 +16,7 @@ html {
 
 body {
   overflow-x: hidden;
-  max-width: 1920px;
+  max-width: 100%;
   margin-inline: auto;
   box-shadow: 0px 490px 250px 0px #a3a3a317;
 }
@@ -192,6 +192,22 @@ body.cco_body table th {
   float: none;
 }
 
+#donate-wrapper {
+  margin-block-start: 84px;
+}
+
+@media (min-width: 1600px) {
+  #donate-wrapper {
+    margin-block-start: 110px;
+  }
+}
+
+@media (max-width: 991px) {
+  #donate-wrapper {
+    margin-block-start: 96px;
+  }
+}
+
 #donate-wrapper
   main
   form
@@ -303,6 +319,16 @@ div#donate-wrapper::after {
 
 body.cco_body #tabContentMain .co_menu_item.multi_level .co_submenu_container {
   border-top: 0;
+  height: auto !important;
+}
+
+body.cco_body
+  #tabContentMain
+  .co_menu_item.arrow
+  .co_submenu_container
+  a.item
+  span {
+  padding: 6px 12px;
 }
 
 @media (min-width: 1024px) {
@@ -329,6 +355,10 @@ body.cco_body #tabContentMain .co_menu_item.multi_level .co_submenu_container {
     .column_wrapper {
     padding: 8px;
     height: max-content;
+    border-radius: 6px;
+    padding: 8px;
+    background-color: #fff;
+    border: 1px solid #e8e7e2;
   }
 
   body.cco_body
@@ -536,7 +566,7 @@ body.cco_body {
 }
 
 #header {
-  max-width: 1920px;
+  max-width: 100%;
   margin: auto;
   position: fixed;
   top: 0;
@@ -611,10 +641,11 @@ body > #header > .header-wrapper {
 #header #tabContentMain {
   display: flex;
   align-items: center;
+  gap: 40px;
 }
 
 .header-wrapper .co_menu_content {
-  display: none;
+  /* display: none; */
 }
 
 body #tabContentMain .co_menu_item_divider,
@@ -637,8 +668,14 @@ body.cco_body #tabContentMain .co_menu_item span.parent a:hover {
   font-size: 16px !important;
   display: flex;
   align-items: center;
-  padding-inline: 10px;
-  padding-block: 32px;
+  padding-block: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+body #tabContentMain .co_menu_item span.parent a {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 body.cco_body #tabContentMain .co_menu_item.multi_level span.parent a::after {
@@ -659,10 +696,24 @@ body.cco_body #tabContentMain .co_menu_item.hover span.parent {
   margin-bottom: 0;
 }
 
-#header #tabContentMain {
+body.cco_body #tabContentMain .co_menu_item.hover span.parent a {
+  color: var(--color-primary);
+}
+
+body.cco_body #tabContentMain .co_menu_item span.parent a,
+body.cco_body #tabContentMain .co_menu_item.hover span.parent a {
+}
+
+body.cco_body
+  #tabContentMain
+  .co_menu_item
+  span.parent
+  a
+  #header
+  #tabContentMain {
   display: flex !important;
   align-items: center;
-  gap: 20px;
+  gap: 40px;
 }
 
 .cco_body #tabContentMain .co_menu_item.arrow span.parent div {
@@ -685,7 +736,6 @@ body.cco_body #tabContentMain .co_menu_item.donate_link span.parent a {
   background-color: var(--color-tertiary);
   padding: 9px 20px;
   border-radius: 50px;
-  margin-left: 10px;
   transition: all 0.3s ease;
 
   &:hover {
@@ -709,6 +759,7 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-radius: 50px;
 }
 
 #tabContentMain .co_menu_item.arrow .co_submenu_container a.item .arrow {
@@ -726,8 +777,7 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
 .co_menu_item .co_submenu_container .menu_child,
 .co_menu_item.multi_level .co_submenu_container a.item.hover,
 .co_menu_item.multi_level .co_submenu_container a.item:hover {
-  border-color: var(--color-primary);
-  background: var(--color-white);
+  background-color: #fdf5e0;
 }
 
 .co_menu_item .co_submenu_container .menu_child.selected,
@@ -741,8 +791,12 @@ body.cco_body #tabContentMain .co_submenu_container .co_column a {
   color: var(--color-primary) !important;
 }
 
-#tabContentMain .co_menu_item.multi_level:before {
-  border-bottom: 8px solid var(--color-primary);
+body.cco_body
+  #tabContentMain
+  .co_menu_item.multi_level
+  .co_submenu_container
+  a.item:hover {
+  background-color: #fdf5e0;
 }
 
 #tabContentMain .co_menu_item.multi_level.hover:after {
@@ -792,30 +846,12 @@ body.cco_body #tabContentMain .co_menu_item.hover span.parent a {
   font-weight: 400;
 }
 
-body.cco_body
-  #tabContentMain
-  .co_menu_item:not(.donate_link)
-  span.parent
-  a:before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 3px;
-  border-radius: 100px;
-  width: 0;
-  opacity: 50%;
-  transition: all 0.3s ease;
-  background-color: var(--color-primary);
-}
-
 body.cco_body #tabContentMain .co_menu_item.selected a.parent:after {
   display: none;
 }
 
-body.cco_body #tabContentMain .co_menu_item span.parent a:hover:before {
-  width: 100%;
-  opacity: 1;
+body.cco_body #tabContentMain .co_menu_item.arrow span.parent {
+  padding: 0;
 }
 
 body.cco_body
@@ -946,7 +982,7 @@ body.menu-opened {
   }
 
   #header #tabContentMain {
-    gap: 33px;
+    gap: 53px;
   }
 
   .branding-search #header_branding.logo img {
@@ -959,7 +995,12 @@ body.menu-opened {
   body.cco_body #tabContentMain .co_menu_item span.parent a:hover {
     color: #1c1c1e;
     font-size: 20px !important;
-    padding-block: 40px;
+    padding-block: 0;
+    padding-top: 0;
+  }
+
+  body #tabContentMain .co_menu_item span.parent a {
+    padding-top: 0;
   }
 
   body.cco_body
@@ -994,8 +1035,8 @@ body.menu-opened {
 body > #footer > .wrapper,
 body > #header > .header-wrapper,
 .widget-4.promo_slider.custom.v380.feed.hide_controls {
-  padding: 0 60px;
-  max-width: 1440px;
+  padding: 0 100px;
+  max-width: 100%;
   margin-inline: auto;
 }
 
@@ -1230,8 +1271,8 @@ body > #header > .header-wrapper,
   body > #footer > .wrapper,
   body > #header > .header-wrapper,
   .widget-4.promo_slider.custom.v380.feed.hide_controls {
-    max-width: 1920px;
-    padding: 0 80px;
+    max-width: 100%;
+    padding: 0 120px;
   }
 
   .hero-inner h1 {
@@ -1777,33 +1818,23 @@ body > #header > .header-wrapper,
   flex-shrink: 0;
 }
 
-.hp-row:nth-child(4) .latest_photos ul {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 20px;
+.hp-row:nth-child(4) .slick-track {
+  display: flex;
+  align-items: center;
+  gap: 13px;
 }
 
-.latest_photos .widget_content > ul li,
-.latest_photos .widget_content > ul li:first-child {
-  margin: 0;
-  display: block;
-  height: 200px;
-  padding-top: 0;
-  width: 100%;
-}
-
-.latest_photos .widget_content > ul li:first-child:nth-of-type(1n + 9),
-.latest_photos .widget_content > ul li:nth-of-type(1n + 9) {
-  display: inline-block;
-}
-
-.latest_photos .widget_content > ul li:first-child:nth-of-type(1n + 13),
-.latest_photos .widget_content > ul li:nth-of-type(1n + 13) {
-  display: none;
-}
-
-.hp-row:nth-child(4) .latest_photos ul li img {
+.hp-row:nth-child(4) .slick-track .post-card {
+  overflow: hidden;
   border-radius: 20px 0 20px 0;
+}
+
+.hp-row:nth-child(4) .slick-arrow svg {
+  color: var(--color-secondary) !important;
+}
+
+.hp-row:nth-child(4) .bJmOUR .slider-container .slick-dots li.slick-active {
+  background-color: var(--color-secondary);
 }
 
 .hp-row:nth-child(4) a.readMore {
@@ -2400,7 +2431,7 @@ body > #header > .header-wrapper,
     margin-bottom: 0;
     display: flex;
     justify-content: space-between;
-    padding-block: 20px;
+    padding-block: 0;
   }
 
   body.cco_body
@@ -2860,10 +2891,10 @@ body.sites-article #content {
   > .clearfix
   > .master-content-wrapper.g960:not(.categorized)
   .article-header {
-  padding: 0 60px;
+  padding: 0 100px;
   text-align: left;
   margin: 0;
-  max-width: 1440px;
+  max-width: 100%;
   margin-inline: auto;
   width: 100%;
   display: flex;
@@ -2929,9 +2960,9 @@ body.sites-article #content {
 }
 
 .cco_body #BodyContainer .body_wrapper.co_body {
-  max-width: 1440px;
+  max-width: 100%;
   width: 100%;
-  padding: 0 60px;
+  padding: 0 100px;
   margin: 0 auto;
   background-color: var(--color-white);
 }
@@ -3127,8 +3158,8 @@ body.sites-article #content {
     > .clearfix
     > .master-content-wrapper.g960:not(.categorized)
     .article-header {
-    max-width: 1920px;
-    padding: 0 80px;
+    max-width: 100%;
+    padding: 0 120px;
   }
 
   .cco_body .body_wrapper.co_body .g960 {
@@ -3160,6 +3191,7 @@ body.sites-article #content {
     > .master-content-wrapper.g960:not(.categorized)
     .article-header__title {
     font-size: 80px;
+    max-width: 700px;
   }
 
   #BodyContainer
@@ -3396,7 +3428,8 @@ body.sites-article #content {
 }
 
 .sites-article .co_body.article-body p strong {
-  font-size: 24px;
+  /* font-size: 24px; */
+  font-weight: 600;
   color: #2c2420;
 }
 
@@ -3445,4 +3478,4 @@ p#d-and-d {
   }
 }
 
-/* ------------- FILE LAST UPDATED JULY 14, 2026 ------------- */
+/* ------------- FILE LAST UPDATED JULY 16, 2026 ------------- */
